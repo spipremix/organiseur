@@ -99,19 +99,8 @@ function calendrier_href($script, $annee, $mois, $jour, $type, $fin, $ancre, $im
 
 // http://doc.spip.org/@http_href
 function http_href($href, $clic, $title='', $style='', $class='', $evt='') {
-	$atts = ' href="' .
-		$href .
-		'"' .
-		(!$title ? '' : ("\ntitle=\"" . supprimer_tags($title)."\"")) .
-		(!$style ? '' : ("\nstyle=\"" . $style . "\"")) .
-		(!$class ? '' : ("\nclass=\"" . $class . "\"")) .
-		($evt ? "\n$evt" : '');
-	if (!preg_match('@^<(p|div)>(.*)</\1>$@', $clic, $r))
-	  return "<a$atts>$clic</a>";
-	else {
-	  list(,$b,$c) = $r;
-	  return "<$b><a$atts>$c</a></$b>";
-	}
+	if ($style) $evt .= " style='$style'";
+	return lien_ou_expose($href, $clic, false, $class, $title, 'nofollow', $evt);
 }
 
 # prend une heure de debut et de fin, ainsi qu'une echelle (seconde/pixel)
