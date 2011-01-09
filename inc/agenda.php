@@ -75,22 +75,16 @@ function calendrier_args_date($script, $annee, $mois, $jour, $type, $finurl) {
 function calendrier_href($script, $annee, $mois, $jour, $type, $fin, $ancre, $img, $titre, $class='', $alt='', $clic='', $style='', $evt='')
 {
 	$h = calendrier_args_date($script, $annee, $mois, $jour, $type, $fin);
-	$evt .= " rel='nofollow'";
-	$a = ($ancre ? "#$ancre" : '');
-	$t = ($titre ? " title=\"$titre\"" : '');
-	$s = ($style ? " style=\"$style\"" : '');
-	$c = ($class ? " class=\"$class\"" : '');
 
+	if ($img) $clic =  http_img_pack($img, ($alt ? $alt : $titre), $class ? " class=\"$class\"" : '');
+
+	// pas d'Ajax pour l'espace public pour le moment ou si indispo
 	$moi = preg_match("/exec=" . _request('exec') .'$/', $script);
-	if ($img) $clic =  http_img_pack($img, ($alt ? $alt : $titre), $c);
-	  // pas d'Ajax pour l'espace public pour le moment ou si indispo
-	if (!test_espace_prive() || !$moi || (_SPIP_AJAX !== 1 ))
-
-		return http_href("$h$a", $clic, $titre, $style, $class, $evt);
-	else {
+	if (test_espace_prive() && $moi && (_SPIP_AJAX === 1 ))
 		$evt .= "\nonclick=" . ajax_action_declencheur($h,$ancre);
-		return "<a$c$s$t\nhref='$h$a'$evt>$clic</a>";
-	}
+
+	$h .= ($ancre ? "#$ancre" : '');
+	return http_href("$h", $clic, $titre, $style, $class, $evt);
 }
 
 // Fabrique une balise A, avec tous les attributs possibles
