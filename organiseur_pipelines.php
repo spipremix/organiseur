@@ -131,7 +131,7 @@ function organiseur_header_prive($head){
 	// CSS calendrier
 	if ($GLOBALS['meta']['messagerie_agenda'] != 'non')
 		$head .= '<link rel="stylesheet" type="text/css" href="'
-		  . url_absolue(find_in_path('agenda.css')) .'" />' . "\n";
+		  . url_absolue(find_in_path('calendrier.css')) .'" />' . "\n";
 
   return $head;
 }

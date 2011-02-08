@@ -5,11 +5,11 @@
 [<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|attribut_html)" />]
 <INCLURE{fond=inc-head}>
 <meta name="robots" content="none" />
-<link rel="stylesheet" href="#CHEMIN{agenda.css}" type="text/css" /> 
+<link rel="stylesheet" href="#CHEMIN{calendrier.css}" type="text/css" />
 <script type="text/javascript" src="agenda.html#EVAL{_DIR_JAVASCRIPT}layer.js"> </script>
 <script type="text/javascript" src="agenda.html#EVAL{_DIR_JAVASCRIPT}presentation.js"> </script>
 </head>
 
 <body class="page_agenda">
-[(#ENV{type, mois}|agenda_connu)<INCLURE {fond=agenda_#ENV{type,mois}} {type} {delais=900} {annee} {mois} {jour} {echelle} {partie_cal} {theme}>]
+[(#ENV{type, mois}|agenda_connu)<INCLURE {fond=calendrier_#ENV{type,mois}} {type} {delais=900} {annee} {mois} {jour} {echelle} {partie_cal} {theme}>]
 </body></html>
