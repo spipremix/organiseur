@@ -12,8 +12,8 @@ div.navigation-calendrier img { border: 0; vertical-align: middle; margin: 1px; 
 
 .calendrier-annee { background: #AAA; padding: 3px; margin: 1px; font-family: Verdana, Geneva, Sans, sans-serif; font-size: 10px; font-weight: bold; color: #FFF; }
 .calendrier-annee:hover { color: #000; background-color: #FFF; }
-.calendrier-table-large { border: 0; width: 900px; }
-.calendrier-table-etroit { border: 0; width: 750px; }
+.calendrier-table-large { border: 0; width: 900px; border-collapse:separate;}
+.calendrier-table-etroit { border: 0; width: 750px; border-collapse:separate;}
 .calendrier-td-centre { width: 550px; padding-left: 25px; padding-right: 25px; vertical-align: top; }
 .calendrier-td { width: 14%; vertical-align: top; }
 .calendrier-th { width: 14%; padding: 5px; text-align: center; vertical-align: middle; font-size: 10px; font-weight: bold; font-family: Verdana, Geneva, Sans, sans-serif; }
