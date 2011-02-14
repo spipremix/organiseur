@@ -88,7 +88,7 @@ function presenter_message_boucles($row, $afficher_auteurs)
 
 		foreach ($auteurs as $k => $row_auteurs) {
 			$id_auteur = $row_auteurs['id_auteur'];
-			$auteurs[$k] = "<a href='" . generer_url_ecrire("auteur_infos","id_auteur=$id_auteur") . "'>".typo($row_auteurs['nom'])."</a>";
+			$auteurs[$k] = "<a href='" . generer_url_ecrire("auteur","id_auteur=$id_auteur") . "'>".typo($row_auteurs['nom'])."</a>";
 		}
 
 		if ($auteurs AND $type == 'normal') {

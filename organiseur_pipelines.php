@@ -95,6 +95,7 @@ function organiseur_affiche_auteurs_interventions($flux){
 		AND $id_auteur != $GLOBALS['visiteur_session']['id_auteur']
 		AND autoriser('ecrire', '', '', $flux['args']['auteur'])
 		) {
+			include_spip('inc/presentation');
 			$out = "<div class='nettoyeur'>&nbsp;</div>";
 			$out .= debut_cadre_couleur('', true);
 
