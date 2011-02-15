@@ -27,17 +27,23 @@ function exec_message_args($id_message, $forcer_dest, $cherche_auteur)
 {
 	global  $connect_id_auteur;
 
-	$res = sql_getfetsel("type", "spip_messages", "id_message=$id_message");
-
-	if ($res AND $res != "affich")
-		$res = sql_fetsel("vu", "spip_auteurs_liens", "id_auteur=$connect_id_auteur AND objet='message' AND id_objet=$id_message");
+	$res = sql_fetsel("type,id_auteur", "spip_messages", "id_message=$id_message");
+	if ($res AND $res['type'] != "affich"){
+		$r2 = sql_fetsel("vu", "spip_auteurs_liens", "id_auteur=$connect_id_auteur AND objet='message' AND id_objet=$id_message");
+		if (!$r2 AND $res['id_auteur']==$connect_id_auteur){
+			include_spip('action/editer_auteur');
+			auteur_associer($connect_id_auteur, array('message'=>$id_message),array('vu'=>'non'));
+			$r2 = sql_fetsel("*", "spip_auteurs_liens", "id_auteur=$connect_id_auteur AND objet='message' AND id_objet=$id_message");
+			$res = $r2;
+		}
+	}
 
 	if (!$res) {
 		include_spip('inc/minipres');
 		echo minipres();
 	} else {
 	// Marquer le message vu pour le visiteur
-		if (is_array($res) AND $res['vu'] != 'oui') {
+		if (isset($res['vu']) AND $res['vu'] != 'oui') {
 			include_spip('inc/headers');
 			redirige_par_entete(redirige_action_auteur("editer_message","$id_message/:$connect_id_auteur", 'message', "id_message=$id_message", true));
 		}
