@@ -65,4 +65,5 @@
 	</pipeline>
 
 	<pipeline><nom>agenda_rendu_evenement</nom><action></action></pipeline>
+	<necessite id="grenier" version="[;]" />
 </plugin>
