@@ -48,11 +48,11 @@ echo fin_boite_info(true);
 echo creer_colonne_droite('', true);
 
 echo debut_cadre_relief("messagerie-24.png", true);
-echo icone_horizontale(_T('lien_nouvea_pense_bete'),generer_action_auteur("editer_message","pb"), "pense-bete-24.png", "", false);
-echo icone_horizontale(_T('lien_nouveau_message'),generer_action_auteur("editer_message","normal"), "message-24.png", "", false);
+echo icone_horizontale(_T('lien_nouvea_pense_bete'),generer_action_auteur("editer_message","pb"), "pense-bete-24.png");
+echo icone_horizontale(_T('lien_nouveau_message'),generer_action_auteur("editer_message","normal"), "message-24.png");
 		
 		if ($connect_statut == "0minirezo") {
-			echo icone_horizontale(_T('lien_nouvelle_annonce'),generer_action_auteur("editer_message","affich"), "annonce-24.png", "", false);
+			echo icone_horizontale(_T('lien_nouvelle_annonce'),generer_action_auteur("editer_message","affich"), "annonce-24.png");
 		}
 echo fin_cadre_relief(true);
 
@@ -60,7 +60,7 @@ echo fin_cadre_relief(true);
 # Affiche l'encadre "lien iCal"
  echo
     debut_cadre_enfonce('',true) .
-		icone_horizontale(_T('icone_suivi_activite'),generer_url_ecrire("synchro"), "synchro-24.png", "", false) .
+		icone_horizontale(_T('icone_suivi_activite'),generer_url_ecrire("synchro"), "synchro-24.png") .
     fin_cadre_enfonce(true);
 
 

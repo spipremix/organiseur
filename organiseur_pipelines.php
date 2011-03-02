@@ -103,8 +103,7 @@ function organiseur_affiche_auteurs_interventions($flux){
 
 			$out .= afficher_ses_messages('<b>' . _T('info_discussion_cours') . '</b>', ", spip_auteurs_liens AS A, spip_auteurs_liens AS D", "A.id_auteur=".intval($GLOBALS['visiteur_session']['id_auteur'])." AND D.id_auteur=".intval($id_auteur)." AND statut='publie' AND type='normal' AND rv!='oui' AND A.objet='message' AND A.id_objet=M.id_message AND D.objet='message' AND D.id_objet=M.id_message", $vus, false, false);
 			$out .= afficher_ses_messages('<b>' . _T('info_vos_rendez_vous') . '</b>', ", spip_auteurs_liens AS A, spip_auteurs_liens AS D", "A.id_auteur=".intval($GLOBALS['visiteur_session']['id_auteur'])." AND D.id_auteur=".intval($id_auteur)." AND statut='publie' AND type='normal' AND rv='oui' AND date_fin > ".sql_quote(date('Y-m-d H:i:s'))." AND A.objet='message' AND A.id_objet=M.id_message AND D.objet='message' AND D.id_objet=M.id_message", $vus, false, false);
-			$out .= icone_horizontale(_T('info_envoyer_message_prive'), generer_action_auteur("editer_message","normal/$id_auteur"),
-				  "message-24.png","", false);
+			$out .= icone_horizontale(_T('info_envoyer_message_prive'), generer_action_auteur("editer_message","normal/$id_auteur"),"message-24.png");
 			$out .= fin_cadre_couleur(true);
 
 		  $flux['data'] .= $out;
