@@ -247,7 +247,7 @@ function http_calendrier_mois_navigation($annee, $mois, $premier_jour, $dernier_
 	  "\n<tr><td colspan='7'>" .
 	  http_calendrier_navigation($annee,
 				   $mois,
-				   0,
+				   1,
 				   $echelle,
 				   $partie_cal,
 				   $periode,
@@ -590,7 +590,7 @@ function http_calendrier_ics($annee, $mois, $jour,$echelle, $partie_cal,  $large
 	global $spip_lang_left;
 
 	// tableau
-	if ($partie_cal == DEFAUT_PARTIE_M) {
+	if ($partie_cal == DEFAUT_PARTIE_S) {
 		$debut = 12;
 		$fin = 23;
 	} else if ($partie_cal == DEFAUT_PARTIE_M) {
