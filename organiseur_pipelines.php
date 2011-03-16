@@ -145,6 +145,7 @@ function organiseur_header_prive($head){
 function organiseur_affiche_droite($flux){
 	if ($flux['args']['exec']=='accueil'){
 		include_spip('inc/agenda');
+		include_spip('inc/presentation');
 		list($evtm, $evtt, $evtr) = http_calendrier_messages(date("Y"), date("m"), date("d")," 23:59:59");
 
 		$flux['data'] .= $evtt . $evtm . $evtr;
