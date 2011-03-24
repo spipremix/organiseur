@@ -119,7 +119,7 @@ function organiseur_affiche_auteurs_interventions($flux){
  */
 function organiseur_configurer_liste_metas($metas){
 	$metas['messagerie_agenda'] = 'oui';
-  return $metas;
+	return $metas;
 }
 
 /**
