@@ -1487,7 +1487,7 @@ function tache_redirige ($row) {
 
 	$m = $row['description'];
 	if (substr($m,0,1) == '=')
-	  if ($m = chapo_redirige(substr($m,1), true))
+	  if ($m = virtuel_redirige(substr($m,1), true))
 		return $m;
 	return generer_url_ecrire("message", "id_message=".$row['uid']);
 }
