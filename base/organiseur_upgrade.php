@@ -19,25 +19,16 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param string $version_cible
  */
 function organiseur_upgrade($nom_meta_base_version,$version_cible){
-	$current_version = 0.0;
-	if (   (!isset($GLOBALS['meta'][$nom_meta_base_version]) )
-			|| (($current_version = $GLOBALS['meta'][$nom_meta_base_version])!=$version_cible)){
 
-		if ($current_version==0.0){
-			include_spip('base/create');
-			// creer les tables
-			creer_base();
+	$maj = array();
+	$maj['create'] = array(
+		array('maj_tables',array('spip_messages')),
+		array('sql_alter',array('TABLE spip_auteurs ADD imessage VARCHAR(3)')),
+		array('sql_alter',array('TABLE spip_auteurs ADD messagerie VARCHAR(3)')),
+	);
 
-		  sql_alter('TABLE spip_auteurs ADD imessage VARCHAR(3)');
-		  sql_alter('TABLE spip_auteurs ADD messagerie VARCHAR(3)');
-
-			// mettre les metas par defaut
-			$config = charger_fonction('config','inc');
-			$config();
-			ecrire_meta($nom_meta_base_version,$current_version=$version_cible);
-		}
-
-	}
+	include_spip('base/upgrade');
+	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 }
 
 
