@@ -35,8 +35,8 @@ function organiseur_upgrade($nom_meta_base_version,$version_cible){
 	$maj = array();
 	$maj['create'] = array(
 		array('maj_tables',array('spip_messages')),
-		array('sql_alter',array('TABLE spip_auteurs ADD imessage VARCHAR(3)')),
-		array('sql_alter',array('TABLE spip_auteurs ADD messagerie VARCHAR(3)')),
+		array('sql_alter','TABLE spip_auteurs ADD imessage VARCHAR(3)'),
+		array('sql_alter','TABLE spip_auteurs ADD messagerie VARCHAR(3)'),
 	);
 
 	include_spip('base/upgrade');
