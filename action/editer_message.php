@@ -47,7 +47,7 @@ function action_editer_message_dist($arg=null) {
 
 // http://doc.spip.org/@action_editer_message_post_supprimer
 function action_editer_message_post_supprimer($id_message) {
-	sql_delete("spip_messages", "id_message=".sql_quote($id_message));
+	sql_delete("spip_messages", "id_message=".intval($id_message));
 	include_spip('action/editer_auteur');
 	auteur_dissocier('*', array('message'=>$id_message));
 }
