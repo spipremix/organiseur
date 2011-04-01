@@ -19,7 +19,19 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param string $version_cible
  */
 function organiseur_upgrade($nom_meta_base_version,$version_cible){
-
+	// cas particulier :
+	// si plugin pas installe mais que la table existe
+	// considerer que c'est un upgrade depuis v 1.0.0
+	// pour gerer l'historique des installations SPIP <=2.1
+	if (!isset($GLOBALS['meta'][$nom_meta_base_version])){
+		$trouver_table = charger_fonction('trouver_table','base');
+		if ($desc = $trouver_table('spip_messages')
+		  AND isset($desc['exist'])){
+			ecrire_meta($nom_meta_base_version,'1.0.0');
+		}
+		// si pas de table en base, on fera une simple creation de base
+	}
+	
 	$maj = array();
 	$maj['create'] = array(
 		array('maj_tables',array('spip_messages')),
