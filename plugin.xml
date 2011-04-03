@@ -2,7 +2,7 @@
 	<nom>Organiseur</nom>
 	<icon>prive/themes/spip/images/annonce-24.png</icon>
 	<auteur>Collectif SPIP</auteur>
-	<version>0.2.0</version>
+	<version>0.3.0</version>
 	<version_base>0.1.0</version_base>
 	<etat>test</etat>
 	<description>Outils de travail &eacute;ditorial en groupe</description>

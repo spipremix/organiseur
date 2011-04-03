@@ -44,34 +44,63 @@ div.navigation-calendrier img { border: 0; vertical-align: middle; margin: 1px; 
 .calendrier-icone { width: 14px; height: 7px; border: 0; }
 .calendrier-noir  { color: #000; } /* style anar */
 .calendrier-nb  { background-color: #FFF; border: 1px solid #000; color: #000; } /* style cinemat(yp)ographe */
-.calendrier-couleur1 { background: #FDE5F2; border: 1px solid #CD006F; color: #CD006F; } /* Fushia */
-.calendrier-couleur1i { background: #CD006F; border: 1px solid #FDE5F2; color: #FDE5F2; } /* Fushia */
-.calendrier-couleur2 { background: #EDF3FE; border: 1px solid #5da7c5; color: #5da7c5; } /* Bleu */
-.calendrier-couleur2i { background: #5da7c5; border: 1px solid #EDF3FE; color: #EDF3FE; } /* Bleu */
-.calendrier-couleur3 { background: #EBE9FF; border: 1px solid #766CF6; color: #766CF6; } /* Bleu pastel */
-.calendrier-couleur3i { background: #766CF6; border: 1px solid #EBE9FF; color: #EBE9FF; } /* Bleu pastel */
-.calendrier-couleur4 { background: #FEC; border: 1px solid #FA9A00; color: #FA9A00; } /* Orange */
-.calendrier-couleur4i { background: #FA9A00; border: 1px solid #FEC; color: #FEC; } /* Orange */
-.calendrier-couleur5 { background: #FFEDED; border: 1px solid #F00; color: #F00; } /* Rouge (Vermillon) */
-.calendrier-couleur5i { background: #F00; border: 1px solid #FFEDED; color: #FFEDED; } /* Rouge (Vermillon) */
-.calendrier-couleur6 { background: #FFF2EB; border: 1px solid #E95503; color: #E95503; } /* Orange */
-.calendrier-couleur6i { background: #E95503; border: 1px solid #FFF2EB; color: #FFF2EB; } /* Orange */
-.calendrier-couleur7 { background: #FFE; border: 1px solid #ccaa00; color: #ccaa00; } /* Jaune */
-.calendrier-couleur7i { background: #ccaa00; border: 1px solid #FFE; color: #FFE; } /* Jaune */
-.calendrier-couleur8 { background: #E2FDEC; border: 1px solid #009F3C; color: #009F3C; } /* Vert pastel */
-.calendrier-couleur8i { background: #009F3C; border: 1px solid #E2FDEC; color: #E2FDEC; } /* Vert pastel */
-.calendrier-couleur9 { background: #e5fd63; border: 1px solid #9DBA00; color: #9DBA00; } /* Vert */
-.calendrier-couleur9i { background: #9DBA00; border: 1px solid #e5fd63; color: #e5fd63; } /* Vert */
-.calendrier-couleur10 { background: #FFE0E0; border: 1px solid #640707; color: #640707; } /* Rouge (Bordeaux) */
-.calendrier-couleur10i { background: #640707; border: 1px solid #FFE0E0; color: #FFE0E0; } /* Rouge (Bordeaux) */
-.calendrier-couleur11 { background: #F2F2F2; border: 1px solid #3F3F3F; color: #3F3F3F; } /* Gris */
-.calendrier-couleur11i { background: #3F3F3F; border: 1px solid #F2F2F2; color: #F2F2F2; } /* Gris */
-.calendrier-couleur12 { background: #AAA; border: 1px solid #000; color: #000; }
-.calendrier-couleur12i { background: #000; border: 1px solid #AAA; color: #AAA; }
-.calendrier-couleur13 { background: #FFFFE0; border: 1px solid #666500; color: #666500; } /* Caca d'oie */
-.calendrier-couleur13i { background: #666500; border: 1px solid #FFFFE0; color: #FFFFE0; } /* Caca d'oie */
-.calendrier-couleur14 { background: #F5EEE5; border: 1px solid #8C6635; color: #8C6635; } /* Marron */
-.calendrier-couleur14i { background: #8C6635; border: 1px solid #F5EEE5; color: #F5EEE5; } /* Marron */
+
+.calendrier-couleur1,
+.calendrier-couleur1 .fc-event-skin { background-color: #CD006F; border-color: #CD006F; color: #fff; } /* Fushia */
+.calendrier-couleur1i,
+.calendrier-couleur1i .fc-event-skin { background-color: #FDE5F2; border-color: #FDE5F2; color: #CD006F; } /* Fushia */
+.calendrier-couleur2,
+.calendrier-couleur2 .fc-event-skin { background-color: #5da7c5; border-color: #5da7c5; color: #fff; } /* Bleu */
+.calendrier-couleur2i,
+.calendrier-couleur2i .fc-event-skin { background-color: #EDF3FE; border-color: #EDF3FE; color: #5da7c5; } /* Bleu */
+.calendrier-couleur3,
+.calendrier-couleur3 .fc-event-skin { background-color: #766CF6; border-color: #766CF6; color: #fff; } /* Bleu pastel */
+.calendrier-couleur3i,
+.calendrier-couleur3i .fc-event-skin { background-color: #EBE9FF; border-color: #EBE9FF; color: #766CF6; } /* Bleu pastel */
+.calendrier-couleur4,
+.calendrier-couleur4 .fc-event-skin { background-color: #FA9A00; border-color: #FA9A00; color: #fff; } /* Orange */
+.calendrier-couleur4i,
+.calendrier-couleur4i .fc-event-skin { background-color: #fec; border-color: #fec; color: #FA9A00; } /* Orange */
+.calendrier-couleur5,
+.calendrier-couleur5 .fc-event-skin { background-color: #F00; border-color: #F00; color: #FFF; } /* Rouge (Vermillon) */
+.calendrier-couleur5i,
+.calendrier-couleur5i .fc-event-skin { background-color: #FFEDED; border-color: #FFEDED; color: #F00; } /* Rouge (Vermillon) */
+.calendrier-couleur6,
+.calendrier-couleur6 .fc-event-skin { background-color: #E95503; border-color: #E95503; color: #FFF; } /* Orange */
+.calendrier-couleur6i,
+.calendrier-couleur6i .fc-event-skin { background-color: #FFF2EB; border-color: #FFF2EB; color: #E95503; } /* Orange */
+.calendrier-couleur7,
+.calendrier-couleur7 .fc-event-skin { background-color: #ccaa00; border-color: #ccaa00; color: #fff; } /* Jaune */
+.calendrier-couleur7i,
+.calendrier-couleur7i .fc-event-skin { background-color: #FFE; border-color: #FFE; color: #ccaa00; } /* Jaune */
+.calendrier-couleur8,
+.calendrier-couleur8 .fc-event-skin { background-color: #009F3C; border-color: #009F3C; color: #fff; } /* Vert pastel */
+.calendrier-couleur8i,
+.calendrier-couleur8i .fc-event-skin { background-color: #E2FDEC; border-color: #E2FDEC; color: #009F3C; } /* Vert pastel */
+.calendrier-couleur9,
+.calendrier-couleur9 .fc-event-skin { background-color: #9DBA00; border-color: #9DBA00; color: #fff; } /* Vert */
+.calendrier-couleur9i,
+.calendrier-couleur9i .fc-event-skin { background-color: #e5fd63; border-color: #e5fd63; color: #9DBA00; } /* Vert */
+.calendrier-couleur10,
+.calendrier-couleur10 .fc-event-skin { background-color: #640707; border-color: #640707; color: #fff; } /* Rouge (Bordeaux) */
+.calendrier-couleur10i,
+.calendrier-couleur10i .fc-event-skin { background-color: #FFE0E0; border-color: #FFE0E0; color: #640707; } /* Rouge (Bordeaux) */
+.calendrier-couleur11,
+.calendrier-couleur11 .fc-event-skin { background-color: #3F3F3F; border-color: #3F3F3F; color: #fff; } /* Gris */
+.calendrier-couleur11i,
+.calendrier-couleur11i .fc-event-skin { background-color: #F2F2F2; border-color: #F2F2F2; color: #3F3F3F; } /* Gris */
+.calendrier-couleur12,
+.calendrier-couleur12 .fc-event-skin { background-color: #AAA; border-color: #AAA; color: #fff; }
+.calendrier-couleur12i,
+.calendrier-couleur12i .fc-event-skin { background-color: #AAA; border-color: #AAA; color: #000; }
+.calendrier-couleur13,
+.calendrier-couleur13 .fc-event-skin { background-color: #666500; border-color: #666500; color: #fff; } /* Caca d'oie */
+.calendrier-couleur13i,
+.calendrier-couleur13i .fc-event-skin { background-color: #FFFFE0; border-color: #FFFFE0; color: #666500; } /* Caca d'oie */
+.calendrier-couleur14,
+.calendrier-couleur14 .fc-event-skin { background-color: #8C6635; border-color: #8C6635; color: #fff; } /* Marron */
+.calendrier-couleur14i,
+.calendrier-couleur14i .fc-event-skin { background-color: #F5EEE5; border-color: #F5EEE5; color: #8C6635; } /* Marron */
 
 /* agenda */
 .bandeau_agenda { background: #DDD; }
