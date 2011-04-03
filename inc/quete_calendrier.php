@@ -12,6 +12,7 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
+include_spip('inc/filtres');
 // http://doc.spip.org/@calendrier_categories
 function calendrier_categories($table, $num, $objet)
 {
