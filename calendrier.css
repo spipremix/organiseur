@@ -4,7 +4,7 @@
 .calendrier-noir  { color: #000; } /* style anar */
 .calendrier-nb  { background-color: #FFF; border: 1px solid #000; color: #000; } /* style cinemat(yp)ographe */
 
-.fc-button-content {font-family:sans-serif;}
+.fc-button-prevYear,.fc-button-prev,.fc-button-next,.fc-button-nextYear {font-family:arial;}
 .calendrier-event {word-wrap:break-word;}
 
 .calendrier-couleur1,
