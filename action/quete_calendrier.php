@@ -48,7 +48,7 @@ function action_quete_calendrier_dist(){
 				'start' => $date,
 				'end' => $date,
 				'url' => str_replace('&amp;','&',$e['URL']),
-				'className' => $e['CATEGORIES'],
+				'className' => "calendrier-event ".$e['CATEGORIES'],
 				'description' => $e['DESCRIPTION'],
 			);
 		}
@@ -66,7 +66,7 @@ function action_quete_calendrier_dist(){
 					'start' => convert_dateical($e['DTSTART']), //Ymd\THis
 					'end' => convert_dateical($e['DTEND']), // Ymd\THis
 					'url' => str_replace('&amp;','&',$e['URL']),
-					'className' => $e['CATEGORIES'],
+					'className' => "calendrier-event ".$e['CATEGORIES'],
 					'description' => $e['DESCRIPTION'],
 				);
 				$seen[$e['URL']] = true;

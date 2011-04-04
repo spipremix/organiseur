@@ -45,6 +45,9 @@ div.navigation-calendrier img { border: 0; vertical-align: middle; margin: 1px; 
 .calendrier-noir  { color: #000; } /* style anar */
 .calendrier-nb  { background-color: #FFF; border: 1px solid #000; color: #000; } /* style cinemat(yp)ographe */
 
+.fc-button-content {font-family:sans-serif;}
+.calendrier-event {word-wrap:break-word;}
+
 .calendrier-couleur1,
 .calendrier-couleur1 .fc-event-skin { background-color: #CD006F; border-color: #CD006F; color: #fff; } /* Fushia */
 .calendrier-couleur1i,
