@@ -21,23 +21,6 @@
 #SET{right,#ENV{ltr}|choixsiegal{left,right,left}}
 #SET{rtl,#ENV{ltr}|choixsiegal{left,'',_rtl}}
 
-td.pense-bete, a.pense-bete { background: url([(#CHEMIN_IMAGE{m_envoi_bleu[(#GET{rtl})].gif})]) center [(#GET{left})] no-repeat; padding-#GET{left}: 20px; }
-td.annonce, a.annonce { background: url([(#CHEMIN_IMAGE{m_envoi_jaune[(#GET{rtl})].gif})]) center [(#GET{left})] no-repeat; padding-#GET{left}: 20px; }
-td.message, a.message { background: url([(#CHEMIN_IMAGE{m_envoi[(#GET{rtl})].gif})]) center [(#GET{left})] no-repeat; padding-#GET{left}: 10px; }
-
-
-/* agenda */
-.bandeau_agenda { background: #GET{claire}; }
-.jour_dimanche { background: #GET{claire};color: #fff; }
-.jour_encours { background: #fff;color: #000; }
-.jour_gris { background: #eee;color: #000; }
-.jour_pris { background: #fff;color: #000; }
-.calendrier-cadreagenda { background: #GET{claire}; }
-div.navigation-calendrier { background-color: #GET{foncee}; }
-
-
 /* exec=mesage */
 #participants table.spip {border:0; }
 #participants .cadre_padding {padding:0 0 4px 0; }
-
-.fond-agenda { background: url(#CHEMIN_IMAGE{fond-agenda.gif}) [(#GET{right})] center no-repeat; float: #GET{left}; margin-#GET{right}: 3px; padding-#GET{right}: 4px; line-height: 12px; color: #666; }
