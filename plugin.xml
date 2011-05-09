@@ -63,5 +63,8 @@
 	</pipeline>
 
 	<pipeline><nom>agenda_rendu_evenement</nom><action></action></pipeline>
-	<necessite id="grenier" version="[;]" />
+	<necessite id="grenier" version="[0.1.0;)" />
+	<necessite id="SPIP" version="[3.0.0-dev;)" />
+	<categorie>date</categorie>
+	<traduire gestionnaire="salvatore" module="organiseur" reference="fr" />
 </plugin>
