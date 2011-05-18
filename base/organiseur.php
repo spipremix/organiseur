@@ -12,6 +12,22 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
+
+/**
+ * Declaration des champs complémentaires sur la table auteurs, pour les clients
+ *
+ * @param  $tables
+ * @return
+ */
+function organiseur_declarer_tables_objets_sql($tables){
+
+	$tables['spip_auteurs']['field']["imessage"] = "VARCHAR(3)";
+	$tables['spip_auteurs']['field']["messagerie"] = "VARCHAR(3)";
+	return $tables;
+	
+}
+
+
 /**
  * Interfaces des tables agenda et messagerie
  *
@@ -52,9 +68,6 @@ function organiseur_declarer_tables_principales($tables_principales){
 
 	$tables_principales['spip_messages'] =
 		array('field' => &$spip_messages, 'key' => &$spip_messages_key);
-
-	$tables_principales['spip_auteurs']["field"]["imessage"] = "VARCHAR(3)";
-	$tables_principales['spip_auteurs']["field"]["messagerie"] = "VARCHAR(3)";	
 
 	return $tables_principales;
 }
