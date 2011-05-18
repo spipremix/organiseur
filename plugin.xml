@@ -24,6 +24,10 @@
 	</pipeline>
 
 	<pipeline>
+		<nom>declarer_tables_objets_sql</nom>
+		<inclure>base/organiseur.php</inclure>
+	</pipeline>
+	<pipeline>
 		<nom>declarer_tables_principales</nom>
 		<inclure>base/organiseur.php</inclure>
 	</pipeline>
