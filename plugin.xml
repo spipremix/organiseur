@@ -5,6 +5,7 @@
 	<version>0.3.1</version>
 	<version_base>0.1.0</version_base>
 	<etat>test</etat>
+	<slogan>Outils de travail &eacute;ditorial en groupe</slogan>
 	<description>Outils de travail &eacute;ditorial en groupe</description>
 	<prefix>organiseur</prefix>
 	<install>base/organiseur_upgrade.php</install>
