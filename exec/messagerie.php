@@ -84,7 +84,7 @@ function exec_messagerie_dist(){
 			$id_auteur = $row['id_auteur'];
 			$nom = typo($row["nom"]);
 			$total = $row["total"];
-			$cor[]= "<div class='tr_liste'\nonmouseover=\"changeclass(this,'tr_liste_over');\"\nonmouseout=\"changeclass(this,'tr_liste');\"\nstyle='padding: 2px; padding-left: 10px; border-bottom: 1px solid #cccccc;'><div class='verdana1'><img src='" . chemin_image('auteur-16.png') . "'\nstyle='border: 0px' alt=' ' /> <a href='" . generer_url_ecrire("auteur","id_auteur=$id_auteur") . "'>$nom,</a> ($total)</div></div>";
+			$cor[]= "<div class='tr_liste'\nonmouseover=\"jQuery(this).attr(\'class\',\'tr_liste_over\');\"\nonmouseout=\"jQuery(this).attr(\'class\',\'tr_liste\');\"\nstyle='padding: 2px; padding-left: 10px; border-bottom: 1px solid #cccccc;'><div class='verdana1'><img src='" . chemin_image('auteur-16.png') . "'\nstyle='border: 0px' alt=' ' /> <a href='" . generer_url_ecrire("auteur","id_auteur=$id_auteur") . "'>$nom,</a> ($total)</div></div>";
 		}
 	
 		if ($cor) {
