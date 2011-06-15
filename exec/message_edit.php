@@ -149,7 +149,7 @@ function afficher_si_rdv($date_heure, $date_fin, $choix)
 
 	$res = "\n<div><input type='radio' name='rv' value='non' id='rv_off'" .
 		(!$choix ? " checked='checked' " : '')
-		. "\nonclick=\"changeVisible(this.checked, 'heure-rv', 'none', 'block');\"/>"
+		. "\nonclick=\"if (this.checked) jQuery('#heure-rv').hide(); else jQuery('#heure-rv').show();\"/>"
 		. "<label for='rv_off'>"
 		. $lib
 		. "</label>"
@@ -160,7 +160,7 @@ function afficher_si_rdv($date_heure, $date_fin, $choix)
 
 	$res .= "\n<div><input type='radio' name='rv' value='oui' id='rv_on' " .
 		($choix ? " checked='checked' " : '') .
-		"\nonclick=\"changeVisible(this.checked, 'heure-rv', 'block', 'none');\"/>" . 
+		"\nonclick=\"if (this.checked) jQuery('#heure-rv').show(); else jQuery('#heure-rv').hide();\"/>" .
 		"<label for='rv_on'>"
 		. $lib
 		. "</label>"
