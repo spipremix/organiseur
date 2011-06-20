@@ -117,6 +117,24 @@ function http_auteurs_ressemblants($cherche_auteur, $id_message)
   }
 }
 
+
+/**
+ * Lister les auteurs autorises a on ne sait quoi ...
+ * Plus rien a faire ici
+ *
+ * // http://doc.spip.org/@auteurs_autorises
+ *
+ * @param string $in
+ * @param string $cond
+ * @return string
+ */
+function auteurs_autorises($in, $cond='')
+{
+	return sql_in("statut", array('0minirezo','1comite'))
+	  . (!$cond ? '' : " AND $cond")
+	  . (!$in ? '' : (" AND ". sql_in("id_auteur", $in, 'NOT')));
+}
+
 // http://doc.spip.org/@http_ajouter_participants
 function http_ajouter_participants($ze_auteurs, $id_message)
 {	
