@@ -1,6 +1,6 @@
 <plugin>
 	<nom>Organiseur</nom>
-	<icon>prive/themes/spip/images/annonce-24.png</icon>
+	<icon>prive/themes/spip/images/calendrier-32.png</icon>
 	<auteur>Collectif SPIP</auteur>
 	<version>0.3.1</version>
 	<version_base>0.1.0</version_base>
