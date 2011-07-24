@@ -59,7 +59,7 @@ function exec_message_edit_args($id_message, $new, $dest)
 	}
 	if ($type == 'pb') {
 	  $le_type = _T('bouton_pense_bete');
-	  $logo = "pense-bete";
+	  $logo = "pensebete";
 	}
 	if ($type == 'affich') {
 	  $le_type = _T('bouton_annonce');
