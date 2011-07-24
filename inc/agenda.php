@@ -575,7 +575,7 @@ function http_calendrier_rv($messages, $type) {
 		$rv = ($row['location'] == 'oui');
 		$date = $row['dtstart'];
 		$date_fin = $row['dtend'];
-		if ($row['category']=="pb") $bouton = "pense-bete";
+		if ($row['category']=="pb") $bouton = "pensebete";
 		else if ($row['category']=="affich") $bouton = "annonce";
 		else $bouton = "message";
 

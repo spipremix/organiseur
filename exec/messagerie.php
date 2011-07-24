@@ -49,7 +49,7 @@ function exec_messagerie_dist(){
 		echo creer_colonne_droite('', true);
 		
 		echo debut_cadre_relief("messagerie-24.png", true);
-		echo icone_horizontale(_T('lien_nouvea_pense_bete'),generer_action_auteur("editer_message","pb"), "pense-bete-24.png");
+		echo icone_horizontale(_T('lien_nouvea_pense_bete'),generer_action_auteur("editer_message","pb"), "pensebete-24.png");
 		echo icone_horizontale(_T('lien_nouveau_message'),generer_action_auteur("editer_message","normal"), "message-24.png");
 			
 		if ($connect_statut == "0minirezo") {
@@ -67,7 +67,7 @@ function exec_messagerie_dist(){
 		
 		$messages_vus = array();
 		
-		echo afficher_ses_messages('<b>' . _T('infos_vos_pense_bete') . '</b>', '', "id_auteur=$connect_id_auteur AND statut='publie' AND type='pb' AND (" . sql_date_proche('date_fin', -1, 'DAY') . " OR rv != 'oui')", $messages_vus, false, true,'pense-bete');
+		echo afficher_ses_messages('<b>' . _T('infos_vos_pense_bete') . '</b>', '', "id_auteur=$connect_id_auteur AND statut='publie' AND type='pb' AND (" . sql_date_proche('date_fin', -1, 'DAY') . " OR rv != 'oui')", $messages_vus, false, true,'pensebete');
 	
 		echo afficher_ses_messages('<b>' . _T('info_nouveaux_message') . '</b>', ", spip_auteurs_liens AS A", "A.objet='message' AND A.id_auteur=$connect_id_auteur AND vu='non' AND statut='publie' AND A.id_objet=M.id_message", $messages_vus,  true, true,'message');
 	
