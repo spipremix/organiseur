@@ -352,11 +352,14 @@ function exec_affiche_message_dist($id_message, $cherche_auteur, $forcer_dest)
 	
 	if ($rv != 'non')
 	  echo http_calendrier_agenda ($lannee, $lemois, $lejour, $lemois, $lannee,false, generer_url_ecrire('calendrier'));
-	
-	echo "<br />";
-	echo  http_calendrier_rv(quete_calendrier_taches_annonces(),"annonces");
-	echo  http_calendrier_rv(quete_calendrier_taches_pb(),"pb");
-	echo  http_calendrier_rv(quete_calendrier_taches_rv(), "rv");
+
+	echo recuperer_fond(
+			'prive/squelettes/inclure/organiseur-rappels',
+			array(
+				'id_auteur'=>$GLOBALS['visiteur_session']['id_auteur'],
+				'last' => $GLOBALS['visiteur_session']['quand'],
+			)
+		);
 
 	if ($rv != "non") {
 		list ($sh, $ah) = quete_calendrier_interval(quete_calendrier_jour($lannee,$lemois, $lejour));
