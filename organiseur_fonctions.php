@@ -1,0 +1,116 @@
+<?php
+
+/***************************************************************************\
+ *  SPIP, Systeme de publication pour l'internet                           *
+ *                                                                         *
+ *  Copyright (c) 2001-2011                                                *
+ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
+ *                                                                         *
+ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
+ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
+\***************************************************************************/
+
+if (!defined('_ECRIRE_INC_VERSION')) return;
+
+
+function critere_MESSAGES_destinataire_dist($idb, &$boucles, $crit) {
+	$boucle = &$boucles[$idb];
+	$_auteur = calculer_liste($crit->param[0], array(), $boucles, $boucle->id_parent);
+
+	$boucle->join['auteurs_liens']=array("'".$boucle->id_table."'","'id_objet'","'".$boucle->primary."'","'auteurs_liens.objet=\'message\''");
+	$boucle->from['auteurs_liens']='spip_auteurs_liens';
+	$boucle->from_type['auteurs_liens'] = 'LEFT';
+	$boucle->where[] =
+		array("'OR'",
+			array("'='","'auteurs_liens.id_auteur'","sql_quote($_auteur)"),
+			array("'='","'".$boucle->id_table.".type'","sql_quote('affich')"),
+		);
+}
+
+/**
+ * Fonction privee pour mutualiser de code des criteres_MESSAGES_rv_*
+ * Retourne le code php pour obtenir la date de reference de comparaison
+ * des evenements a trouver
+ *
+ * @param string $idb
+ * @param object $boucles
+ * @param object $crit
+ *
+ * @return string code PHP concernant la date.
+**/
+function organiseur_calculer_date_reference($idb, &$boucles, $crit) {
+	if (isset($crit->param[0]))
+		return calculer_liste($crit->param[0], array(), $boucles, $boucles[$idb]->id_parent);
+	else
+		return "date('Y-m-d H:i:00')";
+}
+
+
+/**
+ * {rv_a_venir}
+ * {rv_a_venir #ENV{date}}
+ *
+ * @param string $idb
+ * @param object $boucles
+ * @param object $crit
+ */
+function critere_MESSAGES_rv_a_venir_dist($idb, &$boucles, $crit) {
+	$boucle = &$boucles[$idb];
+	$id_table = $boucle->id_table;
+
+	$_dateref = organiseur_calculer_date_reference($idb, $boucles, $crit);
+	$_date = "$id_table.".(isset($boucle->show['date'])?$boucle->show['date']:"date_debut");
+	$op = $crit->not ? "<=":">";
+	$where = array("'$op'","'$_date'","sql_quote($_dateref)");
+
+	$boucle->where[] = $where;
+}
+
+/**
+ * {rv_passe}
+ * {rv_passe #ENV{date}}
+ *
+ * @param string $idb
+ * @param object $boucles
+ * @param object $crit
+ */
+function critere_MESSAGES_rv_passe_dist($idb, &$boucles, $crit) {
+	$boucle = &$boucles[$idb];
+	$id_table = $boucle->id_table;
+
+	$_dateref = organiseur_calculer_date_reference($idb, $boucles, $crit);
+	$_date = "$id_table.date_fin";
+	$op = $crit->not ? ">=":"<";
+
+	$where = array("'$op'","'$_date'","sql_quote($_dateref)");
+	$boucle->where[] = $where;
+}
+
+/**
+ * {rv_en_cours}
+ * {rv_en_cours #ENV{date}}
+ *
+ * @param string $idb
+ * @param object $boucles
+ * @param object $crit
+ */
+function critere_MESSAGES_rv_en_cours_dist($idb, &$boucles, $crit) {
+	$boucle = &$boucles[$idb];
+	$id_table = $boucle->id_table;
+
+	$_dateref = organiseur_calculer_date_reference($idb, $boucles, $crit);
+	$_date_debut = "$id_table.".(isset($boucle->show['date'])?$boucle->show['date']:"date_debut");
+	$_date_fin = "$id_table.date_fin";
+
+	$where =
+				array("'AND'",
+					array("'<='", "'$_date_debut'", "sql_quote($_dateref)"),
+					array("'>='", "'$_date_fin'", "sql_quote($_dateref)")
+				);
+
+	if ($crit->not)
+		$where = array("'NOT'",$where);
+	$boucle->where[] = $where;
+}
+
+?>

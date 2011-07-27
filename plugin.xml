@@ -2,13 +2,14 @@
 	<nom>Organiseur</nom>
 	<icon>prive/themes/spip/images/calendrier-32.png</icon>
 	<auteur>Collectif SPIP</auteur>
-	<version>0.3.1</version>
+	<version>0.3.2</version>
 	<version_base>0.1.0</version_base>
 	<etat>test</etat>
 	<slogan>Outils de travail &eacute;ditorial en groupe</slogan>
 	<description>Outils de travail &eacute;ditorial en groupe</description>
 	<prefix>organiseur</prefix>
 	<install>base/organiseur_upgrade.php</install>
+	<fonctions>organiseur_fonctions.php</fonctions>
 
 	<bouton id='calendrier' parent="outils_collaboratifs">
 		<icone>images/calendrier-16.png</icone>
@@ -26,10 +27,6 @@
 
 	<pipeline>
 		<nom>declarer_tables_objets_sql</nom>
-		<inclure>base/organiseur.php</inclure>
-	</pipeline>
-	<pipeline>
-		<nom>declarer_tables_principales</nom>
 		<inclure>base/organiseur.php</inclure>
 	</pipeline>
 	<pipeline>
