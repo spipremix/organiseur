@@ -58,7 +58,14 @@ function organiseur_declarer_tables_objets_sql($tables){
 		),
 		'titre' => "titre, '' AS lang",
 		'date' => 'date_heure',
-
+		'statut' => array(
+			array(
+				'champ' => 'statut',
+				'publie' => 'publie',
+				'previsu' => '!',
+				'exception' => array('statut','tout')
+			),
+		),
 	);
 
 	return $tables;
