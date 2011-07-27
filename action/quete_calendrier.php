@@ -12,16 +12,13 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-function convert_dateical($dateical){
-	$d = explode('T',$dateical);
-	$amj = reset($d);
-	$s = substr($amj,0,4).'-'.substr($amj,4,2).'-'.substr($amj,6,2);
-	if (count($d)>1){
-		$his = end($d);
-		$s .= ' '.substr($his,0,2).":".substr($his,2,2).":".substr($his,4,2);
-	}
-	return $s;
-}
+/**
+ * Fournir une liste d'"evenements" entre deux dates start et end
+ * au format json
+ * utilise pour l'affichage du calendrier prive et public
+ * 
+ * @return void
+ */
 function action_quete_calendrier_dist(){
 	$securiser_action = charger_fonction('securiser_action','inc');
 	$securiser_action();
@@ -76,4 +73,21 @@ function action_quete_calendrier_dist(){
 
 	include_spip('inc/json');
 	echo json_encode($evt);
+}
+
+/**
+ * Convertir une date au format ical renvoyee par quete_calendrier_interval
+ * dans le format attendu par fullcalendar : yyyy-mm-dd H:i:s
+ * @param $dateical
+ * @return string
+ */
+function convert_dateical($dateical){
+	$d = explode('T',$dateical);
+	$amj = reset($d);
+	$s = substr($amj,0,4).'-'.substr($amj,4,2).'-'.substr($amj,6,2);
+	if (count($d)>1){
+		$his = end($d);
+		$s .= ' '.substr($his,0,2).":".substr($his,2,2).":".substr($his,4,2);
+	}
+	return $s;
 }
