@@ -26,25 +26,6 @@ function calendrier_categories($table, $num, $objet)
   }
 }
 
-// http://doc.spip.org/@quete_calendrier_mois
-function quete_calendrier_mois($annee,$mois,$jour) {
-	$avant = "'" . date("Y-m-d", mktime(0,0,0,$mois,1,$annee)) . "'";
-	$apres = "'" . date("Y-m-d", mktime(0,0,0,$mois+1,1,$annee)) .
-	" 00:00:00'";
-	return array($avant, $apres);
-}
-
-// http://doc.spip.org/@quete_calendrier_semaine
-function quete_calendrier_semaine($annee,$mois,$jour) {
-	$w_day = date("w", mktime(0,0,0,$mois, $jour, $annee));
-	if ($w_day == 0) $w_day = 7; // Gaffe: le dimanche est zero
-	$debut = $jour-$w_day;
-	$avant = "'" . date("Y-m-d", mktime(0,0,0,$mois,$debut,$annee)) . "'";
-	$apres = "'" . date("Y-m-d", mktime(1,1,1,$mois,$debut+7,$annee)) .
-	" 23:59:59'";
-	return array($avant, $apres);
-}
-
 // ici on prend en fait le jour, la veille et le lendemain
 
 // http://doc.spip.org/@quete_calendrier_jour
@@ -209,53 +190,6 @@ function quete_calendrier_interval_rv($avant, $apres) {
 
 	}
   return $evenements;
-}
-
-// fonction SQL, pour la messagerie
-
-// http://doc.spip.org/@tache_redirige
-function tache_redirige ($row) {
-
-	$m = $row['description'];
-	if (substr($m,0,1) == '=')
-	  if ($m = virtuel_redirige(substr($m,1), true))
-		return $m;
-	return generer_url_ecrire("message", "id_message=".$row['uid']);
-}
-
-// http://doc.spip.org/@quete_calendrier_taches_annonces
-function quete_calendrier_taches_annonces () {
-	global $connect_id_auteur;
-
-	if (!$connect_id_auteur) return array();
-
-	$r = sql_allfetsel("texte AS description, id_message AS uid, date_heure AS dtstart, date_fin AS dtend, titre AS summary, type AS category, rv AS location", "spip_messages", "type = 'affich' AND rv != 'oui' AND statut = 'publie'", "", "date_heure DESC");
-
-	foreach ($r as $k => $row) $r[$k]['url'] = tache_redirige($row);
-	return $r;
-}
-
-// http://doc.spip.org/@quete_calendrier_taches_pb
-function quete_calendrier_taches_pb () {
-	global $connect_id_auteur;
-
-	if (!$connect_id_auteur) return array();
-
-	$r = sql_allfetsel("texte AS description, id_message AS uid, date_heure AS dtstart, date_fin AS dtend, titre AS summary, type AS category, rv AS location", "spip_messages", "id_auteur=$connect_id_auteur AND statut='publie' AND type='pb' AND rv!='oui'");
-
-	foreach ($r as $k => $row) $r[$k]['url'] = tache_redirige($row);
-	return $r;
-}
-
-// http://doc.spip.org/@quete_calendrier_taches_rv
-function quete_calendrier_taches_rv () {
-	global $connect_id_auteur;
-
-	if (!$connect_id_auteur) return array();
-
-	$r = sql_allfetsel("M.texte AS description, M.id_message AS uid, M.date_heure AS dtstart, M.date_fin AS dtend, M.titre AS summary, M.type AS category, M.rv AS location", "spip_messages AS M LEFT JOIN spip_auteurs_liens AS L ON (L.id_objet=M.id_message)", "(L.objet='message' AND L.id_auteur=$connect_id_auteur OR M.type='affich') AND M.rv='oui' AND (( " . sql_date_proche('M.date_heure', -1, 'DAY') . ' AND ' .  sql_date_proche('M.date_heure', 1,  'MONTH') . ") OR (M.date_heure < NOW() AND M.date_fin > NOW() )) AND M.statut='publie'", "M.id_message",  "M.date_heure");
-	foreach ($r as $k => $row) $r[$k]['url'] = tache_redirige($row);
-	return  $r;
 }
 
 // http://doc.spip.org/@quete_calendrier_agenda
