@@ -6,4 +6,4 @@
 		<li>[(#URL_ECRIRE{messages,quoi=rv}|lien_ou_expose{<:organiseur:titre_agenda_rv:>,#ENV{quoi,reception}|=={rv},ajax})]</li>
 	</ul>
 </div>
-<INCLURE{fond=prive/squelettes/inclure/organiseur-#ENV{quoi,reception},id_auteur=#SESSION{id_auteur},ajax} />
+<INCLURE{fond=prive/squelettes/inclure/organiseur-#ENV{quoi,reception},id_auteur=#SESSION{id_auteur},env,ajax} />
