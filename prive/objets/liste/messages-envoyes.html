@@ -3,7 +3,7 @@
 	titre,1,
 	id_article,1
 }})
-]#SET{icone_type,#ARRAY{pb,pensebete-16.png,affich,annonce-16.png}}
+]
 <B_mess_env>
 #ANCRE_PAGINATION
 <div class="liste-objets messages">
@@ -23,7 +23,7 @@
 	<BOUCLE_mess_env(MESSAGES){destinataire?#ENV{destinataire}}{id_auteur=#ENV{id_auteur}}{type?}{where?}{statut?}{recherche?}{tri #ENV{par,date_heure},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
 		[(#SET{vu,[(#TYPE|=={pb}|ou{#VU|match{^(oui|pou)$}})]})]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})][(#GET{vu}|non)new]">
-			<td class='type'>[(#CHEMIN_IMAGE{#GET{icone_type}|table_valeur{#TYPE}|sinon{message-16.png}}|balise_img{#VAL{organiseur:info_type_message_}|concat{#TYPE}|_T})]</td>
+			<td class='type'>[(#CHEMIN_IMAGE{#TYPE|organiseur_icone_message{16}}|balise_img{#VAL{organiseur:info_type_message_}|concat{#TYPE}|_T})]</td>
 			<td class='isrv'>[(#RV|=={oui}|oui)[(#CHEMIN_IMAGE{heure-16.png}|balise_img{<:organiseur:info_type_message_rv:>})]]</td>
 			<td class="to"><BOUCLE_dest(AUTEURS){id_message}{si #TYPE|=={normal}}{', '}><a href="[(#ID_AUTEUR|generer_url_entite{auteur})]">#NOM</a></BOUCLE_dest></td>
 			<td class='date secondaire'>
