@@ -350,7 +350,7 @@ function exec_affiche_message_dist($id_message, $cherche_auteur, $forcer_dest)
 
 	echo debut_gauche('', true);
 	
-	if ($rv != 'non')
+/*	if ($rv != 'non')
 	  echo http_calendrier_agenda ($lannee, $lemois, $lejour, $lemois, $lannee,false, generer_url_ecrire('calendrier'));
 
 	echo recuperer_fond(
@@ -359,7 +359,7 @@ function exec_affiche_message_dist($id_message, $cherche_auteur, $forcer_dest)
 				'id_auteur'=>$GLOBALS['visiteur_session']['id_auteur'],
 				'last' => $GLOBALS['visiteur_session']['quand'],
 			)
-		);
+		);*/
 
 	if ($rv != "non") {
 		list ($sh, $ah) = quete_calendrier_interval(quete_calendrier_jour($lannee,$lemois, $lejour));
