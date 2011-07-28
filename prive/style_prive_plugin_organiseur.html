@@ -29,6 +29,17 @@
 .liste-objets.messages tr > .isrv {width: 16px; padding-left:2px;padding-right:2px;text-align:center;}
 .liste-objets.messages tr.new td {font-weight: bold;}
 
+/* exec=message */
+.message #wysiwyg {position: relative;}
+.message #wysiwyg .contenu_from .label,
+.message #wysiwyg .contenu_to .label,
+.message #wysiwyg .contenu_titre .label,
+.message #wysiwyg .contenu_date_heure .label {display: block;float:#GET{left};width:6em;clear:#GET{left};text-align:#GET{right};padding:0 10px;}
+.message #wysiwyg .contenu_from .spip_logos {position: absolute;#GET{right}: 0;top:0;}
+
+.message #wysiwyg .contenu_titre {display: block;}
+.message #wysiwyg .contenu_texte {clear:both;border-top: 1px solid #999;margin-top: 1em;padding-top: 1em;}
+
 /* ?exec=message_edit */
 .message_edit .formo {width:99%;}
 .message_edit .box {margin:20px 0;}
