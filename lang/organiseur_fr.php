@@ -34,6 +34,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// T
 	'titre_boite_reception' => 'Boîte de reception',
 	'titre_boite_envoi' => 'Boîte d\'envoi',
+	'titre_agenda_rv' => 'Rendez-vous',
 );
 
 ?>

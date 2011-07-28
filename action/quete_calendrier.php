@@ -25,12 +25,22 @@ function action_quete_calendrier_dist(){
 
 	$start = _request('start');
 	$end = _request('end');
+	$quoi = _request('quoi');
+	$quoi = (in_array($quoi,array('publication','rv'))?$quoi:'publication');
 
 	include_spip('inc/quete_calendrier');
 
 	// recuperer la liste des evenements au format ics
 	$limites = array(sql_quote(date('Y-m-d H:i:s',$start)),sql_quote(date('Y-m-d H:i:s',$end)));
-	list($entier,$duree) = quete_calendrier_interval($limites);
+	switch($quoi){
+		case 'rv':
+			$entier = array();
+			$duree = quete_calendrier_interval_rv(reset($limites), end($limites));
+			break;
+		default:
+			list($entier,$duree) = quete_calendrier_interval($limites);
+			break;
+	}
 
 	// la retransformer au format attendu par fullcalendar
 	$evt = array();

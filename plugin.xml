@@ -15,7 +15,7 @@
 		<icone>images/calendrier-16.png</icone>
 		<titre>Agenda interne</titre>
 	</bouton>
-	<bouton id='messagerie' parent="outils_collaboratifs">
+	<bouton id='messages' parent="outils_collaboratifs">
 		<icone>images/messagerie-16.png</icone>
 		<titre>info_messagerie_interne</titre>
 	</bouton>
