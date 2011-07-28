@@ -19,7 +19,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_type_message_normal' => 'Message',
 	'info_message_non_lu' => 'Nouveau message',
 	'info_1_message_nonlu' => '1 nouveau message',
-	'info_nb_messages_nonlus' => '@nb@ nouveaus messages',
+	'info_nb_messages_nonlus' => '@nb@ nouveaux messages',
 
 	// L
 	'loading' => 'Chargement...',
