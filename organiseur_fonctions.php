@@ -22,8 +22,27 @@ function critere_MESSAGES_destinataire_dist($idb, &$boucles, $crit) {
 	$boucle->from_type['auteurs_liens'] = 'LEFT';
 	$boucle->where[] =
 		array("'OR'",
-			array("'='","'auteurs_liens.id_auteur'","sql_quote($_auteur)"),
-			array("'='","'".$boucle->id_table.".type'","sql_quote('affich')"),
+			array(
+				"'AND'",
+				array("'='","'auteurs_liens.id_auteur'","sql_quote($_auteur)"),
+				array("'!='","'auteurs_liens.vu'","'\'pou\''"),
+			),
+			array("'OR'",
+				array("'='","'".$boucle->id_table.".type'","sql_quote('affich')"),
+				array(
+					"'AND'",
+					array("'='","'".$boucle->id_table.".type'","sql_quote('pb')"),
+					array("'='","'".$boucle->id_table.".id_auteur'","sql_quote($_auteur)"),
+				)
+			)
+		);
+}
+function critere_MESSAGES_non_lu_dist($idb, &$boucles, $crit) {
+	$boucle = &$boucles[$idb];
+	$boucle->where[] =
+		array("'OR'",
+		"'auteurs_liens.vu IS NULL'",
+		"sql_in('auteurs_liens.vu',array('pou','oui'),'NOT',\$connect)"
 		);
 }
 
