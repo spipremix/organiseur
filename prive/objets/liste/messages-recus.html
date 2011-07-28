@@ -4,8 +4,8 @@
 	id_article,1
 }})
 ]#SET{icone_type,#ARRAY{pb,pensebete-16.png,affich,annonce-16.png}}
-<BOUCLE_compte_non_lus(MESSAGES auteurs){destinataire #ENV{id_auteur}}{type!=pb}{type?}{where?}{statut?}{recherche?}{non_lu}>[(#NOM|vide)]</BOUCLE_compte_non_lus>
-#SET{nonlus,#TOTAL_BOUCLE}
+<BOUCLE_compte_non_lus(MESSAGES auteurs){destinataire #ENV{destinataire}}{id_auteur?}{type!=pb}{type?}{where?}{statut?}{recherche?}{non_lu}>[(#NOM|vide)]</BOUCLE_compte_non_lus>
+#SET{nonlus,#ENV{nonlus,#TOTAL_BOUCLE}}
 <//B_compte_non_lus>
 <B_mess_rec>
 #ANCRE_PAGINATION
@@ -26,7 +26,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<BOUCLE_mess_rec(MESSAGES auteurs){destinataire #ENV{id_auteur}}{type?}{where?}{statut?}{recherche?}{tri #ENV{par,date_heure},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
+	<BOUCLE_mess_rec(MESSAGES auteurs){destinataire?#ENV{destinataire}}{id_auteur?}{type?}{where?}{statut?}{recherche?}{tri #ENV{par,date_heure},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
 		[(#SET{vu,[(#TYPE|=={pb}|ou{#VU|match{^(oui|pou)$}})]})]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})][(#GET{vu}|non)new]">
 			<td class='new'>[(#GET{vu}|?{'',#CHEMIN_IMAGE{pictonew-16.png}|balise_img{<:organiseur:info_message_non_lu:>}|inserer_attribut{title,<:organiseur:info_message_non_lu:>}})]</td>

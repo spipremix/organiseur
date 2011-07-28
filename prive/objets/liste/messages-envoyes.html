@@ -8,7 +8,7 @@
 #ANCRE_PAGINATION
 <div class="liste-objets messages">
 <table class='spip liste'>
-[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{info_1_message,info_nb_messages}})</strong></caption>]
+[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{organiseur:info_1_message_envoye,organiseur:info_nb_messages_envoyes}})</strong></caption>]
 	<thead>
 		<tr class='first_row'>
 			<th class='type'>[(#TRI{type,<span title="<:organiseur:lien_trier_type|attribut_html:>">#</span>,ajax})]</th>
@@ -20,7 +20,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<BOUCLE_mess_env(MESSAGES auteurs){id_auteur=#ENV{id_auteur}}{type?}{where?}{statut?}{recherche?}{tri #ENV{par,date_heure},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
+	<BOUCLE_mess_env(MESSAGES){destinataire?#ENV{destinataire}}{id_auteur=#ENV{id_auteur}}{type?}{where?}{statut?}{recherche?}{tri #ENV{par,date_heure},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
 		[(#SET{vu,[(#TYPE|=={pb}|ou{#VU|match{^(oui|pou)$}})]})]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})][(#GET{vu}|non)new]">
 			<td class='type'>[(#CHEMIN_IMAGE{#GET{icone_type}|table_valeur{#TYPE}|sinon{message-16.png}}|balise_img{#VAL{organiseur:info_type_message_}|concat{#TYPE}|_T})]</td>

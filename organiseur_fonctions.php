@@ -20,7 +20,7 @@ function critere_MESSAGES_destinataire_dist($idb, &$boucles, $crit) {
 	$boucle->join['auteurs_liens']=array("'".$boucle->id_table."'","'id_objet'","'".$boucle->primary."'","'auteurs_liens.objet=\'message\''");
 	$boucle->from['auteurs_liens']='spip_auteurs_liens';
 	$boucle->from_type['auteurs_liens'] = 'LEFT';
-	$boucle->where[] =
+	$where =
 		array("'OR'",
 			array(
 				"'AND'",
@@ -36,6 +36,15 @@ function critere_MESSAGES_destinataire_dist($idb, &$boucles, $crit) {
 				)
 			)
 		);
+	$not = $crit->not;
+
+	if ($crit->cond)
+		$where = array("'?'","strlen($_auteur)",	$where,"'1=1'");
+
+	if ($not)
+		$where = array("'NOT'",$where);
+
+	$boucle->where[] = $where;
 }
 function critere_MESSAGES_non_lu_dist($idb, &$boucles, $crit) {
 	$boucle = &$boucles[$idb];
