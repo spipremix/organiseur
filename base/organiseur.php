@@ -27,9 +27,9 @@ function organiseur_declarer_tables_objets_sql($tables){
 	$tables['spip_messages'] = array(
 		'page'=> false,
 		'texte_modifier' => 'icone_modifier_message',
-		'texte_creer' => 'icone_ecrire_article',
-		'texte_objets' => 'public:articles',
-		'texte_objet' => 'public:article',
+		'texte_creer' => 'icone_ecrire_nouveau_message',
+		'texte_objets' => 'organiseur:messages',
+		'texte_objet' => 'organiseur:message',
 		'info_aucun_objet'=> 'info_aucun_message',
 		'info_1_objet' => 'info_1_message',
 		'info_nb_objets' => 'info_nb_messages',
@@ -66,6 +66,10 @@ function organiseur_declarer_tables_objets_sql($tables){
 				'exception' => array('statut','tout')
 			),
 		),
+		'rechercher_champs' => array(
+			'titre' => 8, 'texte' => 1
+		),
+
 	);
 
 	return $tables;
