@@ -13,6 +13,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// I
 	'info_message_de' => 'De',
+	'info_message_a' => 'A',
 	'info_type_message_rv' => 'Rendez-vous',
 	'info_type_message_affich' => 'Annonce',
 	'info_type_message_pb' => 'Pense-bête',
