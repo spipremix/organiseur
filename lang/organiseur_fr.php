@@ -20,9 +20,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_message_non_lu' => 'Nouveau message',
 	'info_1_message_nonlu' => '1 nouveau message',
 	'info_nb_messages_nonlus' => '@nb@ nouveaux messages',
+	'icone_ecrire_nouveau_message' => 'Envoyer un nouveau message',
+	'icone_ecrire_nouvelle_annonce' => 'Envoyer une nouvelle annonce',
+	'icone_ecrire_nouveau_pensebete' => 'Ecrire une nouveau pense-bête',
 
 	// L
 	'loading' => 'Chargement...',
+
+	// M
+	'message' => 'Message',
+	'messages' => 'Messages',
 
 	// T
 	'titre_boite_reception' => 'Boîte de reception',
