@@ -15,6 +15,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'icone_ecrire_nouveau_message' => 'Envoyer un nouveau message',
 	'icone_ecrire_nouvelle_annonce' => 'Envoyer une nouvelle annonce',
 	'icone_ecrire_nouveau_pensebete' => 'Ecrire une nouveau pense-bête',
+	'icone_modifier_pensebete' => 'Modifier ce pense-bête',
+	'icone_modifier_annonce' => 'Modifier cette annonce',
 
 	'info_message_de' => 'De',
 	'info_message_a' => 'A',
