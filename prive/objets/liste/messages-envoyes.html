@@ -11,12 +11,12 @@
 [<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{organiseur:info_1_message_envoye,organiseur:info_nb_messages_envoyes}})</strong></caption>]
 	<thead>
 		<tr class='first_row'>
-			<th class='type'>[(#TRI{type,<span title="<:organiseur:lien_trier_type|attribut_html:>">#</span>,ajax})]</th>
-			<th class='isrv'>[(#CHEMIN_IMAGE{heure-16.png}|balise_img{<:organiseur:info_type_message_rv:>})]</th>
-			<th class='to'><:organiseur:info_message_a:></th>
-			<th class='date secondaire'>[(#TRI{date_heure,<:date:>,ajax})]</th>
-			<th class='titre principale'>[(#TRI{titre,<:info_titre:>,ajax})]</th>
-			<th class=''></th>
+			<th class='type' scope='col'>[(#TRI{type,<span title="<:organiseur:lien_trier_type|attribut_html:>">#</span>,ajax})]</th>
+			<th class='isrv' scope='col'>[(#CHEMIN_IMAGE{heure-16.png}|balise_img{<:organiseur:info_type_message_rv:>})]</th>
+			<th class='to' scope='col'><:organiseur:info_message_a:></th>
+			<th class='date secondaire' scope='col'>[(#TRI{date_heure,<:date:>,ajax})]</th>
+			<th class='titre principale' scope='col'>[(#TRI{titre,<:info_titre:>,ajax})]</th>
+			<th class='' scope='col'></th>
 		</tr>
 	</thead>
 	<tbody>
