@@ -147,4 +147,9 @@ function organiseur_icone_message($type,$taille=24){
 	$icone = isset($icone[$type])?$icone[$type]:'message';
 	return "$icone-$taille.png";
 }
+function organiseur_texte_modifier_message($type){
+	$texte = array('pb'=>'organiseur:icone_modifier_pensebete','affich'=>'organiseur:icone_modifier_annonce');
+	$texte = isset($texte[$type])?$texte[$type]:'icone_modifier_message';
+	return _T($texte);
+}
 ?>

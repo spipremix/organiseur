@@ -2,7 +2,7 @@
 <BOUCLE_message(MESSAGES){id_message}{statut?}{si #ENV{exec}|=={message}}>
 	[(#BOITE_OUVRIR{[
 		[(#AUTORISER{modifier,message,#ID_MESSAGE}|oui)
-			[(#ID_MESSAGE|generer_url_ecrire_entite_edit{message}|icone_verticale{<:icone_modifier_message:>,#TYPE|organiseur_icone_message{24},edit,right ajax preload})]
+			[(#ID_MESSAGE|generer_url_ecrire_entite_edit{message}|icone_verticale{#TYPE|organiseur_texte_modifier_message{},#TYPE|organiseur_icone_message{24},edit,right ajax preload})]
 		]
 		<h1>[(#TITRE|recuperer_numero). ](#TITRE|sinon{<:info_sans_titre:>})[(#TYPE|organiseur_icone_message{24}|balise_img{'',cadre-icone})]</h1>
 	],simple fiche_objet})]
