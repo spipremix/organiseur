@@ -1,0 +1,34 @@
+<paquet
+	prefix="organiseur"
+	categorie="date"
+	version="0.3.2"
+	etat="test"
+	compatibilite="[3.0.0-dev;["
+	logo="prive/themes/spip/images/calendrier-32.png"
+	schema="0.1.0"
+>	
+
+	<nom>Organiseur</nom>
+	<!-- Outils de travail éditorial en groupe -->
+
+	<auteur>Collectif SPIP</auteur>
+
+	<traduire module="organiseur" reference="fr" gestionnaire="salvatore" />
+
+	<pipeline nom="autoriser" inclure="organiseur_autoriser.php" />
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/organiseur.php" />
+	<pipeline nom="declarer_tables_interfaces" inclure="base/organiseur.php" />
+	<pipeline nom="optimiser_base_disparus" inclure="organiseur_pipelines.php" />
+	<pipeline nom="lister_tables_noexport" inclure="organiseur_pipelines.php" />
+	<pipeline nom="configurer_liste_metas" inclure="organiseur_pipelines.php" />
+	<pipeline nom="header_prive" inclure="organiseur_pipelines.php" />
+	<pipeline nom="affiche_milieu" inclure="organiseur_pipelines.php" />
+	<pipeline nom="affiche_droite" inclure="organiseur_pipelines.php" />
+	<pipeline nom="affiche_auteurs_interventions" inclure="organiseur_pipelines.php" />
+	<pipeline nom="agenda_rendu_evenement" />
+
+	<necessite nom="grenier" compatibilite="[0.1.0;[" />
+
+	<menu nom="calendrier" titre="Agenda interne" parent="outils_collaboratifs" icone="images/calendrier-16.png" />
+	<menu nom="messages" titre="info_messagerie_interne" parent="outils_collaboratifs" icone="images/messagerie-16.png" />
+</paquet>
