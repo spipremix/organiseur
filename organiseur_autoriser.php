@@ -18,13 +18,13 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  */
 function organiseur_autoriser(){}
 
-function autoriser_calendrier_bouton_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_calendrier_menu_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
 	if($GLOBALS['meta']['messagerie_agenda'] == 'oui')
 		return true;
 	return false;
 }
 
-function autoriser_messagerie_bouton_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_messagerie_menu_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
 	if($GLOBALS['meta']['messagerie_agenda'] == 'oui')
 		return true;
 	return false;
