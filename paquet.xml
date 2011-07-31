@@ -1,9 +1,9 @@
 <paquet
 	prefix="organiseur"
 	categorie="date"
-	version="0.3.2"
+	version="0.4.0"
 	etat="test"
-	compatibilite="[3.0.0-dev;["
+	compatibilite="[3.0.0-alpha2;["
 	logo="prive/themes/spip/images/calendrier-32.png"
 	schema="0.1.0"
 >	
@@ -12,6 +12,7 @@
 	<!-- Outils de travail éditorial en groupe -->
 
 	<auteur>Collectif SPIP</auteur>
+	<credit lien="http://arshaw.com/fullcalendar/">Adam Shaw (FullCalendar)</credit>
 
 	<traduire module="organiseur" reference="fr" gestionnaire="salvatore" />
 
@@ -29,6 +30,6 @@
 
 	<necessite nom="grenier" compatibilite="[0.1.0;[" />
 
-	<menu nom="calendrier" titre="Agenda interne" parent="outils_collaboratifs" icone="images/calendrier-16.png" />
+	<menu nom="calendrier" titre="organiseur:info_agenda_interne" parent="outils_collaboratifs" icone="images/calendrier-16.png" />
 	<menu nom="messages" titre="info_messagerie_interne" parent="outils_collaboratifs" icone="images/messagerie-16.png" />
 </paquet>
