@@ -5,7 +5,7 @@ if ([(#ID_AUTEUR|securiser_acces{#ENV{cle},rss, #ENV{op}, #ENV{args}}|?{1,0})]) 
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:thr="http://purl.org/syndication/thread/1.0">
 <channel xml:lang="#LANG">
 	<title>[&#91;(#NOM_SITE_SPIP|texte_backend)&#93;] RSS (<:icone_messagerie_personnelle|texte_backend:>)</title>
-	<link>[(#URL_ECRIRE{messagerie}|url_absolue|texte_backend)]</link>
+	<link>[(#URL_ECRIRE{messages}|url_absolue|texte_backend)]</link>
 	<description></description>
 	<language>#LANG</language>
 <BOUCLE_A(messages auteurs_messages){doublons M}{auteurs_messages.id_auteur}
