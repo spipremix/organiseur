@@ -32,7 +32,7 @@
 /* exec=message */
 .message #wysiwyg {position: relative;}
 .message #wysiwyg .contenu_from .label,
-.message #wysiwyg .contenu_to .label,
+.message #wysiwyg .contenu_destinataires .label,
 .message #wysiwyg .contenu_titre .label,
 .message #wysiwyg .contenu_date_heure .label {display: block;float:#GET{left};width:6em;clear:#GET{left};text-align:#GET{right};padding:0 10px;}
 .message #wysiwyg .contenu_from .spip_logos {position: absolute;#GET{right}: 0;top:0;}
@@ -40,8 +40,21 @@
 .message #wysiwyg .contenu_titre {display: block;}
 .message #wysiwyg .contenu_texte {clear:both;border-top: 1px solid #999;margin-top: 1em;padding-top: 1em;}
 
-/* ?exec=message_edit */
-.message_edit .formo {width:99%;}
-.message_edit .box {margin:20px 0;}
+/* formulaire editer_message */
+.formulaire_editer_message span.dest {padding:1px 3px;background:#EEE;border:1px solid #CCC;display:block;float:left;margin:0 4px 3px 0;}
+.formulaire_editer_message span.dest:hover {background:#DDD;}
+.formulaire_editer_message span.dest img {cursor:pointer;padding:1px;}
+.formulaire_editer_message .fake-input {background:#FFF;border:1px solid #999;padding: 3px 3px 0; width: 100%; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;-ms-box-sizing: border-box;}
+.formulaire_editer_message .fake-input input.text {width:200px;border: 0;padding: 1px 0;margin-bottom: 3px;}
+
+/* autocompletion */
+.formulaire_editer_message input.ac_loading {	background-image : url(#CHEMIN_IMAGE{'searching.gif'});background-position: right center;background-repeat: no-repeat;}
+/*.ac_input {	width: 200px; }*/
+.ac_results {	padding: 0px;	border: 1px solid WindowFrame;	background-color: Window;	text-align:left;z-index:1000;margin-top: 3px;margin-left: -3px;}
+.ac_results ul {	width: 100%;	overflow: hidden !important;list-style-position: outside;	list-style: none;	padding: 0;	margin: 0;}
+
+/*.ac_results iframe {position:absolute;	top:0;	left:0;	z-index:-1;	filter:mask();	width:3000px;	height:3000px;}*/
+.ac_results li {	margin: 0px;	padding: 2px 5px;	cursor: pointer;	display: block;	width: 100%;	font-size: 1em;	overflow: hidden;}
+.ac_over {	background-color: Highlight;	color: HighlightText;}
 
 /* ?exec=messages*/

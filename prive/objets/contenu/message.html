@@ -12,12 +12,13 @@
 <div class='label'><:organiseur:info_message_date:></div>
 <div dir='#LANG_DIR' class='#EDIT{date_heure} date_heure'>[[(#DATE_HEURE|nom_jour)] (#DATE_HEURE|affdate_heure)]</div>
 </div>
-<B_to>
-<div class="champ contenu_to clearfix">
+<B_d>
+<div class="champ contenu_destinataires clearfix">
 <div class='label'><:organiseur:info_message_a:></div>
-<div dir='#LANG_DIR' class='to'><BOUCLE_to(AUTEURS auteurs_liens){si #TYPE|=={normal}}{id_objet=#ID_MESSAGE}{objet=message}{', '}>#NOM</BOUCLE_to></div>
+<div dir='#LANG_DIR' class='destinataires'>
+	<BOUCLE_d(POUR){tableau #DESTINATAIRES|explode{','}}{', '}><BOUCLE_a(AUTEURS){id_auteur=#VALEUR}{tout}><a href="[(#ID_AUTEUR|generer_url_entite{auteur})]">#NOM</a></BOUCLE_a>#VALEUR<//B_a></BOUCLE_d>
 </div>
-</B_to>
+</B_d>
 </div>
 <div class="champ contenu_texte[ (#TEXTE*|strlen|?{'',vide})]">
 <div class='label'><:info_texte:></div>

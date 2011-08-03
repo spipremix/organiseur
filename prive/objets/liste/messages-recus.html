@@ -4,7 +4,7 @@
 	id_article,1
 }})
 ]
-<BOUCLE_compte_non_lus(MESSAGES auteurs){destinataire #ENV{destinataire}}{id_auteur?}{type!=pb}{type?}{where?}{statut?}{recherche?}{non_lu}>[(#NOM|vide)]</BOUCLE_compte_non_lus>
+<BOUCLE_compte_non_lus(MESSAGES auteurs){destinataire?#ENV{destinataire}}{id_auteur?}{type!=pb}{type?}{where?}{statut?}{recherche?}{non_lu}>[(#NOM|vide)]</BOUCLE_compte_non_lus>
 #SET{nonlus,#ENV{nonlus,#TOTAL_BOUCLE}}
 <//B_compte_non_lus>
 <B_mess_rec>

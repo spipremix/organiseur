@@ -70,11 +70,12 @@ function organiseur_alertes_auteur($flux) {
 	$result_messages = sql_allfetsel("M.id_message", "spip_messages AS M LEFT JOIN spip_auteurs_liens AS L ON (L.objet='message' AND L.id_objet=M.id_message)", "L.id_auteur=".intval($id_auteur)." AND vu='non' AND statut='publie' AND type='normal'");
 	$total_messages = count($result_messages);
 	if ($total_messages == 1) {
-		$row = $result_messages[0];
-		$ze_message=$row['id_message'];
-		$flux['data'][] = "<a href='" . generer_url_ecrire("message","id_message=$ze_message") . "' class='ligne_foncee'>"._T('info_nouveau_message')."</a>";
-	} elseif ($total_messages > 1)
-		$flux['data'][] = "<a href='" . generer_url_ecrire("messagerie") . "' classe='ligne_foncee'>"._T('info_nouveaux_messages', array('total_messages' => $total_messages))."</a>";
+		$row = reset($result_messages);
+		$id_message=$row['id_message'];
+		$flux['data'][] = "<a href='" . generer_url_ecrire("message","id_message=$id_message") . "'>"._T('organiseur:info_1_message_nonlu')."</a>";
+	}
+	elseif ($total_messages > 1)
+		$flux['data'][] = "<a href='" . generer_url_ecrire("messages") . "'>"._T('organiseur:info_nb_messages_nonlus', array('nb' => $total_messages))."</a>";
 
 	return $flux;
 }
@@ -159,4 +160,32 @@ function organiseur_affiche_milieu($flux){
 		  $flux['data'] .= $c;
 	}
   return $flux;
+}
+
+/**
+ * Diffuser un message qui passe en publie (== a envoyer)
+ *
+ * @param array $flux
+ * @return array
+ */
+function organiseur_post_edition($flux){
+
+	if ($flux['args']['table']=='spip_messages'
+	  AND $flux['args']['action']=='instituer'
+		AND $flux['data']['statut']=='publie'
+		AND $flux['args']['statut_ancien']!='publie'
+	){
+		$id_message = $flux['args']['id_objet'];
+		$row = sql_fetsel('destinataires,id_auteur,titre,texte','spip_messages','id_message='.intval($id_message));
+		if ($row){
+			include_spip('inc/messages');
+			list($auteurs_dest,$email_dests) = messagerie_destiner(explode(',',$row['destinataires']));
+
+			// diffuser le message en interne
+			messagerie_diffuser_message($id_message, $auteurs_dest);
+			// diffuser le message en externe
+			messagerie_mailer_message($id_message, $email_dests);
+		}
+	}
+	return $flux;
 }
