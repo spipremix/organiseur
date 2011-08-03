@@ -7,12 +7,4 @@
 	| [(#SELF|parametre_url{typem,'normal'}|lien_ou_expose{<:organiseur:info_selection_messages:>,#ENV{typem,tout}|=={normal},ajax})]
 </p>
 
-<INCLURE{fond=prive/objets/liste/messages-recus,destinataire=#ENV{id_auteur},sinon=<:info_aucun_message:>,type=#ENV{typem,'tout'}|replace{tout,''},statut=publie,nb=50,env,ajax} />
-
-[(#URL_ECRIRE{message_edit,new=oui}|icone_verticale{<:organiseur:icone_ecrire_nouveau_message:>,message-24.png,new,right})]
-[(#AUTORISER{envoyermessage,annonce}|oui)
-[(#URL_ECRIRE{message_edit,new=oui&typemes=affich}|icone_verticale{<:organiseur:icone_ecrire_nouvelle_annonce:>,annonce-24.png,new,right})]
-]
-[(#AUTORISER{envoyermessage,pensebete}|oui)
-[(#URL_ECRIRE{message_edit,new=oui&typemes=pb}|icone_verticale{<:organiseur:icone_ecrire_nouveau_pensebete:>,pensebete-24.png,new,right})]
-]
+<INCLURE{fond=prive/objets/liste/messages-recus,destinataire=#ENV{id_auteur},id_auteur='',sinon=<:info_aucun_message:>,type=#ENV{typem,'tout'}|replace{tout,''},statut=publie,nb=50,env,ajax} />

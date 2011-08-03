@@ -31,16 +31,33 @@ function autoriser_messagerie_menu_dist($faire, $type='', $id=0, $qui = NULL, $o
 }
 
 function autoriser_message_modifier_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
-	$row = sql_fetsel('statut,type,id_auteur','spip_messages','id_message='.intval($id));
-	if ($row['id_auteur']!=$qui['id_auteur'])
+	if (!intval($qui['id_auteur']))
 		return false;
-	if ($row['statut']=='redac' OR $row['type']=='pb')
+	$row = sql_fetsel('statut,type,id_auteur','spip_messages','id_message='.intval($id));
+	// on peut modifier ses penses betes ou ses messages brouillons
+	if ($row['id_auteur']==$qui['id_auteur'] AND ($row['statut']=='prepa' OR $row['type']=='pb'))
+		return true;
+	// on peut modifier les annonces si on est admin
+	if ($qui['statut']=='0minirezo' AND $row['type']=='affich')
 		return true;
 	return false;
 }
 
+function autoriser_message_instituer_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+	return autoriser('modifier','message',$id,$qui,$opt);
+}
+
+
 function autoriser_message_dater_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
 	return false;
+}
+
+// par defaut, autorisation commune a tous les type de message
+// peut etre surchargee en fonction de $type (pb,affich,normal)
+function autoriser_envoyermessage_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+	if(!($GLOBALS['meta']['messagerie_agenda'] == 'oui') OR !intval($qui['id_auteur']))
+		return false;
+	return true;
 }
 
 function autoriser_message_voir_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
@@ -55,3 +72,4 @@ function autoriser_message_voir_dist($faire, $type='', $id=0, $qui = NULL, $opt 
 
 	return false;
 }
+

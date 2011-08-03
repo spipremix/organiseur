@@ -1,7 +1,7 @@
 #FORMULAIRE_RECHERCHE_ECRIRE{#SELF,ajax}
 <div class='nettoyeur'></div>
 
-<INCLURE{fond=prive/objets/liste/messages-envoyes,id_auteur=#ENV{id_auteur},statut=redac,titre=<:info_message_en_redaction:>,type=#ENV{typem,'tout'}|replace{tout,''},nb=10,env,ajax} />
+<INCLURE{fond=prive/objets/liste/messages-envoyes,id_auteur=#ENV{id_auteur},statut=prepa,titre=<:info_message_en_redaction:>,type=#ENV{typem,'tout'}|replace{tout,''},nb=10,env,ajax} />
 
 <p class="tri">
 	[(#SELF|parametre_url{typem,'tout'}|lien_ou_expose{<:info_tout_afficher:>,#ENV{typem,tout}|=={tout},ajax})]

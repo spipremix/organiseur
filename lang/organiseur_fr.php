@@ -5,16 +5,24 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
+	// B
+	'bouton_enregistrer_brouillon' => 'Enregistrer en brouillon',
+	'bouton_envoyer_message' => 'Envoyer',
+	'bouton_envoyer_message_maintenant' => 'Envoyer maintenant',
+
 	// C
 	'cal_jour_entier' => 'Journée',
 	'cal_par_jour' => 'jour',
 	'cal_par_mois' => 'mois',
 	'cal_par_semaine' => 'semaine',
 
+	// E
+	'erreur_destinataire_invalide' => 'Le destinataire @dest@ n\'est pas valide',
+
 	// I
 	'icone_ecrire_nouveau_message' => 'Envoyer un nouveau message',
 	'icone_ecrire_nouvelle_annonce' => 'Envoyer une nouvelle annonce',
-	'icone_ecrire_nouveau_pensebete' => 'Ecrire une nouveau pense-bête',
+	'icone_ecrire_nouveau_pensebete' => 'Ecrire un nouveau pense-bête',
 	'icone_modifier_pensebete' => 'Modifier ce pense-bête',
 	'icone_modifier_annonce' => 'Modifier cette annonce',
 
@@ -43,12 +51,25 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'loading' => 'Chargement...',
+	'label_destinataires' => "À",
+	'label_titre' => "Sujet",
+	'label_texte' => "Texte",
 
 	// M
 	'message' => 'Message',
 	'messages' => 'Messages',
 
+	// N
+	'notification_annonce_publie_1' => '[@nom_site_spip@] Annonce générale',
+	'notification_annonce_lire_a_ladresse' => 'Vous pouvez la lire à l\'adresse suivante @url@.',
+	
+	'notification_message_publie_1' => '[@nom_site_spip@] Nouveau message',
+	'notification_message_recu_de' => 'Vous avez reçu un nouveau message de la part de @nom@.',
+	'notification_message_lire_a_ladresse' => 'Vous pouvez le lire et y répondre à l\'adresse suivante @url@.',
+
+
 	// T
+	'texte_message_brouillon' => 'Ce message est enregistré comme brouillon',
 	'titre_boite_reception' => 'Boîte de reception',
 	'titre_boite_envoi' => 'Boîte d\'envoi',
 	'titre_agenda_rv' => 'Rendez-vous',

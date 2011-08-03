@@ -17,14 +17,14 @@ function critere_MESSAGES_destinataire_dist($idb, &$boucles, $crit) {
 	$boucle = &$boucles[$idb];
 	$_auteur = calculer_liste($crit->param[0], array(), $boucles, $boucle->id_parent);
 
-	$boucle->join['auteurs_liens']=array("'".$boucle->id_table."'","'id_objet'","'".$boucle->primary."'","'auteurs_liens.objet=\'message\''");
+	$boucle->join['auteurs_liens']=array("'".$boucle->id_table."'","'id_objet'","'".$boucle->primary."'","'auteurs_liens.objet=\'message\' AND auteurs_liens.id_auteur='.intval($_auteur)");
 	$boucle->from['auteurs_liens']='spip_auteurs_liens';
 	$boucle->from_type['auteurs_liens'] = 'LEFT';
 	$where =
 		array("'OR'",
 			array(
 				"'AND'",
-				array("'='","'auteurs_liens.id_auteur'","sql_quote($_auteur)"),
+				array("'='","'auteurs_liens.id_auteur'","intval($_auteur)"),
 				array("'!='","'auteurs_liens.vu'","'\'pou\''"),
 			),
 			array("'OR'",
@@ -32,7 +32,7 @@ function critere_MESSAGES_destinataire_dist($idb, &$boucles, $crit) {
 				array(
 					"'AND'",
 					array("'='","'".$boucle->id_table.".type'","sql_quote('pb')"),
-					array("'='","'".$boucle->id_table.".id_auteur'","sql_quote($_auteur)"),
+					array("'='","'".$boucle->id_table.".id_auteur'","intval($_auteur)"),
 				)
 			)
 		);
@@ -150,6 +150,11 @@ function organiseur_icone_message($type,$taille=24){
 function organiseur_texte_modifier_message($type){
 	$texte = array('pb'=>'organiseur:icone_modifier_pensebete','affich'=>'organiseur:icone_modifier_annonce');
 	$texte = isset($texte[$type])?$texte[$type]:'icone_modifier_message';
+	return _T($texte);
+}
+function organiseur_texte_nouveau_message($type){
+	$texte = array('pb'=>'organiseur:icone_ecrire_nouveau_pensebete','affich'=>'organiseur:icone_ecrire_nouvelle_annonce');
+	$texte = isset($texte[$type])?$texte[$type]:'organiseur:icone_ecrire_nouveau_message';
 	return _T($texte);
 }
 ?>
