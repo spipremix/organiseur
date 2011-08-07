@@ -93,7 +93,7 @@ function autoriser_message_voir_dist($faire, $type='', $id=0, $qui = NULL, $opt 
 	if (sql_countsel('spip_messages','id_message='.intval($id).' AND (type=\'affich\' OR id_auteur='.intval($qui['id_auteur']).')'))
 		return true;
 	// message dont $qui est destinataire
-	if (sql_countsel('spip_auteurs_liens','objet=\'message\' AND id_objet='.intval($id)." AND id_auteur=".intval($qui['id_auteur'])))
+	if (sql_countsel('spip_auteurs_liens','objet=\'message\' AND id_objet='.intval($id)." AND vu!='poub' AND id_auteur=".intval($qui['id_auteur'])))
 		return true;
 
 	return false;
