@@ -27,7 +27,7 @@
 	</thead>
 	<tbody>
 	<BOUCLE_mess_rec(MESSAGES auteurs){destinataire?#ENV{destinataire}}{id_auteur?}{type?}{where?}{statut?}{recherche?}{tri #ENV{par,date_heure},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
-		[(#SET{vu,[(#TYPE|=={pb}|ou{#VU|match{^(oui|pou)$}})]})]
+		[(#SET{vu,[(#TYPE|=={pb}|ou{#VU|match{^(oui|poub)$}})]})]
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})][(#GET{vu}|non)new]">
 			<td class='new'>[(#GET{vu}|?{'',#CHEMIN_IMAGE{pictonew-16.png}|balise_img{<:organiseur:info_message_non_lu:>}|inserer_attribut{title,<:organiseur:info_message_non_lu:>}})]</td>
 			<td class='type'>[(#CHEMIN_IMAGE{#TYPE|organiseur_icone_message{16}}|balise_img{#VAL{organiseur:info_type_message_}|concat{#TYPE}|_T})]</td>

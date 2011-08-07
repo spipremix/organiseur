@@ -145,12 +145,14 @@ function messagerie_mailer_message($id_message, $emails_dest=array()){
 }
 
 /**
- * Marquer un message comme lu
+ * Marquer un message dans l'etat indique par $vu
  *
  * @param int $id_auteur
  * @param array $liste
+ * @param string $vu
+ * @return void
  */
-function messagerie_marquer_lus($id_auteur,$liste){
+function messagerie_marquer_message($id_auteur,$liste,$vu){
 	include_spip('action/editer_liens');
 	if (!is_array($liste))
 		$liste = array($liste);
@@ -161,37 +163,35 @@ function messagerie_marquer_lus($id_auteur,$liste){
 	$l = array();
 	foreach($liens as $lien)
 		$l[] = $lien['message'];
-	objet_associer(array('auteur'=>$id_auteur),array('message'=>array_diff($liste,$l)),array('vu'=>'oui'));
+	objet_associer(array('auteur'=>$id_auteur),array('message'=>array_diff($liste,$l)),array('vu'=>$vu));
 	// puis les marquer tous lus
-	objet_qualifier_liens(array('auteur'=>$id_auteur),array('message'=>$liste),array('vu'=>'oui'));
+	objet_qualifier_liens(array('auteur'=>$id_auteur),array('message'=>$liste),array('vu'=>$vu));
 	include_spip('inc/invalideur');
 	suivre_invalideur("message/".implode(',',$liste));
 }
+
+/**
+ * Marquer un message comme lu
+ *
+ * @param int $id_auteur
+ * @param array $liste_id_message
+ */
+function messagerie_marquer_lus($id_auteur,$liste_id_message){messagerie_marquer_message($id_auteur,$liste_id_message,'oui');}
 
 /**
  * Marquer un message comme non lu
  *
  * @param int $id_auteur
- * @param array $liste
+ * @param array $liste_id_message
  */
-function messagerie_marquer_non_lus($id_auteur,$liste){
-	include_spip('action/editer_liens');
-	objet_qualifier_liens(array('auteur'=>$id_auteur),array('message'=>$liste),array('vu'=>'non'));
-	include_spip('inc/invalideur');
-	suivre_invalideur("message/".implode(',',$liste));
-}
+function messagerie_marquer_non_lus($id_auteur,$liste_id_message){messagerie_marquer_message($id_auteur,$liste_id_message,'non');}
 
 /**
  * Effacer un message recu
  *
  * @param int $id_auteur
- * @param array $liste
+ * @param array $liste_id_message
  */
-function messagerie_effacer_recu($id_auteur,$liste){
-	include_spip('action/editer_liens');
-	objet_dissocier(array('auteur'=>$id_auteur),array('message'=>$liste));
-	include_spip('inc/invalideur');
-	suivre_invalideur("message/".implode(',',$liste));
-}
+function messagerie_effacer_message_recu($id_auteur,$liste_id_message){messagerie_marquer_message($id_auteur,$liste_id_message,'poub');}
 
 ?>
