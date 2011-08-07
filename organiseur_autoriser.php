@@ -47,6 +47,32 @@ function autoriser_message_instituer_dist($faire, $type='', $id=0, $qui = NULL, 
 	return autoriser('modifier','message',$id,$qui,$opt);
 }
 
+function autoriser_message_supprimer_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+	// on peut supprimer un message que l'on peut modifier
+	if (autoriser('modifier','message',$id,$qui,$opt))
+		return true;
+	// mais on peut aussi supprimer un message envoye par soi
+	// si tous ses dest l'on supprime aussi
+	if (
+		$qui['id_auteur']
+		AND sql_countsel('spip_messages',"statut='publie' AND id_auteur=".intval($qui['id_auteur'])." AND id_message=".intval($id))
+		AND !sql_countsel('spip_auteurs_liens',"objet='message' AND id_objet=".intval($id)." AND vu!='poub' AND id_auteur!=".intval($qui['id_auteur']))
+		)
+		return true;
+	return false;
+}
+
+function autoriser_messagerecu_effacer_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+	if (isset($opt['id_auteur']))
+		$id_auteur = $opt['id_auteur'];
+	else
+		$id_auteur = $qui['id_auteur'];
+	// seul le destinataire peut supprimer un message qui lui est destine
+	if (!intval($id_auteur) OR intval($id_auteur) != intval($qui['id_auteur']))
+		return false;
+	// rien d'autre a verifier?...
+	return true;
+}
 
 function autoriser_message_dater_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
 	return false;
