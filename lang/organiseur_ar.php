@@ -8,9 +8,9 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// B
-	'bouton_enregistrer_brouillon' => 'Enregistrer en brouillon', # NEW
-	'bouton_envoyer_message' => 'Envoyer', # NEW
-	'bouton_envoyer_message_maintenant' => 'Envoyer maintenant', # NEW
+	'bouton_enregistrer_brouillon' => 'جفظ كمسودة',
+	'bouton_envoyer_message' => 'بعث',
+	'bouton_envoyer_message_maintenant' => 'إرسال الآن',
 
 	// C
 	'cal_jour_entier' => 'اليوم',
@@ -19,54 +19,56 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cal_par_semaine' => 'أسبوع',
 
 	// E
-	'erreur_destinataire_invalide' => 'Le destinataire @dest@ n\'est pas valide', # NEW
+	'erreur_destinataire_invalide' => 'المرسل اليه @dest@ غير صالح',
 
 	// I
-	'icone_ecrire_nouveau_message' => 'Envoyer un nouveau message', # NEW
-	'icone_ecrire_nouveau_pensebete' => 'Ecrire un nouveau pense-bête', # NEW
-	'icone_ecrire_nouvelle_annonce' => 'Envoyer une nouvelle annonce', # NEW
-	'icone_modifier_annonce' => 'Modifier cette annonce', # NEW
-	'icone_modifier_pensebete' => 'Modifier ce pense-bête', # NEW
-	'info_1_message_envoye' => '1 message envoyé', # NEW
-	'info_1_message_nonlu' => '1 nouveau message', # NEW
-	'info_agenda_interne' => 'Agenda interne', # NEW
-	'info_message_a' => 'A', # NEW
-	'info_message_date' => 'Date', # NEW
-	'info_message_de' => 'De', # NEW
-	'info_message_non_lu' => 'Nouveau message', # NEW
-	'info_message_objet' => 'Objet', # NEW
-	'info_nb_messages_envoyes' => '@nb@ messages envoyés', # NEW
-	'info_nb_messages_nonlus' => '@nb@ nouveaux messages', # NEW
-	'info_selection_annonces' => 'Annonces', # NEW
-	'info_selection_messages' => 'Messages', # NEW
-	'info_selection_pensebetes' => 'Pense-bêtes', # NEW
-	'info_type_message_affich' => 'Annonce', # NEW
-	'info_type_message_normal' => 'Message', # NEW
-	'info_type_message_pb' => 'Pense-bête', # NEW
-	'info_type_message_rv' => 'Rendez-vous', # NEW
+	'icone_ecrire_nouveau_message' => 'بعث برسالة جديدة',
+	'icone_ecrire_nouveau_pensebete' => 'كتابة مذكرة جديدة',
+	'icone_ecrire_nouvelle_annonce' => 'كتابة إعلان جديد',
+	'icone_effacer_message' => 'Effacer ce message', # NEW
+	'icone_modifier_annonce' => 'تعديل هذا الإعلان',
+	'icone_modifier_pensebete' => 'تعديل هذه المذكرة',
+	'icone_supprimer_message' => 'Supprimer ce message', # NEW
+	'info_1_message_envoye' => 'رسالة واحدة بعثت',
+	'info_1_message_nonlu' => 'رسالة جديدة',
+	'info_agenda_interne' => 'المفكرة الداخلية',
+	'info_message_a' => 'الى',
+	'info_message_date' => 'التاريخ',
+	'info_message_de' => 'من',
+	'info_message_non_lu' => 'رسالة جديدة',
+	'info_message_objet' => 'الموضوع',
+	'info_nb_messages_envoyes' => '@nb@ رسالة مبعوثة',
+	'info_nb_messages_nonlus' => '@nb@ رسالة جديدة',
+	'info_selection_annonces' => 'الاعلانات',
+	'info_selection_messages' => 'الرسائل',
+	'info_selection_pensebetes' => 'المذكرات',
+	'info_type_message_affich' => 'إعلان',
+	'info_type_message_normal' => 'رسالة',
+	'info_type_message_pb' => 'مذكرة',
+	'info_type_message_rv' => 'موعد',
 
 	// L
-	'label_destinataires' => 'À', # NEW
-	'label_texte' => 'Texte', # NEW
-	'label_titre' => 'Sujet', # NEW
+	'label_destinataires' => 'الى',
+	'label_texte' => 'النص',
+	'label_titre' => 'الموضوع',
 	'loading' => 'تحميل...',
 
 	// M
-	'message' => 'Message', # NEW
-	'messages' => 'Messages', # NEW
+	'message' => 'رسالة',
+	'messages' => 'رسائل',
 
 	// N
-	'notification_annonce_lire_a_ladresse' => 'Vous pouvez la lire à l\'adresse suivante @url@.', # NEW
-	'notification_annonce_publie_1' => '[@nom_site_spip@] Annonce générale', # NEW
-	'notification_message_lire_a_ladresse' => 'Vous pouvez le lire et y répondre à l\'adresse suivante @url@.', # NEW
-	'notification_message_publie_1' => '[@nom_site_spip@] Nouveau message', # NEW
-	'notification_message_recu_de' => 'Vous avez reçu un nouveau message de la part de @nom@.', # NEW
+	'notification_annonce_lire_a_ladresse' => 'يمكن القراءة على العنوان التالي @url@.',
+	'notification_annonce_publie_1' => '[@nom_site_spip@] إعلان عام',
+	'notification_message_lire_a_ladresse' => 'يمكنك القراءة والرد على العنوان التالي @url@.',
+	'notification_message_publie_1' => '[@nom_site_spip@] رسالة جديدة',
+	'notification_message_recu_de' => 'جاءتك سالة جديدة من @nom@.',
 
 	// T
-	'texte_message_brouillon' => 'Ce message est enregistré comme brouillon', # NEW
-	'titre_agenda_rv' => 'Rendez-vous', # NEW
-	'titre_boite_envoi' => 'Boîte d\'envoi', # NEW
-	'titre_boite_reception' => 'Boîte de reception' # NEW
+	'texte_message_brouillon' => 'هذه الرسالة مسجلة كمسودة',
+	'titre_agenda_rv' => 'موعد',
+	'titre_boite_envoi' => 'صندوق الارسال',
+	'titre_boite_reception' => 'صندوق التلقي'
 );
 
 ?>
