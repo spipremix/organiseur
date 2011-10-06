@@ -1,4 +1,4 @@
-<div id="loading" style="position:absolute;top:20px;left:350px;padding:5px 30px;display:none;border:1px solid #ddd;background:#eee;z-index:100;"><:organiseur:loading:></div>
+<div id="calendrier-loading" style="display:none;"><:organiseur:loading:></div>
 <div id="calendrier"></div>
 <link rel='stylesheet' type='text/css' href='#CHEMIN{lib/fullcalendar/fullcalendar.css}' />
 <link rel="stylesheet" type="text/css" href="#CHEMIN{calendrier.css}" />
@@ -28,8 +28,8 @@ jQuery(document).ready(function() {
 			},
 			weekMode : 'liquid',
 			loading: function(bool) {
-				if (bool) $('#loading').show();
-				else $('#loading').hide();
+				if (bool) $('#calendrier-loading').show();
+				else $('#calendrier-loading').hide();
 			},
 			timeFormat: {
 				// for agendaWeek and agendaDay
