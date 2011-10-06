@@ -1,6 +1,9 @@
 /* ------------------------------------------ */
 /* Styles pour l'agenda de SPIP
 /* ------------------------------------------ */
+#calendrier-loading {position:absolute;top:20px;left:350px;padding:5px 30px;border:1px solid #ddd;background:#eee;z-index:100;}
+@media (max-width: 640px) {#calendrier-loading {left:20px;}}
+
 .calendrier-noir  { color: #000; } /* style anar */
 .calendrier-nb  { background-color: #FFF; border: 1px solid #000; color: #000; } /* style cinemat(yp)ographe */
 
