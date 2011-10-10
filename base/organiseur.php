@@ -14,7 +14,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 
 /**
- * Declaration des champs complémentaires sur la table auteurs, pour les clients
+ * Declaration des champs complementaires sur la table auteurs, pour les clients
  *
  * @param array $tables
  * @return array
