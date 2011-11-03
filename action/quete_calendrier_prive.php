@@ -19,68 +19,84 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * 
  * @return void
  */
-function action_quete_calendrier_dist(){
+function action_quete_calendrier_prive_dist(){
 	$securiser_action = charger_fonction('securiser_action','inc');
 	$securiser_action();
 
 	$start = _request('start');
 	$end = _request('end');
 	$quoi = _request('quoi');
-	$quoi = (in_array($quoi,array('publication','rv'))?$quoi:'publication');
 
 	include_spip('inc/quete_calendrier');
 
-	// recuperer la liste des evenements au format ics
-	$limites = array(sql_quote(date('Y-m-d H:i:s',$start)),sql_quote(date('Y-m-d H:i:s',$end)));
-	switch($quoi){
-		case 'rv':
-			$entier = array();
-			$duree = quete_calendrier_interval_rv(reset($limites), end($limites));
-			break;
-		default:
-			list($entier,$duree) = quete_calendrier_interval($limites);
-			break;
-	}
-
-	// la retransformer au format attendu par fullcalendar
 	$evt = array();
-	// facile : chaque evt n'est mentionne qu'une fois, a une date
-	foreach($entier as $amj=>$l){
-		$date = substr($amj,0,4).'-'.substr($amj,4,2).'-'.substr($amj,6,2);
-		foreach($l as $e){
-			$evt[] = array(
-				'id' => 0,
-				'title' => $e['SUMMARY'],
-				'allDay' => true,
-				'start' => $date,
-				'end' => $date,
-				'url' => str_replace('&amp;','&',$e['URL']),
-				'className' => "calendrier-event ".$e['CATEGORIES'],
-				'description' => $e['DESCRIPTION'],
-			);
+
+	// recuperer la liste des evenements au format ics
+	$start = date('Y-m-d H:i:s',$start);
+	$end = date('Y-m-d H:i:s',$end);
+	$limites = array(sql_quote($start),sql_quote($end));
+	foreach(array('publication','rv') as $q){
+		$entier = $duree = array();
+
+		switch($q){
+			case 'rv':
+				if (!$quoi OR $quoi=='rv')
+					$duree = quete_calendrier_interval_rv(reset($limites), end($limites));
+				break;
+			case 'publication':
+				if (!$quoi OR $quoi=='publication')
+					list($entier,$duree) = quete_calendrier_interval($limites);
+				break;
 		}
-	}
-	// ici il faut faire attention : un evt apparait N fois
-	// mais on a son id
-	$seen = array();
-	foreach($duree as $amj=>$l){
-		foreach($l as $id=>$e){
-			if (!isset($seen[$e['URL']])){
+
+		// la retransformer au format attendu par fullcalendar
+		// facile : chaque evt n'est mentionne qu'une fois, a une date
+		foreach($entier as $amj=>$l){
+			$date = substr($amj,0,4).'-'.substr($amj,4,2).'-'.substr($amj,6,2);
+			foreach($l as $e){
 				$evt[] = array(
-					'id' => $id,
+					'id' => 0,
 					'title' => $e['SUMMARY'],
-					'allDay' => false,
-					'start' => convert_dateical($e['DTSTART']), //Ymd\THis
-					'end' => convert_dateical($e['DTEND']), // Ymd\THis
+					'allDay' => true,
+					'start' => $date,
+					'end' => $date,
 					'url' => str_replace('&amp;','&',$e['URL']),
 					'className' => "calendrier-event ".$e['CATEGORIES'],
 					'description' => $e['DESCRIPTION'],
 				);
-				$seen[$e['URL']] = true;
+			}
+		}
+		// ici il faut faire attention : un evt apparait N fois
+		// mais on a son id
+		$seen = array();
+		foreach($duree as $amj=>$l){
+			foreach($l as $id=>$e){
+				if (!isset($seen[$e['URL']])){
+					$evt[] = array(
+						'id' => $id,
+						'title' => $e['SUMMARY'],
+						'allDay' => false,
+						'start' => convert_dateical($e['DTSTART']), //Ymd\THis
+						'end' => convert_dateical($e['DTEND']), // Ymd\THis
+						'url' => str_replace('&amp;','&',$e['URL']),
+						'className' => "calendrier-event ".$e['CATEGORIES'],
+						'description' => $e['DESCRIPTION'],
+					);
+					$seen[$e['URL']] = true;
+				}
 			}
 		}
 	}
 
+	// permettre aux plugins d'afficher leurs evenements dans ce calendrier
+	$evt = pipeline('quete_calendrier_prive',
+	                array(
+		                'args' => array('start' => $start, 'end' => $end, 'quoi'=>$quoi),
+		                'data' => $evt,
+	                )
+	       );
+
+	// format json
 	include_spip('inc/json');
 	echo json_encode($evt);
 }
