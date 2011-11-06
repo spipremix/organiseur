@@ -25,14 +25,14 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'icone_ecrire_nouveau_message' => 'Poslať novú správu',
 	'icone_ecrire_nouveau_pensebete' => 'Vytvoriť novú pripomienku',
 	'icone_ecrire_nouvelle_annonce' => 'Poslať nový oznam',
-	'icone_effacer_message' => 'Effacer ce message', # NEW
+	'icone_effacer_message' => 'Vymazať túto správu',
 	'icone_modifier_annonce' => 'Upraviť tento oznam',
 	'icone_modifier_pensebete' => 'Upraviť túto pripomienku',
-	'icone_supprimer_message' => 'Supprimer ce message', # NEW
+	'icone_supprimer_message' => 'Odstrániť túto správu',
 	'info_1_message_envoye' => '1 odoslaná správa',
 	'info_1_message_nonlu' => '1 nová správa',
 	'info_agenda_interne' => 'Interný kalendár',
-	'info_message_a' => 'A', # NEW
+	'info_message_a' => 'Komu',
 	'info_message_date' => 'Dátum',
 	'info_message_de' => 'Odosielateľ',
 	'info_message_non_lu' => 'Nová správa',
@@ -48,7 +48,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_type_message_rv' => 'Stretnutie',
 
 	// L
-	'label_destinataires' => 'À', # NEW
+	'label_destinataires' => 'Do',
 	'label_texte' => 'Text',
 	'label_titre' => 'Predmet',
 	'loading' => 'Spúšťa sa...',
