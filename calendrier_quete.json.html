@@ -1,5 +1,5 @@
 #HTTP_HEADER{Content-type:text/javascript;}
-[<BOUCLE_periode(ARTICLES)
+[<BOUCLE_periode(ARTICLES){id_mot?}{id_rubrique?}
 	{agenda date, periode,
 	#ENV{start}|todate|affdate{Y}, #ENV{start}|todate|affdate{m}, #ENV{start}|todate|affdate{d},
 	#ENV{end}|todate|affdate{Y}, #ENV{end}|todate|affdate{m}, #ENV{end}|todate|affdate{d}}{', '}>

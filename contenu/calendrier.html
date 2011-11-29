@@ -9,7 +9,7 @@ jQuery(document).ready(function() {
 	// page is now ready, initialize the calendar...
 	$('#calendrier').fullCalendar({
 			editable: false,
-			events: "[(#URL_PAGE{calendrier_quete.json})]",
+			events: "[(#URL_PAGE{calendrier_quete.json}|parametre_url{id_mot,#ENV{id_mot,''}}|parametre_url{id_rubrique,#ENV{id_rubrique,''}})]",
 			header: {
 				left: 'prevYear,prev,next,nextYear today',
 				center: 'title',
