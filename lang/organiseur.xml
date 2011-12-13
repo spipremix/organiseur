@@ -1,10 +1,8 @@
-<traduction module="organiseur" gestionnaire="salvatore" reference="fr">
+<traduction module="organiseur" gestionnaire="salvatore" url="http://trad.spip.org" source="svn://zone.spip.org/spip-zone/_core_/plugins/organiseur/lang/" reference="fr">
 	<langue code="ar">
 		<traducteur nom="kandalaft" />
 	</langue>
-	<langue code="de">
-		<traducteur nom="klaus" />
-	</langue>
+	<langue code="en" />
 	<langue code="sk">
 		<traducteur nom="jaro" />
 	</langue>
