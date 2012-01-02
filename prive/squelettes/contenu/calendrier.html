@@ -12,9 +12,9 @@ jQuery(document).ready(function() {
 			editable: false,
 			events: "[(#URL_ACTION_AUTEUR{quete_calendrier_prive,calendrier}|replace{'&amp;','&'})]",
 			header: {
-				left: 'prevYear,prev,next,nextYear today',
+				left: [(#LANG_DIR|=={ltr}|?{"'prevYear,prev,next,nextYear today'","'month,agendaWeek,agendaDay'"})],
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
+				right: [(#LANG_DIR|=={ltr}|?{"'agendaDay,agendaWeek,month'","'today nextYear,next,prev,prevYear'"})]
 			},
 			firstDay: 1,
 			monthNames:['<:date_mois_1|attribut_html:>','<:date_mois_2|attribut_html:>','<:date_mois_3|attribut_html:>','<:date_mois_4|attribut_html:>','<:date_mois_5|attribut_html:>','<:date_mois_6|attribut_html:>','<:date_mois_7|attribut_html:>','<:date_mois_8|attribut_html:>','<:date_mois_9|attribut_html:>','<:date_mois_10|attribut_html:>','<:date_mois_11|attribut_html:>','<:date_mois_12|attribut_html:>'],
