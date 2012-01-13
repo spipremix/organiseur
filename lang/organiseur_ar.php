@@ -23,7 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// I
 	'icone_ecrire_nouveau_message' => 'بعث برسالة جديدة',
-	'icone_ecrire_nouveau_pensebete' => 'كتابة مذكرة جديدة',
+	'icone_ecrire_nouveau_pensebete' => 'كتابة مذكرة جديدة', # MODIF
 	'icone_ecrire_nouvelle_annonce' => 'كتابة إعلان جديد',
 	'icone_effacer_message' => 'حذف هذه الرسالة',
 	'icone_modifier_annonce' => 'تعديل هذا الإعلان',
@@ -32,7 +32,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_1_message_envoye' => 'رسالة واحدة بعثت',
 	'info_1_message_nonlu' => 'رسالة جديدة',
 	'info_agenda_interne' => 'المفكرة الداخلية',
-	'info_message_a' => 'الى',
+	'info_message_a' => 'الى', # MODIF
 	'info_message_date' => 'التاريخ',
 	'info_message_de' => 'من',
 	'info_message_non_lu' => 'رسالة جديدة',
@@ -51,7 +51,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_destinataires' => 'الى',
 	'label_texte' => 'النص',
 	'label_titre' => 'الموضوع',
-	'loading' => 'تحميل...',
+	'loading' => 'تحميل...', # MODIF
 
 	// M
 	'message' => 'رسالة',
