@@ -23,7 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// I
 	'icone_ecrire_nouveau_message' => 'Send a new message',
-	'icone_ecrire_nouveau_pensebete' => 'Write a new reminder', # MODIF
+	'icone_ecrire_nouveau_pensebete' => 'Write a new reminder',
 	'icone_ecrire_nouvelle_annonce' => 'Send a new announcement',
 	'icone_effacer_message' => 'Delete this message',
 	'icone_modifier_annonce' => 'Edit this announcement',
@@ -32,7 +32,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_1_message_envoye' => '1 message sent',
 	'info_1_message_nonlu' => '1 new message',
 	'info_agenda_interne' => 'Internal agenda',
-	'info_message_a' => 'To', # MODIF
+	'info_message_a' => 'To',
 	'info_message_date' => 'Date',
 	'info_message_de' => 'From',
 	'info_message_non_lu' => 'New message',
@@ -51,7 +51,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_destinataires' => 'To',
 	'label_texte' => 'Text',
 	'label_titre' => 'Subject',
-	'loading' => 'Loading...', # MODIF
+	'loading' => 'Loading...',
 
 	// M
 	'message' => 'Message',
