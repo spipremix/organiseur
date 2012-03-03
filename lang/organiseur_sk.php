@@ -14,9 +14,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// C
 	'cal_jour_entier' => 'Deň',
-	'cal_par_jour' => 'deň',
-	'cal_par_mois' => 'mesiac',
-	'cal_par_semaine' => 'týždeň',
+	'cal_par_jour' => 'Deň',
+	'cal_par_mois' => 'Mesiac',
+	'cal_par_semaine' => 'Týždeň',
 
 	// E
 	'erreur_destinataire_invalide' => 'Príjemca @dest@ nie je platný',
@@ -51,7 +51,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_destinataires' => 'Príjemcovia',
 	'label_texte' => 'Text',
 	'label_titre' => 'Predmet',
-	'loading' => 'Spúšťanie...',
+	'loading' => 'Spúšťa sa...',
 
 	// M
 	'message' => 'Správa',
