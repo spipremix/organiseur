@@ -11,7 +11,7 @@
 <BOUCLE_a(AUTEURS){id_auteur}>
 <:organiseur:notification_message_recu_de{nom=#NOM}:>
 </BOUCLE_a>
-#SET{url,#URL_ECRIRE{message,#ID_MESSAGE}|url_absolue}
+#SET{url,#URL_ECRIRE{message,id_message=#ID_MESSAGE}|url_absolue}
 <:organiseur:notification_message_lire_a_ladresse{url=#GET{url}}:>
 
 ----
