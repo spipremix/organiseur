@@ -44,6 +44,10 @@ function organiseur_upgrade($nom_meta_base_version,$version_cible){
 		array('sql_alter',"TABLE spip_messages ADD destinataires text DEFAULT '' NOT NULL"),
 	);
 
+	$maj['1.1.1'] = array(
+		array('sql_alter',"TABLE spip_messages CHANGE id_auteur id_auteur bigint(21) DEFAULT 0 NOT NULL"),
+	);
+
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 }
