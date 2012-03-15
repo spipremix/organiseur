@@ -48,7 +48,7 @@ function organiseur_declarer_tables_objets_sql($tables){
 			"date_fin"	=> "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"rv"	=> "varchar(3) DEFAULT '' NOT NULL",
 			"statut"	=> "varchar(6)  DEFAULT '0' NOT NULL",
-			"id_auteur"	=> "bigint(21) NOT NULL",
+			"id_auteur"	=> "bigint(21) DEFAULT 0 NOT NULL",
 			"destinataires" => "text DEFAULT '' NOT NULL",
 			"maj"	=> "TIMESTAMP"
 		),
