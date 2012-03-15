@@ -10,7 +10,7 @@
 	[(#STATUT|=={prepa}|oui)
 		#BOITE_OUVRIR{'',note center proposer}
 			<p><:organiseur:texte_message_brouillon:></p>
-			[(#BOUTON_ACTION{<:organiseur:bouton_envoyer_message_maintenant:>,#URL_ACTION_AUTEUR{envoyermessage,#ID_MESSAGE,#SELF}})]
+			[(#BOUTON_ACTION{<:organiseur:bouton_envoyer_message_maintenant:>,#URL_ACTION_AUTEUR{envoyer_message,#ID_MESSAGE,#SELF}})]
 		#BOITE_FERMER
 	]
 	<div id="wysiwyg">
