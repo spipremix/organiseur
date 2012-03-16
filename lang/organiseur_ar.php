@@ -19,7 +19,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cal_par_semaine' => 'أسبوع',
 
 	// E
+	'erreur_date' => 'Cette date est incorrecte', # NEW
+	'erreur_date_avant_apres' => 'Indiquez une date de fin après la date de début !', # NEW
+	'erreur_date_corrigee' => 'La date a été corrigée', # NEW
 	'erreur_destinataire_invalide' => 'المرسل اليه @dest@ غير صالح',
+	'erreur_heure' => 'Cette heure est incorrecte', # NEW
+	'erreur_heure_corrigee' => 'L\'heure a été corrigée', # NEW
 
 	// I
 	'icone_ecrire_nouveau_message' => 'بعث برسالة جديدة',
@@ -34,6 +39,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_agenda_interne' => 'المفكرة الداخلية',
 	'info_message_a' => 'الى',
 	'info_message_date' => 'التاريخ',
+	'info_message_date_debut' => 'Date début', # NEW
+	'info_message_date_fin' => 'Date fin', # NEW
 	'info_message_de' => 'من',
 	'info_message_non_lu' => 'رسالة جديدة',
 	'info_message_objet' => 'الموضوع',
