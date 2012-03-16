@@ -9,9 +9,14 @@
 <div dir='#LANG_DIR' class='#EDIT{titre} titre'>#TITRE</div>
 </div>
 <div class="champ contenu_date_heure[ (#DATE_HEURE*|strlen|?{'',vide})] clearfix">
-<div class='label'><:organiseur:info_message_date:></div>
-<div dir='#LANG_DIR' class='#EDIT{date_heure} date_heure'>[[(#DATE_HEURE|nom_jour)] (#DATE_HEURE|affdate_heure)]</div>
+<div class='label'>[(#RV|=={oui}|?{<:organiseur:info_message_date_debut:>,<:organiseur:info_message_date:>})]</div>
+<div dir='#LANG_DIR' class='#EDIT{date_heure} date_heure'>[(#RV|=={oui}|oui)[(#CHEMIN_IMAGE{heure-16.png}|balise_img)] ][[(#DATE_HEURE|nom_jour)] (#DATE_HEURE|affdate_heure)]</div>
 </div>
+[(#RV|=={oui}|oui)
+<div class="champ contenu_date_fin[ (#DATE_HEURE*|strlen|?{'',vide})] clearfix">
+<div class='label'><:organiseur:info_message_date_fin:></div>
+<div dir='#LANG_DIR' class='#EDIT{date_fin} date_fin'>[(#RV|=={oui}|oui)[(#CHEMIN_IMAGE{heure-16.png}|balise_img)] ][[(#DATE_FIN|nom_jour)] (#DATE_FIN|affdate_heure)]</div>
+</div>]
 <B_d>
 <div class="champ contenu_destinataires clearfix">
 <div class='label'><:organiseur:info_message_a:></div>

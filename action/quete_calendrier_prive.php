@@ -45,7 +45,7 @@ function action_quete_calendrier_prive_dist(){
 				break;
 			case 'publication':
 				if (!$quoi OR $quoi=='publication')
-					list($entier,$duree) = quete_calendrier_interval($limites);
+					list($entier,) = quete_calendrier_interval($limites);
 				break;
 		}
 

@@ -31,7 +31,15 @@ function formulaires_editer_message_charger_dist($id_message='new',$type='messag
 		$valeurs['destinataires'] = ($destinataires ? explode(",",$destinataires):array());
 		$valeurs['titre'] = $titre;
 		$valeurs['texte'] = $texte;
+		$t=time();
+		$valeurs["date_heure"] = date('Y-m-d H:i:00',$t);
+		$valeurs["date_fin"] = date('Y-m-d H:i:00',$t+3600);
+		$valeurs["rv"] = "";
 	}
+
+	// dispatcher date et heure
+	list($valeurs["date_debut"],$valeurs["heure_debut"]) = explode(' ',date('d/m/Y H:i',strtotime($valeurs["date_heure"])));
+	list($valeurs["date_fin"],$valeurs["heure_fin"]) = explode(' ',date('d/m/Y H:i',strtotime($valeurs["date_fin"])));
 
 	if (in_array($valeurs['type'],array('pb','affich')))
 		$valeurs['_destiner'] = '';
@@ -65,6 +73,17 @@ function formulaires_editer_message_verifier_dist($id_message='new',$type='messa
 	  AND $e = messagerie_verifier_destinataires(_request('destinataires'),array('accepter_email'=>($accepter_email=='oui'))))
 		$erreurs['destinataires'] = implode(', ',$e);
 
+	if (_request('rv')=='oui'){
+		include_spip('inc/date_gestion');
+		$date_debut = verifier_corriger_date_saisie('debut',true,$erreurs);
+		$date_fin = verifier_corriger_date_saisie('fin',true,$erreurs);
+
+		if ($date_debut AND $date_fin AND $date_fin<$date_debut)
+			$erreurs['date_fin'] = _T('organiseur:erreur_date_avant_apres');
+	}
+	else
+		set_request('rv','');
+
 	return $erreurs;
 }
 
@@ -94,6 +113,19 @@ function formulaires_editer_message_traiter_dist($id_message='new',$type='messag
 
 	// fixer l'auteur !
 	set_request('id_auteur',$GLOBALS['visiteur_session']['id_auteur']);
+
+	if (_request('rv')=='oui'){
+		include_spip('inc/date_gestion');
+		$erreurs = array();
+		$date_debut = verifier_corriger_date_saisie('debut',true,$erreurs);
+		$date_fin = verifier_corriger_date_saisie('fin',true,$erreurs);
+		set_request('date_heure',date('Y-m-d H:i:s',$date_debut));
+		set_request('date_fin',date('Y-m-d H:i:s',$date_fin));
+	}
+	else {
+		set_request('date_heure');
+		set_request('date_fin');
+	}
 
 	// on gere par les traitements standard
 	// la diffusion du message se fait par pipeline post_edition sur instituer

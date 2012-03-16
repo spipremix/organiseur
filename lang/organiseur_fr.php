@@ -18,6 +18,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// E
 	'erreur_destinataire_invalide' => 'Le destinataire @dest@ n\'est pas valide',
+	'erreur_date' => 'Cette date est incorrecte',
+	'erreur_date_avant_apres' => 'Indiquez une date de fin après la date de début !',
+	'erreur_date_corrigee' => 'La date a été corrigée',
+	'erreur_heure' => 'Cette heure est incorrecte',
+	'erreur_heure_corrigee' => 'L\'heure a été corrigée',
 
 	// I
 	'icone_ecrire_nouveau_message' => 'Envoyer un nouveau message',
@@ -32,6 +37,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_agenda_interne' => 'Agenda interne',
 	'info_message_a' => 'À',
 	'info_message_date' => 'Date',
+	'info_message_date_debut' => 'Date début',
+	'info_message_date_fin' => 'Date fin',
 	'info_message_de' => 'De',
 	'info_message_non_lu' => 'Nouveau message',
 	'info_message_objet' => 'Objet',
