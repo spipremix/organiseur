@@ -34,7 +34,10 @@
 .message #wysiwyg .contenu_from .label,
 .message #wysiwyg .contenu_destinataires .label,
 .message #wysiwyg .contenu_titre .label,
-.message #wysiwyg .contenu_date_heure .label {display: block;float:#GET{left};width:6em;clear:#GET{left};text-align:#GET{right};padding:0 10px;}
+.message #wysiwyg .contenu_date_heure .label,
+.message #wysiwyg .contenu_date_fin .label {display: block;float:#GET{left};width:6em;clear:#GET{left};text-align:#GET{right};padding:0 10px;}
+.message #wysiwyg .contenu_date_heure img {vertical-align: middle;}
+.message #wysiwyg .contenu_date_fin img {vertical-align: middle;visibility: hidden;}
 .message #wysiwyg .contenu_from .spip_logos {position: absolute;#GET{right}: 0;top:0;}
 
 .message #wysiwyg .contenu_titre {display: block;}
@@ -46,6 +49,8 @@
 .formulaire_editer_message span.dest img {cursor:pointer;padding:1px;}
 .formulaire_editer_message .fake-input {background:#FFF;border:1px solid #999;padding: 3px 3px 0; width: 100%; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;-ms-box-sizing: border-box;}
 .formulaire_editer_message .fake-input input.text {width:200px;border: 0;padding: 1px 0;margin-bottom: 3px;}
+.formulaire_editer_message .editer_date_debut {padding-bottom: 0;}
+.formulaire_editer_message .editer_date_fin {padding-top: 0;}
 
 /* autocompletion */
 .formulaire_editer_message input.ac_loading {	background-image : url(#CHEMIN_IMAGE{'searching.gif'});background-position: right center;background-repeat: no-repeat;}
