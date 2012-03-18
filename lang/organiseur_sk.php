@@ -19,12 +19,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cal_par_semaine' => 'Týždeň',
 
 	// E
-	'erreur_date' => 'Cette date est incorrecte', # NEW
-	'erreur_date_avant_apres' => 'Indiquez une date de fin après la date de début !', # NEW
-	'erreur_date_corrigee' => 'La date a été corrigée', # NEW
+	'erreur_date' => 'Tento dátum nie je správny',
+	'erreur_date_avant_apres' => 'Zadajte dátum ukončenia, ktorý bude nasledovať po dátume začiatku!',
+	'erreur_date_corrigee' => 'Dátum bol opravený',
 	'erreur_destinataire_invalide' => 'Príjemca @dest@ nie je platný',
-	'erreur_heure' => 'Cette heure est incorrecte', # NEW
-	'erreur_heure_corrigee' => 'L\'heure a été corrigée', # NEW
+	'erreur_heure' => 'Tento čas nie je správny',
+	'erreur_heure_corrigee' => 'Čas bol opravený',
 
 	// I
 	'icone_ecrire_nouveau_message' => 'Poslať novú správu',
@@ -39,8 +39,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_agenda_interne' => 'Interný kalendár',
 	'info_message_a' => 'Príjemcovia',
 	'info_message_date' => 'Dátum',
-	'info_message_date_debut' => 'Date début', # NEW
-	'info_message_date_fin' => 'Date fin', # NEW
+	'info_message_date_debut' => 'Dátum začiatku',
+	'info_message_date_fin' => 'Dátum ukončenia',
 	'info_message_de' => 'Odosielateľ',
 	'info_message_non_lu' => 'Nová správa',
 	'info_message_objet' => 'Objekt',
