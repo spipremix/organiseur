@@ -19,12 +19,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cal_par_semaine' => 'week',
 
 	// E
-	'erreur_date' => 'Cette date est incorrecte', # NEW
-	'erreur_date_avant_apres' => 'Indiquez une date de fin après la date de début !', # NEW
-	'erreur_date_corrigee' => 'La date a été corrigée', # NEW
+	'erreur_date' => 'This date is incorrect',
+	'erreur_date_avant_apres' => 'Specify an end date after the start date!',
+	'erreur_date_corrigee' => 'The date has been corrected',
 	'erreur_destinataire_invalide' => 'The recipient @dest@ is invalid',
-	'erreur_heure' => 'Cette heure est incorrecte', # NEW
-	'erreur_heure_corrigee' => 'L\'heure a été corrigée', # NEW
+	'erreur_heure' => 'This time is incorrect',
+	'erreur_heure_corrigee' => 'The time has been corrected',
 
 	// I
 	'icone_ecrire_nouveau_message' => 'Send a new message',
@@ -39,8 +39,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_agenda_interne' => 'Internal agenda',
 	'info_message_a' => 'To',
 	'info_message_date' => 'Date',
-	'info_message_date_debut' => 'Date début', # NEW
-	'info_message_date_fin' => 'Date fin', # NEW
+	'info_message_date_debut' => 'Start date',
+	'info_message_date_fin' => 'End date',
 	'info_message_de' => 'From',
 	'info_message_non_lu' => 'New message',
 	'info_message_objet' => 'Object',
