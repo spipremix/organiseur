@@ -23,8 +23,8 @@
 <div dir='#LANG_DIR' class='destinataires'>
 	<BOUCLE_d(POUR){tableau #DESTINATAIRES|explode{','}}{', '}><BOUCLE_a(AUTEURS){id_auteur=#VALEUR}{tout}><a href="[(#ID_AUTEUR|generer_url_entite{auteur})]">#NOM</a></BOUCLE_a>#VALEUR<//B_a></BOUCLE_d>
 </div>
-</B_d>
 </div>
+</B_d>
 <div class="champ contenu_texte[ (#TEXTE*|strlen|?{'',vide})]">
 <div class='label'><:info_texte:></div>
 <div dir='#LANG_DIR' class='#EDIT{texte} texte'>[(#TEXTE|image_reduire{500,0})]</div>
@@ -34,4 +34,5 @@
 <div class='label'><:info_notes:></div>
 <div dir='#LANG_DIR' class='#EDIT{notes} notes'>(#NOTES)</div>
 </div>]
+</div>
 </BOUCLE_afficher_contenu>
