@@ -2,7 +2,7 @@
 	prefix="organiseur"
 	categorie="date"
 	version="0.8.3"
-	etat="test"
+	etat="stable"
 	compatibilite="[3.0.0-alpha2;["
 	logo="prive/themes/spip/images/calendrier-32.png"
 	schema="1.1.1"
