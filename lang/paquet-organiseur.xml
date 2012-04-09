@@ -5,6 +5,9 @@
 	<langue code="en" url="http://trad.spip.org/tradlang_module/paquet-organiseur?lang_cible=en">
 		<traducteur nom="kent1" lien="http://trad.spip.org/auteur/kent1" />
 	</langue>
+	<langue code="es" url="http://trad.spip.org/tradlang_module/paquet-organiseur?lang_cible=es">
+		<traducteur nom="jotacese" lien="http://trad.spip.org/auteur/jotacese" />
+	</langue>
 	<langue code="fa" url="http://trad.spip.org/tradlang_module/paquet-organiseur?lang_cible=fa">
 		<traducteur nom="Davood Hossein" lien="http://trad.spip.org/auteur/davood-hossein" />
 	</langue>
