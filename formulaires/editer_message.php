@@ -17,7 +17,11 @@ include_spip('inc/editer');
 
 function formulaires_editer_message_charger_dist($id_message='new',$type='message',$retour='',$accepter_email='oui',$destinataires='',$titre='',$texte=''){
 
-	if (!autoriser('envoyermessage',$type))
+	if (
+		(!intval($id_message) AND !autoriser('envoyermessage',$type))
+		OR
+		(intval($id_message) AND !autoriser('modifier','message',$id_message))
+	)
 		return false;
 
 	$valeurs = formulaires_editer_objet_charger('message',$id_message,0,0,$retour,'');
