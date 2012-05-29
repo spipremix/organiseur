@@ -1,7 +1,7 @@
 <paquet
 	prefix="organiseur"
 	categorie="date"
-	version="0.8.5"
+	version="0.8.6"
 	etat="stable"
 	compatibilite="[3.0.0;3.1.*]"
 	logo="prive/themes/spip/images/calendrier-32.png"
@@ -29,6 +29,7 @@
 	<pipeline nom="post_edition" inclure="organiseur_pipelines.php" />
 	<pipeline nom="alertes_auteur" inclure="organiseur_pipelines.php" />
 	<pipeline nom="quete_calendrier_prive" action="" />
+	<pipeline nom="messagerie_statuts_destinataires_possibles" action="" />
 	<pipeline nom="ieconfig_metas" inclure="organiseur_ieconfig.php" />
 
 	<menu nom="calendrier" titre="organiseur:info_agenda_interne" parent="outils_collaboratifs" icone="images/calendrier-16.png" />
