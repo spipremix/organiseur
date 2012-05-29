@@ -16,7 +16,7 @@ include_spip('inc/editer');
 
 
 function formulaires_editer_message_charger_dist($id_message='new',$type='message',$retour='',$accepter_email='oui',$destinataires='',$titre='',$texte=''){
-
+	include_spip('inc/autoriser');
 	if (
 		(!intval($id_message) AND !autoriser('envoyermessage',$type))
 		OR

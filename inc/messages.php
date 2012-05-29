@@ -26,7 +26,7 @@ if (!defined('_EMAIL_GENERAL'))
  */
 function messagerie_statuts_destinataires_possibles(){
 	include_spip('inc/filtres_ecrire');
-	return auteurs_lister_statuts('redacteurs',false);
+	return pipeline('messagerie_statuts_destinataires_possibles', auteurs_lister_statuts('redacteurs',false));
 }
 
 /**
