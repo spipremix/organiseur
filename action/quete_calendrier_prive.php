@@ -90,11 +90,11 @@ function action_quete_calendrier_prive_dist(){
 
 	// permettre aux plugins d'afficher leurs evenements dans ce calendrier
 	$evt = pipeline('quete_calendrier_prive',
-	                array(
-		                'args' => array('start' => $start, 'end' => $end, 'quoi'=>$quoi),
-		                'data' => $evt,
-	                )
-	       );
+		array(
+			'args' => array('start' => $start, 'end' => $end, 'quoi'=>$quoi),
+			'data' => $evt,
+		)
+	);
 
 	// format json
 	include_spip('inc/json');
