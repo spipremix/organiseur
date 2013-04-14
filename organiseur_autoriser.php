@@ -44,6 +44,9 @@ function autoriser_message_modifier_dist($faire, $type='', $id=0, $qui = NULL, $
 }
 
 function autoriser_message_instituer_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+	// rediriger vers la bonne autorisation en cas de suppression
+	if ($opt['statut'] == 'poub')
+		return autoriser('supprimer','message',$id,$qui,$opt);
 	return autoriser('modifier','message',$id,$qui,$opt);
 }
 
