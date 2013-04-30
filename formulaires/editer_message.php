@@ -72,7 +72,8 @@ function formulaires_editer_message_verifier_dist($id_message='new',$type='messa
 	if ($d)
 		set_request('destinataires',$d);
 	include_spip('inc/messages');
-	if (!$erreurs['destinataires']
+	if (
+	  (!isset($erreurs['destinataires']) OR !$erreurs['destinataires'])
 	  AND isset($oblis['destinataires'])
 	  AND $e = messagerie_verifier_destinataires(_request('destinataires'),array('accepter_email'=>($accepter_email=='oui'))))
 		$erreurs['destinataires'] = implode(', ',$e);
@@ -135,10 +136,11 @@ function formulaires_editer_message_traiter_dist($id_message='new',$type='messag
 	// la diffusion du message se fait par pipeline post_edition sur instituer
 	// et notification
 	$res = formulaires_editer_objet_traiter('message',$id_message,0,0,$retour,'');
+
 	if ($id_message = $res['id_message']
 	  AND !_request('draft')){
 		include_spip('action/editer_objet');
-		objet_modifier('message',$id_message,array('statut'=>'publie'));
+		objet_modifier('message',$id_message,array('statut'=>'publie', 'date_heure' => _request('date_heure')));
 		// apres en message envoyes, retourner sur la boite d'envoi plutot que sur le message
 		if ($res['redirect']==generer_url_ecrire('message','id_message='.$id_message))
 			$res['redirect'] = generer_url_ecrire('messages','quoi=envoi');
