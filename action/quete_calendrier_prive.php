@@ -10,12 +10,25 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Gestion de l'action de quête des événements du calendrier
+ *
+ * @package SPIP\Organiseur\Action
+**/
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /**
  * Fournir une liste d'"evenements" entre deux dates start et end
  * au format json
- * utilise pour l'affichage du calendrier prive et public
+ * 
+ * Utilisé pour l'affichage du calendrier privé et public
+ *
+ * @pipeline_appel quete_calendrier_prive
+ * @use quete_calendrier_interval_rv()
+ * @use quete_calendrier_interval()
+ * @use convert_fullcalendar_quete_calendrier_interval_rv()
+ * @use convert_fullcalendar_quete_calendrier_interval()
  * 
  * @return void
  */
@@ -64,8 +77,9 @@ function action_quete_calendrier_prive_dist(){
 }
 
 /**
- * Convertir une date au format ical renvoyee par quete_calendrier_interval
+ * Convertir une date au format ical renvoyée par quete_calendrier_interval
  * dans le format attendu par fullcalendar : yyyy-mm-dd H:i:s
+ * 
  * @param $dateical
  * @return string
  */
@@ -119,6 +133,8 @@ function convert_fullcalendar_quete_calendrier_interval($messages, $evt = array(
  * Convertir une sortie événement de quete calendrier_interval_rv
  * dans le format attendu par fullcalendar
  *
+ * @use convert_dateical()
+ * 
  * @param array $messages
  *     Les événements / messages au format issu de la quete calendrier_interval_rv
  * @param array $evt

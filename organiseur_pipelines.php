@@ -10,18 +10,26 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Utilisations de pipelines 
+ *
+ * @package SPIP\Organiseur\Pipelines
+**/
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 
 /**
- * Lister les tables a ne pas inclure dans un export de BDD
- * ici se ramener a tester l'admin restreint est un abus
- * car cela presume qu'un admin restreint ne peut pas faire de sauvegarde
- * complete, alors que l'intention est d'exclure les messages
- * des sauvegardes partielles que peuvent realiser les admin restreint
+ * Lister les tables à ne pas inclure dans un export de BDD
+ * 
+ * Ici se ramener à tester l'admin restreint est un abus
+ * car cela présume qu'un admin restreint ne peut pas faire de sauvegarde
+ * complète, alors que l'intention est d'exclure les messages
+ * des sauvegardes partielles que peuvent réaliser les admin restreint
  *
- * *a revoir*
- *
+ * @todo *a revoir*
+ * @pipeline lister_tables_noexport
+ * 
  * @param array $EXPORT_tables_noexport
  * @return array
  */
@@ -36,6 +44,8 @@ function organiseur_lister_tables_noexport($EXPORT_tables_noexport){
 /**
  * Optimiser les liens morts dans la base de donnees
  *
+ * @pipeline optimiser_base_disparus
+ * 
  * @param array $flux
  * @return array
  */
@@ -60,6 +70,8 @@ function organiseur_optimiser_base_disparus($flux){
  * Generer les alertes message recu a destination de l'auteur
  * concerne par l'appel
  *
+ * @pipeline alertes_auteur
+ * 
  * @param array $flux
  * @return array
  */
@@ -84,6 +96,8 @@ function organiseur_alertes_auteur($flux) {
  * Afficher les interventions et objets en lien
  * avec un auteur (sur sa page)
  *
+ * @pipeline affiche_auteurs_interventions
+ * 
  * @param array $flux
  * @return array
  */
@@ -103,9 +117,13 @@ function organiseur_affiche_auteurs_interventions($flux){
 }
 
 /**
- * Declarer les metas de configuration de l'agenda/messagerie
+ * Déclarer les metas de configuration de l'agenda/messagerie
+ * 
+ * @pipeline configurer_liste_metas
  * @param array $metas
+ *     Couples nom de la méta => valeur par défaut
  * @return array
+ *    Couples nom de la méta => valeur par défaut
  */
 function organiseur_configurer_liste_metas($metas){
 	$metas['messagerie_agenda'] = 'oui';
@@ -113,7 +131,9 @@ function organiseur_configurer_liste_metas($metas){
 }
 
 /**
- * Inserer la css de l'agenda dans l'espace prive (hum)
+ * Insérer la css de l'agenda dans l'espace privé (hum)
+ *
+ * @pipeline header_prive
  * @param string $head
  * @return string
  */
@@ -129,6 +149,7 @@ function organiseur_header_prive($head){
 /**
  * Afficher agenda, messages et annonces sur la page d'accueil
  *
+ * @pipeline affiche_droite
  * @param array $flux
  * @return array
  */
@@ -146,8 +167,9 @@ function organiseur_affiche_droite($flux){
 }
 
 /**
- * Afficher le formulaire de configuration sur la page concernee
+ * Afficher le formulaire de configuration sur la page concernée
  *
+ * @pipeline affiche_milieu
  * @param array $flux
  * @return array
  */
@@ -165,6 +187,7 @@ function organiseur_affiche_milieu($flux){
 /**
  * Diffuser un message qui passe en publie (== a envoyer)
  *
+ * @pipeline post_edition
  * @param array $flux
  * @return array
  */

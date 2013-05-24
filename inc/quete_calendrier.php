@@ -10,10 +10,34 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Fonctions de quêtes pour les calendriers : obtient les listes
+ * des éléments à afficher dans des périodes données
+ *
+ * @package SPIP\Organiseur\Fonctions
+**/
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 include_spip('inc/filtres');
-// http://doc.spip.org/@calendrier_categories
+
+
+/**
+ * Retourne un nom de classe CSS représentant la catégorie de l'événement
+ * dans le calendrier
+ *
+ * S'appuie soit sur une fonction PHP `generer_calendrier_class()` si elle
+ * existe, soit à défaut sur le numéro de rubrique.
+ * 
+ * @param string $table
+ *     Nom de la table SQL d'où provient l'événement
+ * @param int $num
+ *     Identifiant dans la table 
+ * @param string $objet
+ *     Nom de la clé primaire
+ * @return string
+ *     Nom de classe CSS
+**/
 function calendrier_categories($table, $num, $objet)
 {
   if (function_exists('generer_calendrier_class'))
@@ -26,9 +50,15 @@ function calendrier_categories($table, $num, $objet)
   }
 }
 
-// ici on prend en fait le jour, la veille et le lendemain
-
-// http://doc.spip.org/@quete_calendrier_jour
+/**
+ * Pour une date donnée, retourne une période allant de la veille au lendemain
+ *
+ * @param int $annee 
+ * @param int $mois 
+ * @param int $jour 
+ * @return array
+ *     Liste (date de la veille à 0h, date du lendemain à 23h59:59)
+**/
 function quete_calendrier_jour($annee,$mois,$jour) {
 	$avant = "'" . date("Y-m-d", mktime(0,0,0,$mois,$jour-1,$annee)) . "'";
 	$apres = "'" . date("Y-m-d", mktime(1,1,1,$mois,$jour+1,$annee)) .
@@ -36,11 +66,26 @@ function quete_calendrier_jour($annee,$mois,$jour) {
 	return array($avant, $apres);
 }
 
-// retourne un tableau de 2 tableaux indexes par des dates
-// - le premier indique les evenements du jour, sans indication de duree
-// - le deuxime indique les evenements commencant ce jour, avec indication de duree
 
-// http://doc.spip.org/@quete_calendrier_interval
+/**
+ * Retourne les publications et les messages pour une période donnée
+ * 
+ * Retourne un tableau de 2 tableaux indéxés par des dates :
+ * - le premier indique les événements du jour, sans indication de durée
+ *   (par exemple les publications d'articles)
+ * - le deuxième indique les événements commençant ce jour, avec indication de durée
+ *   (par exemple les rendez-vous)
+ *
+ * @use quete_calendrier_interval_articles()
+ * @use quete_calendrier_interval_breves()
+ * @use quete_calendrier_interval_rubriques()
+ * @use quete_calendrier_interval_rv()
+ * 
+ * @param array $limites
+ *     Liste (date de début, date de fin)
+ * @return array
+ *     Liste (événements sans durée, événements avec durée)
+**/
 function quete_calendrier_interval($limites) {
 	include_spip('inc/urls');
 	list($avant, $apres) = $limites;
@@ -51,7 +96,22 @@ function quete_calendrier_interval($limites) {
 	return array($evt, quete_calendrier_interval_rv($avant, $apres));
 }
 
-// http://doc.spip.org/@quete_calendrier_interval_forums
+# 4 fonctions retournant les evenements d'une periode
+# le tableau retourne est indexe par les balises du format ics
+# afin qu'il soit facile de produire de tels documents.
+# L'URL de chacun de ces evenements est celle de l'espace prive
+# pour faciliter la navigation, ce qu'on obtient utilisant
+# le 4e argument des fonctions generer_url_ecrire_$table
+
+/**
+ * Retourne la liste des messages de forum (format ICS) écrits dans une période donnée
+ *
+ * @param array $limites
+ *     Liste (date de début, date de fin)
+ * @param array $evenements
+ *     Tableau des événements déjà présents qui sera complété par la fonction.
+ *     Format : `$evenements[$amj][] = Tableau de description ICS`
+**/
 function  quete_calendrier_interval_forums($limites, &$evenements) {
 	list($avant, $apres) = $limites;
 	$result=sql_select("DISTINCT titre, date_heure, id_forum",	"spip_forum", "date_heure >= $avant AND date_heure < $apres", '',  "date_heure");
@@ -68,14 +128,17 @@ function  quete_calendrier_interval_forums($limites, &$evenements) {
 	}
 }
 
-# 3 fonctions retournant les evenements d'une periode
-# le tableau retourne est indexe par les balises du format ics
-# afin qu'il soit facile de produire de tels documents.
-# L'URL de chacun de ces evenements est celle de l'espace prive
-# pour faciliter la navigation, ce qu'on obtient utilisant
-# le 4e argument des fonctions generer_url_ecrire_$table
-
-// http://doc.spip.org/@quete_calendrier_interval_articles
+/**
+ * Retourne la liste des articles (format ICS) publiés dans une période donnée
+ *
+ * @param string $avant
+ *     Date de début
+ * @param string $apres
+ *     Date de fin
+ * @param array $evenements
+ *     Tableau des événements déjà présents qui sera complété par la fonction.
+ *     Format : `$evenements[$amj][] = Tableau de description ICS`
+**/
 function quete_calendrier_interval_articles($avant, $apres, &$evenements) {
 
   $result=sql_select('id_article, titre, date, descriptif, chapo,  lang', 'spip_articles', "statut='publie' AND date >= $avant AND date < $apres", '', "date");
@@ -100,7 +163,17 @@ function quete_calendrier_interval_articles($avant, $apres, &$evenements) {
 	}
 }
 
-// http://doc.spip.org/@quete_calendrier_interval_rubriques
+/**
+ * Retourne la liste des rubriques (format ICS) publiées dans une période donnée
+ *
+ * @param string $avant
+ *     Date de début
+ * @param string $apres
+ *     Date de fin
+ * @param array $evenements
+ *     Tableau des événements déjà présents qui sera complété par la fonction.
+ *     Format : `$evenements[$amj][] = Tableau de description ICS`
+**/
 function quete_calendrier_interval_rubriques($avant, $apres, &$evenements) {
 
   $result=sql_select('DISTINCT R.id_rubrique, titre, descriptif, date', 'spip_rubriques AS R, spip_documents_liens AS L', "statut='publie' AND	date >= $avant AND	date < $apres AND	R.id_rubrique = L.id_objet AND L.objet='rubrique'",'', "date");
@@ -117,7 +190,17 @@ function quete_calendrier_interval_rubriques($avant, $apres, &$evenements) {
 	}
 }
 
-// http://doc.spip.org/@quete_calendrier_interval_breves
+/**
+ * Retourne la liste des brèves (format ICS) publiées dans une période donnée
+ *
+ * @param string $avant
+ *     Date de début
+ * @param string $apres
+ *     Date de fin
+ * @param array $evenements
+ *     Tableau des événements déjà présents qui sera complété par la fonction.
+ *     Format : `$evenements[$amj][] = Tableau de description ICS`
+**/
 function quete_calendrier_interval_breves($avant, $apres, &$evenements) {
   $result=sql_select("id_breve, titre, date_heure, id_rubrique", 'spip_breves',	"statut='publie' AND date_heure >= $avant AND date_heure < $apres", '', "date_heure");
 	while($row=sql_fetch($result)){
@@ -133,7 +216,17 @@ function quete_calendrier_interval_breves($avant, $apres, &$evenements) {
 	}
 }
 
-// http://doc.spip.org/@quete_calendrier_interval_rv
+/**
+ * Retourne la liste des messages (format ICS) de l'auteur connecté,
+ * pour une période donnée
+ *
+ * @param string $avant
+ *     Date de début
+ * @param string $apres
+ *     Date de fin
+ * @return array
+ *     De la forme : `$evt[date][id_message] = Tableau des données ICS`
+**/
 function quete_calendrier_interval_rv($avant, $apres) {
 	include_spip('inc/session');
 	$connect_id_auteur = session_get('id_auteur');
@@ -201,7 +294,13 @@ function quete_calendrier_interval_rv($avant, $apres) {
   return $evenements;
 }
 
-// http://doc.spip.org/@quete_calendrier_agenda
+/**
+ * Retourne la liste des rendez-vous de l'auteur connecté pour le mois indiqué
+ *
+ * @param int $annee
+ * @param int $mois
+ * @return array
+**/
 function quete_calendrier_agenda ($annee, $mois) {
 	include_spip('inc/session');
 	$connect_id_auteur = session_get('id_auteur');
