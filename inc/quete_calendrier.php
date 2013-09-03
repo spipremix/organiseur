@@ -76,10 +76,10 @@ function quete_calendrier_jour($annee,$mois,$jour) {
  * - le deuxième indique les événements commençant ce jour, avec indication de durée
  *   (par exemple les rendez-vous)
  *
- * @use quete_calendrier_interval_articles()
- * @use quete_calendrier_interval_breves()
- * @use quete_calendrier_interval_rubriques()
- * @use quete_calendrier_interval_rv()
+ * @uses quete_calendrier_interval_articles()
+ * @uses quete_calendrier_interval_breves()
+ * @uses quete_calendrier_interval_rubriques()
+ * @uses quete_calendrier_interval_rv()
  * 
  * @param array $limites
  *     Liste (date de début, date de fin)
