@@ -25,10 +25,10 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * Utilisé pour l'affichage du calendrier privé et public
  *
  * @pipeline_appel quete_calendrier_prive
- * @use quete_calendrier_interval_rv()
- * @use quete_calendrier_interval()
- * @use convert_fullcalendar_quete_calendrier_interval_rv()
- * @use convert_fullcalendar_quete_calendrier_interval()
+ * @uses quete_calendrier_interval_rv()
+ * @uses quete_calendrier_interval()
+ * @uses convert_fullcalendar_quete_calendrier_interval_rv()
+ * @uses convert_fullcalendar_quete_calendrier_interval()
  * 
  * @return void
  */
