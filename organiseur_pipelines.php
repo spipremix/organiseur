@@ -193,8 +193,9 @@ function organiseur_affiche_milieu($flux){
  */
 function organiseur_post_edition($flux){
 
-	if ($flux['args']['table']=='spip_messages'
-	  AND $flux['args']['action']=='instituer'
+	if (isset($flux['args']['table'])
+		AND $flux['args']['table']=='spip_messages'
+		AND $flux['args']['action']=='instituer'
 		AND $flux['data']['statut']=='publie'
 		AND $flux['args']['statut_ancien']!='publie'
 	){
