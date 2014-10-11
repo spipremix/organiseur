@@ -76,9 +76,13 @@
 	if (typeof formulaire_editer_message_init=="undefined"){
 		var formulaire_editer_message_init=''; // eviter double dl si plusieurs forms dans la page
 		var url_trouver_destinataire = '[(#URL_ACTION_AUTEUR{quete_autocomplete,#SESSION{id_auteur}}|replace{&amp;,&})]';
-		jQuery.getScript('#CHEMIN{javascript/jquery.autocomplete.js}',function(){
-			jQuery.getScript('#CHEMIN{formulaires/editer_message.js}');
-		});
+		jQuery.getScript('#CHEMIN{prive/javascript/ui/widget.js}',function(){
+		jQuery.getScript('#CHEMIN{prive/javascript/ui/position.js}',function(){
+		jQuery.getScript('#CHEMIN{prive/javascript/ui/menu.js}',function(){
+			jQuery.getScript('#CHEMIN{prive/javascript/ui/autocomplete.js}',function(){
+				jQuery.getScript('#CHEMIN{formulaires/editer_message.js}');
+			});
+		});});});
 	}
 </script>
 ]
