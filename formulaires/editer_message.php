@@ -142,8 +142,9 @@ function formulaires_editer_message_traiter_dist($id_message='new',$type='messag
 		include_spip('action/editer_objet');
 		objet_modifier('message',$id_message,array('statut'=>'publie', 'date_heure' => _request('date_heure')));
 		// apres en message envoyes, retourner sur la boite d'envoi plutot que sur le message
-		if ($res['redirect']==generer_url_ecrire('message','id_message='.$id_message))
+		if (isset($res['redirect']) and ($res['redirect'] == generer_url_ecrire('message','id_message='.$id_message))) {
 			$res['redirect'] = generer_url_ecrire('messages','quoi=envoi');
+		}
 	}
 
 	set_request('destinataires',explode(',',_request('destinataires')));
