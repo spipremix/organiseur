@@ -18,9 +18,10 @@ function action_quete_autocomplete_dist(){
 	if ($arg
 	  AND $arg==$GLOBALS['visiteur_session']['id_auteur']){
 		include_spip('inc/actions');
+		include_spip('inc/json');
 		echo ajax_retour(
-			recuperer_fond('prive/squelettes/inclure/organiseur-autocomplete-auteur',array('q'=>_request('q'))),
-			'text/plain'
+			recuperer_fond('prive/squelettes/inclure/organiseur-autocomplete-auteur',array('term'=>_request('term'))),
+			'application/json'
 		);
 	}
 }
