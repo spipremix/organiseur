@@ -32,6 +32,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'icone_ecrire_nouvelle_annonce' => 'كتابة إعلان جديد',
 	'icone_effacer_message' => 'حذف هذه الرسالة',
 	'icone_modifier_annonce' => 'تعديل هذا الإعلان',
+	'icone_modifier_message' => 'تعديل هذه الرسالة',
 	'icone_modifier_pensebete' => 'تعديل هذه المذكرة',
 	'icone_supprimer_message' => 'إزالة هذه الرسالة',
 	'info_1_message_envoye' => 'رسالة واحدة بعثت',
