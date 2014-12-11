@@ -62,6 +62,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'loading' => 'Carregando…',
 
 	// M
+	'message' => 'Mensagem',
 	'messages' => 'Mensagens',
 
 	// N
