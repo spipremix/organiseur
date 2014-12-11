@@ -32,6 +32,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'icone_ecrire_nouvelle_annonce' => 'Een nieuwe aankondiging aanmaken',
 	'icone_effacer_message' => 'Deze boodschap uitwissen',
 	'icone_modifier_annonce' => 'Deze aankondiging veranderen',
+	'icone_modifier_message' => 'Dit bericht aanpassen',
 	'icone_modifier_pensebete' => 'De herinneringsnota veranderen',
 	'icone_supprimer_message' => 'Deze boodschap uitwissen',
 	'info_1_message_envoye' => '1 boodschap opgestuurd',
