@@ -2,8 +2,9 @@
 	<langue code="ar" url="http://trad.spip.net/tradlang_module/organiseur?lang_cible=ar" total="55" traduits="55" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="http://trad.spip.net/auteur/جورج-قندلفت" />
 	</langue>
-	<langue code="de" url="http://trad.spip.net/tradlang_module/organiseur?lang_cible=de" total="55" traduits="54" relire="0" modifs="0" nouveaux="1" pourcent="98.18">
+	<langue code="de" url="http://trad.spip.net/tradlang_module/organiseur?lang_cible=de" total="55" traduits="55" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="klaus++" lien="http://trad.spip.net/auteur/klaus" />
+		<traducteur nom="Torsten Willmann" lien="http://trad.spip.net/auteur/torsten-willmann" />
 	</langue>
 	<langue code="en" url="http://trad.spip.net/tradlang_module/organiseur?lang_cible=en" total="55" traduits="55" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="http://trad.spip.net/auteur/جورج-قندلفت" />

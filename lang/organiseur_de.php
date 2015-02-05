@@ -32,6 +32,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'icone_ecrire_nouvelle_annonce' => 'Neue Ankündigung veröffentlichen',
 	'icone_effacer_message' => 'Nachricht löschen',
 	'icone_modifier_annonce' => 'Ankündigung bearbeiten',
+	'icone_modifier_message' => 'Diese Nachricht bearbeiten',
 	'icone_modifier_pensebete' => 'Notiz ändern',
 	'icone_supprimer_message' => 'Nachricht löschen',
 	'info_1_message_envoye' => '1 Nachricht gesendet',
