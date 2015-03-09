@@ -27,10 +27,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// I
 	'icone_ecrire_nouveau_message' => 'Mandà un message nouvèu',
+	'icone_ecrire_nouveau_pensebete' => 'Escriéure una nota de renembrança nouvela',
 	'icone_ecrire_nouvelle_annonce' => 'Mandà un anounci nouvèu',
 	'icone_effacer_message' => 'Escassà aqueu message',
 	'icone_modifier_annonce' => 'Moudificà aqueu anounci',
 	'icone_modifier_message' => 'Moudificà aqueu message',
+	'icone_modifier_pensebete' => 'Moudificà aquela nota de renembrança',
 	'icone_supprimer_message' => 'Suprimà aqueu message',
 	'info_1_message_envoye' => '1 message mandat',
 	'info_1_message_nonlu' => '1 message nouvèu',
@@ -45,8 +47,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_nb_messages_nonlus' => '@nb@ message nouvèu',
 	'info_selection_annonces' => 'Anounci',
 	'info_selection_messages' => 'Message',
+	'info_selection_pensebetes' => 'Nota de renembrança',
 	'info_type_message_affich' => 'Anounci',
 	'info_type_message_normal' => 'Message',
+	'info_type_message_pb' => 'Nota de renembrança',
 	'info_type_message_rv' => 'Apountamen',
 
 	// L
@@ -67,6 +71,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'notification_message_recu_de' => 'Avès receuput un message nouvèu da @nom@.',
 
 	// T
+	'texte_message_brouillon' => 'Aqueu message es registrat couma un pastrouioun',
 	'titre_agenda_rv' => 'Apountamen'
 );
 
