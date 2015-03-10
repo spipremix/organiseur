@@ -22,6 +22,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_date' => 'Aquela data es mau coureta',
 	'erreur_date_avant_apres' => 'Endicàs una data finala après la data iniciala !',
 	'erreur_date_corrigee' => 'La data es estada courrejuda',
+	'erreur_destinataire_invalide' => 'Lou destinatàri @dest@ noun es vàlidou',
 	'erreur_heure' => 'Aquela oura es mau coureta',
 	'erreur_heure_corrigee' => 'L’oura es estada courrejuda',
 
@@ -36,6 +37,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'icone_supprimer_message' => 'Suprimà aqueu message',
 	'info_1_message_envoye' => '1 message mandat',
 	'info_1_message_nonlu' => '1 message nouvèu',
+	'info_agenda_interne' => 'Agènda interna',
 	'info_message_a' => 'A',
 	'info_message_date' => 'Data',
 	'info_message_date_debut' => 'Data iniciala',
@@ -72,7 +74,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// T
 	'texte_message_brouillon' => 'Aqueu message es registrat couma un pastrouioun',
-	'titre_agenda_rv' => 'Apountamen'
+	'titre_agenda_rv' => 'Apountamen',
+	'titre_boite_envoi' => 'Bouòta de spedissioun',
+	'titre_boite_reception' => 'Bouòta de recevimen'
 );
 
 ?>
