@@ -33,7 +33,7 @@
 		<traducteur nom="Hanjo" lien="http://trad.spip.net/auteur/hanjo" />
 		<traducteur nom="Suske" lien="http://trad.spip.net/auteur/suske" />
 	</langue>
-	<langue code="oc_ni_mis" url="http://trad.spip.net/tradlang_module/organiseur?lang_cible=oc_ni_mis" total="55" traduits="51" relire="0" modifs="0" nouveaux="4" pourcent="92.73">
+	<langue code="oc_ni_mis" url="http://trad.spip.net/tradlang_module/organiseur?lang_cible=oc_ni_mis" total="55" traduits="55" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="sylvain" lien="http://trad.spip.net/auteur/sylvain" />
 	</langue>
 	<langue code="pt" url="http://trad.spip.net/tradlang_module/organiseur?lang_cible=pt" total="55" traduits="54" relire="0" modifs="0" nouveaux="1" pourcent="98.18">
