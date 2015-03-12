@@ -75,7 +75,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// T
 	'texte_message_brouillon' => 'Aqueu message es registrat couma un pastrouioun',
 	'titre_agenda_rv' => 'Apountamen',
-	'titre_boite_envoi' => 'Bouòta de spedissioun',
+	'titre_boite_envoi' => 'Bouòta d’espedissioun',
 	'titre_boite_reception' => 'Bouòta de recevimen'
 );
 
