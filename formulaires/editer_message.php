@@ -44,7 +44,7 @@ function formulaires_editer_message_charger_dist($id_message='new',$type='messag
         $id_message_origine = intval(_request("id_message_origine"));
         if ( autoriser('voir','message',$id_message_origine) ){
             $v = formulaires_editer_objet_charger('message',$id_message_origine,0,0,$retour,'');
-            $valeurs['titre'] = "Re : ".$v['titre'];
+            $valeurs['titre'] = _T("organiseur:re")." : ".$v['titre'];
             $valeurs['texte'] = "<quote>".$v['texte']."</quote>";
         }
         
