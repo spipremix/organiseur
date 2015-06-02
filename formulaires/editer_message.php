@@ -41,6 +41,13 @@ function formulaires_editer_message_charger_dist($id_message='new',$type='messag
 		$valeurs["rv"] = "";
 	}
 
+        $id_message_origine = intval(_request("id_message_origine"));
+        if ( autoriser('voir','message',$id_message_origine) ){
+            $v = formulaires_editer_objet_charger('message',$id_message_origine,0,0,$retour,'');
+            $valeurs['titre'] = "Re : ".$v['titre'];
+            $valeurs['texte'] = "<quote>".$v['texte']."</quote>";
+        }
+        
 	// dispatcher date et heure
 	list($valeurs["date_debut"],$valeurs["heure_debut"]) = explode(' ',date('d/m/Y H:i',strtotime($valeurs["date_heure"])));
 	list($valeurs["date_fin"],$valeurs["heure_fin"]) = explode(' ',date('d/m/Y H:i',strtotime($valeurs["date_fin"])));
