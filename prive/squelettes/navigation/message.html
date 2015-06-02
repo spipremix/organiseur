@@ -4,7 +4,7 @@
 <BOUCLE_destinataires(MESSAGES){id_message}>
     [(#SET{destinataires, [(#GET{destinataires}|push{[(#ID_AUTEUR)]})]})]
 </BOUCLE_destinataires>
-    [(#URL_ECRIRE{message_edit,new=oui&to=[(#GET{destinataires}|implode{'%2C'})]}|parametre_url{redirect,#SELF}|icone_horizontale{<:lien_repondre_message:>,message-24.png,new})]
+    [(#URL_ECRIRE{message_edit,[id_message_origine=(#ENV{id_message})&]new=oui&to=[(#GET{destinataires}|implode{'%2C'})]}|parametre_url{redirect,#SELF}|icone_horizontale{<:lien_repondre_message:>,message-24.png,new})]
 </B_destinataires>
 
 <BOUCLE_env(MESSAGES){id_message}{id_auteur=#SESSION{id_auteur}}>
