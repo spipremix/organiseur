@@ -1,20 +1,27 @@
+[(#BOITE_OUVRIR{'','info'})]
+
+[(#SET{destinataires,#ARRAY})]
+<BOUCLE_destinataires(MESSAGES){id_message}>
+    [(#SET{destinataires, [(#GET{destinataires}|push{[(#ID_AUTEUR)]})]})]
+</BOUCLE_destinataires>
+    [(#URL_ECRIRE{message_edit,new=oui&to=[(#GET{destinataires}|implode{'%2C'})]}|parametre_url{redirect,#SELF}|icone_horizontale{<:lien_repondre_message:>,message-24.png,new})]
+</B_destinataires>
+
 <BOUCLE_env(MESSAGES){id_message}{id_auteur=#SESSION{id_auteur}}>
 [
-	#BOITE_OUVRIR{'','info'}
-	(#AUTORISER{supprimer,message,#ID_MESSAGE}|oui)
-	[(#URL_ACTION_AUTEUR{supprimer_message,#ID_MESSAGE,#URL_ECRIRE{messages}}|icone_horizontale{<:organiseur:icone_supprimer_message:>,[(#TYPE|organiseur_icone_message)],del})]
-	#BOITE_FERMER
+        (#AUTORISER{supprimer,message,#ID_MESSAGE}|oui)
+        [(#URL_ACTION_AUTEUR{supprimer_message,#ID_MESSAGE,#URL_ECRIRE{messages}}|icone_horizontale{<:organiseur:icone_supprimer_message:>,[(#TYPE|organiseur_icone_message)],del})]
 ]
 </BOUCLE_env>
-	<BOUCLE_recu(MESSAGES){id_message}{destinataire #SESSION{id_auteur}}>
-	[
-		#BOITE_OUVRIR{'','info'}
-		(#AUTORISER{effacer,messagerecu,#ID_MESSAGE}|oui)
-		[(#URL_ACTION_AUTEUR{effacer_messagerecu,[(#SESSION{id_auteur})-#ID_MESSAGE],#URL_ECRIRE{messages}}|icone_horizontale{<:organiseur:icone_effacer_message:>,[(#TYPE|organiseur_icone_message)],del})]
-		#BOITE_FERMER
-	]
-	</BOUCLE_recu>
+        <BOUCLE_recu(MESSAGES){id_message}{destinataire #SESSION{id_auteur}}>
+        [
+                (#AUTORISER{effacer,messagerecu,#ID_MESSAGE}|oui)
+                [(#URL_ACTION_AUTEUR{effacer_messagerecu,[(#SESSION{id_auteur})-#ID_MESSAGE],#URL_ECRIRE{messages}}|icone_horizontale{<:organiseur:icone_effacer_message:>,[(#TYPE|organiseur_icone_message)],del})]
+        ]
+        </BOUCLE_recu>
 <//B_env>
+
+[(#BOITE_FERMER)]
 	
 <BOUCLE_isrv(MESSAGES){id_message}{statut?}{rv=oui}>
 <div id="loading" style="position:absolute;top:20px;left:350px;padding:5px 30px;display:none;border:1px solid #ddd;background:#eee;z-index:100;"><:organiseur:loading:></div>
