@@ -20,7 +20,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// E
 	'erreur_date' => 'Дату вказано невірно',
-	'erreur_date_avant_apres' => 'Вкажіть "дату з" и "дату по" !',
+	'erreur_date_avant_apres' => 'Вкажіть початкову і кінцеву дати!',
 	'erreur_date_corrigee' => 'Дату виправлено',
 	'erreur_destinataire_invalide' => 'Неправильний отримувач -  @dest@ ',
 	'erreur_heure' => 'Час вказано невірно',
@@ -40,19 +40,19 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_agenda_interne' => 'Розклад дня',
 	'info_message_a' => 'Кому',
 	'info_message_date' => 'Дата',
-	'info_message_date_debut' => 'Дата з',
-	'info_message_date_fin' => 'Дата по',
+	'info_message_date_debut' => 'Початкова дата',
+	'info_message_date_fin' => 'Кінцева дата',
 	'info_message_de' => 'Від',
-	'info_message_non_lu' => 'Новое повідомлення',
+	'info_message_non_lu' => 'Нове повідомлення',
 	'info_message_objet' => 'Об´єкт',
 	'info_nb_messages_envoyes' => '@nb@ повідомлень відправлено',
-	'info_nb_messages_nonlus' => '@nb@ ноВих повідомлень',
+	'info_nb_messages_nonlus' => '@nb@ нових повідомлень',
 	'info_selection_annonces' => 'Оголошення',
 	'info_selection_messages' => 'Повідомлення',
 	'info_selection_pensebetes' => 'Нагадування',
 	'info_type_message_affich' => 'Оголошення',
-	'info_type_message_normal' => 'повідомлення',
-	'info_type_message_pb' => 'нагадування',
+	'info_type_message_normal' => 'Повідомлення',
+	'info_type_message_pb' => 'Нагадування',
 	'info_type_message_rv' => 'Подія',
 
 	// L
@@ -62,14 +62,14 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'loading' => 'Завантажується…',
 
 	// M
-	'message' => 'повідомлення',
+	'message' => 'Повідомлення',
 	'messages' => 'Повідомлення',
 
 	// N
 	'notification_annonce_lire_a_ladresse' => 'Ви можете прочитати його за посиланням @url@.',
 	'notification_annonce_publie_1' => '[@nom_site_spip@] Загальне оголошення',
 	'notification_message_lire_a_ladresse' => 'Ви можете прочитати повідомлення і відповісти автору за посиланням @url@.',
-	'notification_message_publie_1' => '[@nom_site_spip@] Новое повідомлення',
+	'notification_message_publie_1' => '[@nom_site_spip@] Нове повідомлення',
 	'notification_message_recu_de' => 'Ви отримали нове повідомлення від @nom@.',
 
 	// T
