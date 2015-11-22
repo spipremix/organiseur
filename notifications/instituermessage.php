@@ -21,7 +21,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param int $id_message
  * @param array $options
  */
-function notifications_instituermessage_dist($quoi, $id_message, $options=array()){
+function notifications_instituermessage_dist($quoi, $id_message, $options = array()){
 	
 	// ne devrait jamais se produire
 	if ($options['statut'] == $options['statut_ancien']) {

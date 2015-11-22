@@ -53,7 +53,7 @@ function messagerie_nettoyer_destinataires($destinataires){
  * @param array $options
  * @return array
  */
-function messagerie_verifier_destinataires($destinataires,$options=array('accepter_email'=>true)){
+function messagerie_verifier_destinataires($destinataires, $options = array('accepter_email' = >true)){
 	$erreurs = array();
 
 	$destinataires = messagerie_nettoyer_destinataires($destinataires);
@@ -109,7 +109,7 @@ function messagerie_destiner($dests){
  * @param array $auteurs_dest
  * @return bool|int
  */
-function messagerie_diffuser_message($id_message, $auteurs_dest=array()){
+function messagerie_diffuser_message($id_message, $auteurs_dest = array()){
 	$out = false;
 	if ($id_message=intval($id_message)
 	  AND count($auteurs_dest)){
@@ -126,7 +126,7 @@ function messagerie_diffuser_message($id_message, $auteurs_dest=array()){
  * @param array $emails_dest
  * @return bool
  */
-function messagerie_mailer_message($id_message, $emails_dest=array()){
+function messagerie_mailer_message($id_message, $emails_dest = array()){
 	if ($id_message=intval($id_message)
 	  AND count($emails_dest)) {
 		if ($row = sql_fetsel('titre,texte,id_auteur','spip_messages','id_message='.intval($id_message))){
@@ -152,7 +152,7 @@ function messagerie_mailer_message($id_message, $emails_dest=array()){
  * @param string $vu
  * @return void
  */
-function messagerie_marquer_message($id_auteur,$liste,$vu){
+function messagerie_marquer_message($id_auteur, $liste, $vu){
 	include_spip('action/editer_liens');
 	if (!is_array($liste))
 		$liste = array($liste);
@@ -176,7 +176,7 @@ function messagerie_marquer_message($id_auteur,$liste,$vu){
  * @param int $id_auteur
  * @param array $liste_id_message
  */
-function messagerie_marquer_lus($id_auteur,$liste_id_message){messagerie_marquer_message($id_auteur,$liste_id_message,'oui');}
+function messagerie_marquer_lus($id_auteur, $liste_id_message){messagerie_marquer_message($id_auteur, $liste_id_message, 'oui');}
 
 /**
  * Marquer un message comme non lu
@@ -184,7 +184,7 @@ function messagerie_marquer_lus($id_auteur,$liste_id_message){messagerie_marquer
  * @param int $id_auteur
  * @param array $liste_id_message
  */
-function messagerie_marquer_non_lus($id_auteur,$liste_id_message){messagerie_marquer_message($id_auteur,$liste_id_message,'non');}
+function messagerie_marquer_non_lus($id_auteur, $liste_id_message){messagerie_marquer_message($id_auteur, $liste_id_message, 'non');}
 
 /**
  * Effacer un message recu
@@ -192,6 +192,6 @@ function messagerie_marquer_non_lus($id_auteur,$liste_id_message){messagerie_mar
  * @param int $id_auteur
  * @param array $liste_id_message
  */
-function messagerie_effacer_message_recu($id_auteur,$liste_id_message){messagerie_marquer_message($id_auteur,$liste_id_message,'poub');}
+function messagerie_effacer_message_recu($id_auteur, $liste_id_message){messagerie_marquer_message($id_auteur, $liste_id_message, 'poub');}
 
 ?>

@@ -18,7 +18,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param string $nom_meta_base_version
  * @param string $version_cible
  */
-function organiseur_upgrade($nom_meta_base_version,$version_cible){
+function organiseur_upgrade($nom_meta_base_version, $version_cible){
 	// cas particulier :
 	// si plugin pas installe mais que la table existe
 	// considerer que c'est un upgrade depuis v 1.0.0

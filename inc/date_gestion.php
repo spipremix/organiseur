@@ -20,7 +20,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param array $erreurs
  * @return int
  */
-function verifier_corriger_date_saisie($suffixe,$horaire,&$erreurs){
+function verifier_corriger_date_saisie($suffixe, $horaire, &$erreurs){
 	include_spip('inc/filtres');
 	$date = _request("date_$suffixe").($horaire?' '.trim(_request("heure_$suffixe")).':00':'');
 	$date = recup_date($date);

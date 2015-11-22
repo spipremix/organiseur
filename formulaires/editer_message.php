@@ -15,7 +15,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 include_spip('inc/editer');
 
 
-function formulaires_editer_message_charger_dist($id_message='new',$type='message',$retour='',$accepter_email='oui',$destinataires='',$titre='',$texte=''){
+function formulaires_editer_message_charger_dist($id_message = 'new', $type = 'message', $retour = '', $accepter_email = 'oui', $destinataires = '', $titre = '', $texte = ''){
 	include_spip('inc/autoriser');
 	if (
 		(!intval($id_message) AND !autoriser('envoyermessage',$type))
@@ -61,7 +61,7 @@ function formulaires_editer_message_charger_dist($id_message='new',$type='messag
 }
 
 
-function formulaires_editer_message_verifier_dist($id_message='new',$type='message',$retour='',$accepter_email='oui',$destinataires='',$titre='',$texte=''){
+function formulaires_editer_message_verifier_dist($id_message = 'new', $type = 'message', $retour = '', $accepter_email = 'oui', $destinataires = '', $titre = '', $texte = ''){
 
 	$oblis = array('titre');
 	if (!_request('draft'))
@@ -99,7 +99,7 @@ function formulaires_editer_message_verifier_dist($id_message='new',$type='messa
 	return $erreurs;
 }
 
-function formulaires_editer_message_traiter_dist($id_message='new',$type='message',$retour='',$accepter_email='oui',$destinataires='',$titre='',$texte=''){
+function formulaires_editer_message_traiter_dist($id_message = 'new', $type = 'message', $retour = '', $accepter_email = 'oui', $destinataires = '', $titre = '', $texte = ''){
 	// preformater le post
 	// fixer le type de message
 	// sans modifier le type d'un message existant
