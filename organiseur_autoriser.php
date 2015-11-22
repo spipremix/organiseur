@@ -18,19 +18,19 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  */
 function organiseur_autoriser(){}
 
-function autoriser_calendrier_menu_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_calendrier_menu_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	if($GLOBALS['meta']['messagerie_agenda'] == 'oui')
 		return true;
 	return false;
 }
 
-function autoriser_messagerie_menu_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_messagerie_menu_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	if($GLOBALS['meta']['messagerie_agenda'] == 'oui')
 		return true;
 	return false;
 }
 
-function autoriser_message_modifier_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_message_modifier_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	if (!intval($qui['id_auteur']))
 		return false;
 	$row = sql_fetsel('statut,type,id_auteur','spip_messages','id_message='.intval($id));
@@ -43,14 +43,14 @@ function autoriser_message_modifier_dist($faire, $type='', $id=0, $qui = NULL, $
 	return false;
 }
 
-function autoriser_message_instituer_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_message_instituer_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	// rediriger vers la bonne autorisation en cas de suppression
 	if ($opt['statut'] == 'poub')
 		return autoriser('supprimer','message',$id,$qui,$opt);
 	return autoriser('modifier','message',$id,$qui,$opt);
 }
 
-function autoriser_message_supprimer_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_message_supprimer_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	// on peut supprimer un message que l'on peut modifier
 	if (autoriser('modifier','message',$id,$qui,$opt))
 		return true;
@@ -65,7 +65,7 @@ function autoriser_message_supprimer_dist($faire, $type='', $id=0, $qui = NULL, 
 	return false;
 }
 
-function autoriser_messagerecu_effacer_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_messagerecu_effacer_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	if (isset($opt['id_auteur']))
 		$id_auteur = $opt['id_auteur'];
 	else
@@ -77,11 +77,11 @@ function autoriser_messagerecu_effacer_dist($faire, $type='', $id=0, $qui = NULL
 	return true;
 }
 
-function autoriser_message_dater_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_message_dater_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	return false;
 }
 
-function autoriser_envoyermessage_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_envoyermessage_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	if (!($GLOBALS['meta']['messagerie_agenda'] == 'oui') OR !intval($qui['id_auteur']))
 		return false;
 	// on peut envoyer une annonce si on est admin
@@ -90,7 +90,7 @@ function autoriser_envoyermessage_dist($faire, $type='', $id=0, $qui = NULL, $op
 	return true;
 }
 
-function autoriser_message_voir_dist($faire, $type='', $id=0, $qui = NULL, $opt = NULL){
+function autoriser_message_voir_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
 	if (!intval($qui['id_auteur']))
 		return false;
 	// message annonce ou message dont $qui est l'auteur : droit de le voir

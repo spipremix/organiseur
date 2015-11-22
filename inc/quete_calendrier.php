@@ -59,7 +59,7 @@ function calendrier_categories($table, $num, $objet)
  * @return array
  *     Liste (date de la veille à 0h, date du lendemain à 23h59:59)
 **/
-function quete_calendrier_jour($annee,$mois,$jour) {
+function quete_calendrier_jour($annee, $mois, $jour) {
 	$avant = "'" . date("Y-m-d", mktime(0,0,0,$mois,$jour-1,$annee)) . "'";
 	$apres = "'" . date("Y-m-d", mktime(1,1,1,$mois,$jour+1,$annee)) .
 	" 23:59:59'";

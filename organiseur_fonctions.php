@@ -145,7 +145,7 @@ function critere_MESSAGES_rv_en_cours_dist($idb, &$boucles, $crit) {
 }
 
 
-function organiseur_icone_message($type,$taille=24){
+function organiseur_icone_message($type, $taille = 24){
 	$icone = array('pb'=>'pensebete','affich'=>'annonce');
 	$icone = isset($icone[$type])?$icone[$type]:'message';
 	return "$icone-$taille.png";
