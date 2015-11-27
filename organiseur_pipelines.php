@@ -108,7 +108,7 @@ function organiseur_affiche_auteurs_interventions($flux){
 		// Messages de l'auteur et discussions en cours
 		if ($GLOBALS['meta']['messagerie_agenda'] != 'non'
 		AND $id_auteur != $GLOBALS['visiteur_session']['id_auteur']
-		AND autoriser('ecrire', '', '', $id_auteur)
+		AND autoriser('repondre', 'message', '', $id_auteur)
 		) {
 		  $flux['data'] .= recuperer_fond('prive/squelettes/inclure/organiseur-interventions',array('id_auteur'=>$id_auteur));
 		}
