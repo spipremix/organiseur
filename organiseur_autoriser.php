@@ -103,3 +103,6 @@ function autoriser_message_voir_dist($faire, $type = '', $id = 0, $qui = NULL, $
 	return false;
 }
 
+function autoriser_message_repondre_dist($faire, $type = '', $id = 0, $qui = NULL, $opt = NULL){
+    return autoriser('ecrire', '', '', $qui['id_auteur']);
+}
