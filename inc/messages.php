@@ -53,7 +53,7 @@ function messagerie_nettoyer_destinataires($destinataires){
  * @param array $options
  * @return array
  */
-function messagerie_verifier_destinataires($destinataires, $options = array('accepter_email' = >true)){
+function messagerie_verifier_destinataires($destinataires, $options = array('accepter_email' =>true)){
 	$erreurs = array();
 
 	$destinataires = messagerie_nettoyer_destinataires($destinataires);
