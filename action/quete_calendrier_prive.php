@@ -54,13 +54,13 @@ function action_quete_calendrier_prive_dist() {
 	// on fonction de quoi on récupère : tout (rv + publication) ou l'un ou l'autre.
 	$entier = $duree = array();
 
-	if (!$quoi OR $quoi == 'rv') {
+	if (!$quoi or $quoi == 'rv') {
 		$duree = quete_calendrier_interval_rv(reset($limites), end($limites));
 		$evt = convert_fullcalendar_quete_calendrier_interval_rv($duree, $evt);
 	}
 
-	if (!$quoi OR $quoi == 'publication') {
-		list($entier,) = quete_calendrier_interval($limites);
+	if (!$quoi or $quoi == 'publication') {
+		list($entier, ) = quete_calendrier_interval($limites);
 		$evt = convert_fullcalendar_quete_calendrier_interval($entier, $evt);
 	}
 

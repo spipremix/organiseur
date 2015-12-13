@@ -43,11 +43,11 @@ function autoriser_message_modifier_dist($faire, $type = '', $id = 0, $qui = nul
 	}
 	$row = sql_fetsel('statut,type,id_auteur', 'spip_messages', 'id_message=' . intval($id));
 	// on peut modifier ses penses betes ou ses messages brouillons
-	if ($row['id_auteur'] == $qui['id_auteur'] AND ($row['statut'] == 'prepa' OR $row['type'] == 'pb')) {
+	if ($row['id_auteur'] == $qui['id_auteur'] and ($row['statut'] == 'prepa' or $row['type'] == 'pb')) {
 		return true;
 	}
 	// on peut modifier les annonces si on est admin
-	if ($qui['statut'] == '0minirezo' AND $row['type'] == 'affich') {
+	if ($qui['statut'] == '0minirezo' and $row['type'] == 'affich') {
 		return true;
 	}
 
@@ -72,9 +72,9 @@ function autoriser_message_supprimer_dist($faire, $type = '', $id = 0, $qui = nu
 	// si tous ses dest l'on supprime aussi
 	if (
 		$qui['id_auteur']
-		AND sql_countsel('spip_messages',
+		and sql_countsel('spip_messages',
 			"statut='publie' AND id_auteur=" . intval($qui['id_auteur']) . " AND id_message=" . intval($id))
-		AND !sql_countsel('spip_auteurs_liens',
+		and !sql_countsel('spip_auteurs_liens',
 			"objet='message' AND id_objet=" . intval($id) . " AND vu!='poub' AND id_auteur!=" . intval($qui['id_auteur']))
 	) {
 		return true;
@@ -90,7 +90,7 @@ function autoriser_messagerecu_effacer_dist($faire, $type = '', $id = 0, $qui = 
 		$id_auteur = $qui['id_auteur'];
 	}
 	// seul le destinataire peut supprimer un message qui lui est destine
-	if (!intval($id_auteur) OR intval($id_auteur) != intval($qui['id_auteur'])) {
+	if (!intval($id_auteur) or intval($id_auteur) != intval($qui['id_auteur'])) {
 		return false;
 	}
 
@@ -103,11 +103,11 @@ function autoriser_message_dater_dist($faire, $type = '', $id = 0, $qui = null, 
 }
 
 function autoriser_envoyermessage_dist($faire, $type = '', $id = 0, $qui = null, $opt = null) {
-	if (!($GLOBALS['meta']['messagerie_agenda'] == 'oui') OR !intval($qui['id_auteur'])) {
+	if (!($GLOBALS['meta']['messagerie_agenda'] == 'oui') or !intval($qui['id_auteur'])) {
 		return false;
 	}
 	// on peut envoyer une annonce si on est admin
-	if (!($qui['statut'] == '0minirezo') AND $type == 'affich') {
+	if (!($qui['statut'] == '0minirezo') and $type == 'affich') {
 		return false;
 	}
 

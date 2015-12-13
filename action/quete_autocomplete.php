@@ -18,7 +18,7 @@ function action_quete_autocomplete_dist() {
 	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$arg = $securiser_action();
 	if ($arg
-		AND $arg == $GLOBALS['visiteur_session']['id_auteur']
+		and $arg == $GLOBALS['visiteur_session']['id_auteur']
 	) {
 		include_spip('inc/actions');
 		include_spip('inc/json');

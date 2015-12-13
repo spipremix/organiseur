@@ -90,5 +90,3 @@ function organiseur_declarer_tables_interfaces($interfaces) {
 
 	return $interfaces;
 }
-
-?>

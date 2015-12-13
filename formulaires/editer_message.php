@@ -28,9 +28,9 @@ function formulaires_editer_message_charger_dist(
 ) {
 	include_spip('inc/autoriser');
 	if (
-		(!intval($id_message) AND !autoriser('envoyermessage', $type))
-		OR
-		(intval($id_message) AND !autoriser('modifier', 'message', $id_message))
+		(!intval($id_message) and !autoriser('envoyermessage', $type))
+		or
+		(intval($id_message) and !autoriser('modifier', 'message', $id_message))
 	) {
 		return false;
 	}
@@ -49,7 +49,7 @@ function formulaires_editer_message_charger_dist(
 		$valeurs['texte'] = $texte;
 		$t = time();
 		$valeurs["date_heure"] = date('Y-m-d H:i:00', $t);
-		$valeurs["date_fin"] = date('Y-m-d H:i:00', $t+3600);
+		$valeurs["date_fin"] = date('Y-m-d H:i:00', $t + 3600);
 		$valeurs["rv"] = "";
 	}
 
@@ -89,12 +89,12 @@ function formulaires_editer_message_verifier_dist(
 	if (!_request('draft')) {
 		$oblis[] = 'texte';
 	}
-	if (intval($id_message) AND $t = sql_getfetsel('type', 'spip_messages', 'id_message=' . intval($id_message))) {
+	if (intval($id_message) and $t = sql_getfetsel('type', 'spip_messages', 'id_message=' . intval($id_message))) {
 		$type = $t;
 	}
 	if (!in_array($type, array('pb', 'affich'))
 		// pas de destinataire obligatoire pour un brouillon
-		AND !_request('draft')
+		and !_request('draft')
 	) {
 		$oblis['destinataires'] = 'destinataires';
 	}
@@ -108,9 +108,9 @@ function formulaires_editer_message_verifier_dist(
 	}
 	include_spip('inc/messages');
 	if (
-		(!isset($erreurs['destinataires']) OR !$erreurs['destinataires'])
-		AND isset($oblis['destinataires'])
-		AND $e = messagerie_verifier_destinataires(_request('destinataires'),
+		(!isset($erreurs['destinataires']) or !$erreurs['destinataires'])
+		and isset($oblis['destinataires'])
+		and $e = messagerie_verifier_destinataires(_request('destinataires'),
 			array('accepter_email' => ($accepter_email == 'oui')))
 	) {
 		$erreurs['destinataires'] = implode(', ', $e);
@@ -121,7 +121,7 @@ function formulaires_editer_message_verifier_dist(
 		$date_debut = verifier_corriger_date_saisie('debut', true, $erreurs);
 		$date_fin = verifier_corriger_date_saisie('fin', true, $erreurs);
 
-		if ($date_debut AND $date_fin AND $date_fin < $date_debut) {
+		if ($date_debut and $date_fin and $date_fin < $date_debut) {
 			$erreurs['date_fin'] = _T('organiseur:erreur_date_avant_apres');
 		}
 	} else {
@@ -143,7 +143,7 @@ function formulaires_editer_message_traiter_dist(
 	// preformater le post
 	// fixer le type de message
 	// sans modifier le type d'un message existant
-	if (intval($id_message) AND $t = sql_getfetsel('type', 'spip_messages', 'id_message=' . intval($id_message))) {
+	if (intval($id_message) and $t = sql_getfetsel('type', 'spip_messages', 'id_message=' . intval($id_message))) {
 		$type = $t;
 	}
 	set_request('type', $type);
@@ -186,7 +186,7 @@ function formulaires_editer_message_traiter_dist(
 	$res = formulaires_editer_objet_traiter('message', $id_message, 0, 0, $retour, '');
 
 	if ($id_message = $res['id_message']
-		AND !_request('draft')
+		and !_request('draft')
 	) {
 		include_spip('action/editer_objet');
 		objet_modifier('message', $id_message, array('statut' => 'publie', 'date_heure' => _request('date_heure')));
@@ -200,4 +200,3 @@ function formulaires_editer_message_traiter_dist(
 
 	return $res;
 }
-

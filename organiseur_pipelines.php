@@ -114,8 +114,8 @@ function organiseur_affiche_auteurs_interventions($flux) {
 		include_spip('inc/message_select');
 		// Messages de l'auteur et discussions en cours
 		if ($GLOBALS['meta']['messagerie_agenda'] != 'non'
-			AND $id_auteur != $GLOBALS['visiteur_session']['id_auteur']
-			AND autoriser('repondre', 'message', '', $id_auteur)
+			and $id_auteur != $GLOBALS['visiteur_session']['id_auteur']
+			and autoriser('repondre', 'message', '', $id_auteur)
 		) {
 			$flux['data'] .= recuperer_fond('prive/squelettes/inclure/organiseur-interventions',
 				array('id_auteur' => $id_auteur));
@@ -208,10 +208,10 @@ function organiseur_affiche_milieu($flux) {
 function organiseur_post_edition($flux) {
 
 	if (isset($flux['args']['table'])
-		AND $flux['args']['table'] == 'spip_messages'
-		AND $flux['args']['action'] == 'instituer'
-		AND $flux['data']['statut'] == 'publie'
-		AND $flux['args']['statut_ancien'] != 'publie'
+		and $flux['args']['table'] == 'spip_messages'
+		and $flux['args']['action'] == 'instituer'
+		and $flux['data']['statut'] == 'publie'
+		and $flux['args']['statut_ancien'] != 'publie'
 	) {
 		$id_message = $flux['args']['id_objet'];
 		$row = sql_fetsel('destinataires,id_auteur,titre,texte', 'spip_messages', 'id_message=' . intval($id_message));

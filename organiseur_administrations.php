@@ -28,7 +28,7 @@ function organiseur_upgrade($nom_meta_base_version, $version_cible) {
 	if (!isset($GLOBALS['meta'][$nom_meta_base_version])) {
 		$trouver_table = charger_fonction('trouver_table', 'base');
 		if ($desc = $trouver_table('spip_messages')
-			AND isset($desc['exist']) AND $desc['exist']
+			and isset($desc['exist']) and $desc['exist']
 		) {
 			ecrire_meta($nom_meta_base_version, '1.0.0');
 		}
@@ -72,6 +72,3 @@ function organiseur_vider_tables($nom_meta_base_version) {
 
 	effacer_meta($nom_meta_base_version);
 }
-
-
-?>
