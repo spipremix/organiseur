@@ -14,14 +14,16 @@
  * Gestion de l'action de quête des événements du calendrier
  *
  * @package SPIP\Organiseur\Action
-**/
+ **/
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
 /**
  * Fournir une liste d'"evenements" entre deux dates start et end
  * au format json
- * 
+ *
  * Utilisé pour l'affichage du calendrier privé et public
  *
  * @pipeline_appel quete_calendrier_prive
@@ -29,11 +31,11 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @uses quete_calendrier_interval()
  * @uses convert_fullcalendar_quete_calendrier_interval_rv()
  * @uses convert_fullcalendar_quete_calendrier_interval()
- * 
+ *
  * @return void
  */
-function action_quete_calendrier_prive_dist(){
-	$securiser_action = charger_fonction('securiser_action','inc');
+function action_quete_calendrier_prive_dist() {
+	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$securiser_action();
 
 	$start = _request('start');
@@ -45,19 +47,19 @@ function action_quete_calendrier_prive_dist(){
 	$evt = array();
 
 	// recuperer la liste des evenements au format ics
-	$start = date('Y-m-d H:i:s',$start);
-	$end = date('Y-m-d H:i:s',$end);
-	$limites = array(sql_quote($start),sql_quote($end));
+	$start = date('Y-m-d H:i:s', $start);
+	$end = date('Y-m-d H:i:s', $end);
+	$limites = array(sql_quote($start), sql_quote($end));
 
 	// on fonction de quoi on récupère : tout (rv + publication) ou l'un ou l'autre.
 	$entier = $duree = array();
 
-	if (!$quoi OR $quoi=='rv') {
+	if (!$quoi OR $quoi == 'rv') {
 		$duree = quete_calendrier_interval_rv(reset($limites), end($limites));
 		$evt = convert_fullcalendar_quete_calendrier_interval_rv($duree, $evt);
 	}
 
-	if (!$quoi OR $quoi=='publication') {
+	if (!$quoi OR $quoi == 'publication') {
 		list($entier,) = quete_calendrier_interval($limites);
 		$evt = convert_fullcalendar_quete_calendrier_interval($entier, $evt);
 	}
@@ -66,7 +68,7 @@ function action_quete_calendrier_prive_dist(){
 	// permettre aux plugins d'afficher leurs evenements dans ce calendrier
 	$evt = pipeline('quete_calendrier_prive',
 		array(
-			'args' => array('start' => $start, 'end' => $end, 'quoi'=>$quoi),
+			'args' => array('start' => $start, 'end' => $end, 'quoi' => $quoi),
 			'data' => $evt,
 		)
 	);
@@ -79,18 +81,19 @@ function action_quete_calendrier_prive_dist(){
 /**
  * Convertir une date au format ical renvoyée par quete_calendrier_interval
  * dans le format attendu par fullcalendar : yyyy-mm-dd H:i:s
- * 
+ *
  * @param $dateical
  * @return string
  */
-function convert_dateical($dateical){
-	$d = explode('T',$dateical);
+function convert_dateical($dateical) {
+	$d = explode('T', $dateical);
 	$amj = reset($d);
-	$s = substr($amj,0,4).'-'.substr($amj,4,2).'-'.substr($amj,6,2);
-	if (count($d)>1){
+	$s = substr($amj, 0, 4) . '-' . substr($amj, 4, 2) . '-' . substr($amj, 6, 2);
+	if (count($d) > 1) {
 		$his = end($d);
-		$s .= ' '.substr($his,0,2).":".substr($his,2,2).":".substr($his,4,2);
+		$s .= ' ' . substr($his, 0, 2) . ":" . substr($his, 2, 2) . ":" . substr($his, 4, 2);
 	}
+
 	return $s;
 }
 
@@ -104,23 +107,25 @@ function convert_dateical($dateical){
  *     Les événements au format fullcalendar déjà présents
  * @return array
  *     Les événements au format fullcalendar
-**/
+ **/
 function convert_fullcalendar_quete_calendrier_interval($messages, $evt = array()) {
-	if (!$messages) return $evt;
+	if (!$messages) {
+		return $evt;
+	}
 
 	// la retransformer au format attendu par fullcalendar
 	// facile : chaque evt n'est mentionne qu'une fois, a une date
-	foreach($messages as $amj=>$l){
-		$date = substr($amj,0,4).'-'.substr($amj,4,2).'-'.substr($amj,6,2);
-		foreach($l as $e){
+	foreach ($messages as $amj => $l) {
+		$date = substr($amj, 0, 4) . '-' . substr($amj, 4, 2) . '-' . substr($amj, 6, 2);
+		foreach ($l as $e) {
 			$evt[] = array(
 				'id' => 0,
 				'title' => $e['SUMMARY'],
 				'allDay' => true,
 				'start' => $date,
 				'end' => $date,
-				'url' => str_replace('&amp;','&',$e['URL']),
-				'className' => "calendrier-event ".$e['CATEGORIES'],
+				'url' => str_replace('&amp;', '&', $e['URL']),
+				'className' => "calendrier-event " . $e['CATEGORIES'],
 				'description' => $e['DESCRIPTION'],
 			);
 		}
@@ -134,16 +139,18 @@ function convert_fullcalendar_quete_calendrier_interval($messages, $evt = array(
  * dans le format attendu par fullcalendar
  *
  * @use convert_dateical()
- * 
+ *
  * @param array $messages
  *     Les événements / messages au format issu de la quete calendrier_interval_rv
  * @param array $evt
  *     Les événements au format fullcalendar déjà présents
  * @return array
  *     Les événements au format fullcalendar
-**/
+ **/
 function convert_fullcalendar_quete_calendrier_interval_rv($messages, $evt = array()) {
-	if (!$messages) return $evt;
+	if (!$messages) {
+		return $evt;
+	}
 
 	// ici il faut faire attention : un evt apparait N fois
 	// mais on a son id
@@ -154,9 +161,9 @@ function convert_fullcalendar_quete_calendrier_interval_rv($messages, $evt = arr
 		$seen[$e['url']] = true;
 	}
 
-	foreach($messages as $amj=>$l){
-		foreach($l as $id=>$e){
-			$url = str_replace('&amp;','&',$e['URL']);
+	foreach ($messages as $amj => $l) {
+		foreach ($l as $id => $e) {
+			$url = str_replace('&amp;', '&', $e['URL']);
 			if (!isset($seen[$url])) {
 				$evt[] = array(
 					'id' => $id,
@@ -165,7 +172,7 @@ function convert_fullcalendar_quete_calendrier_interval_rv($messages, $evt = arr
 					'start' => convert_dateical($e['DTSTART']), //Ymd\THis
 					'end' => convert_dateical($e['DTEND']), // Ymd\THis
 					'url' => $url,
-					'className' => "calendrier-event ".$e['CATEGORIES'],
+					'className' => "calendrier-event " . $e['CATEGORIES'],
 					'description' => $e['DESCRIPTION'],
 				);
 				$seen[$url] = true;

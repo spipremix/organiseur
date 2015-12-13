@@ -10,17 +10,20 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
-function action_quete_autocomplete_dist(){
-	$securiser_action = charger_fonction('securiser_action','inc');
+function action_quete_autocomplete_dist() {
+	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$arg = $securiser_action();
 	if ($arg
-	  AND $arg==$GLOBALS['visiteur_session']['id_auteur']){
+		AND $arg == $GLOBALS['visiteur_session']['id_auteur']
+	) {
 		include_spip('inc/actions');
 		include_spip('inc/json');
 		echo ajax_retour(
-			recuperer_fond('prive/squelettes/inclure/organiseur-autocomplete-auteur',array('term'=>_request('term'))),
+			recuperer_fond('prive/squelettes/inclure/organiseur-autocomplete-auteur', array('term' => _request('term'))),
 			'application/json'
 		);
 	}
