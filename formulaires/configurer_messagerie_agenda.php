@@ -39,4 +39,3 @@ function formulaires_configurer_messagerie_agenda_traiter_dist() {
 
 	return $res;
 }
-

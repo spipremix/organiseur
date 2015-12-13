@@ -185,5 +185,3 @@ function organiseur_texte_nouveau_message($type) {
 
 	return _T($texte);
 }
-
-?>

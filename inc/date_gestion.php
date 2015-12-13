@@ -40,7 +40,7 @@ function verifier_corriger_date_saisie($suffixe, $horaire, &$erreurs) {
 			$erreurs["date_$suffixe"] = _T('organiseur:erreur_date_corrigee');
 			set_request("date_$suffixe", $d);
 		}
-		if ($horaire AND trim(_request("heure_$suffixe") !== ($h = date('H:i', $ret)))) {
+		if ($horaire and trim(_request("heure_$suffixe") !== ($h = date('H:i', $ret)))) {
 			$erreurs["heure_$suffixe"] = _T('organiseur:erreur_heure_corrigee');
 			set_request("heure_$suffixe", $h);
 		}
@@ -48,5 +48,3 @@ function verifier_corriger_date_saisie($suffixe, $horaire, &$erreurs) {
 
 	return $ret;
 }
-
-?>

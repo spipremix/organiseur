@@ -47,7 +47,7 @@ function calendrier_categories($table, $num, $objet) {
 		// cf agenda.css
 		$num = sql_getfetsel((($objet != 'id_breve') ? 'id_secteur' : 'id_rubrique') . " AS id", $table, "$objet=$num");
 
-		return 'calendrier-couleur' . (($num%14)+1);
+		return 'calendrier-couleur' . (($num % 14) + 1);
 	}
 }
 
@@ -61,8 +61,8 @@ function calendrier_categories($table, $num, $objet) {
  *     Liste (date de la veille à 0h, date du lendemain à 23h59:59)
  **/
 function quete_calendrier_jour($annee, $mois, $jour) {
-	$avant = "'" . date("Y-m-d", mktime(0, 0, 0, $mois, $jour-1, $annee)) . "'";
-	$apres = "'" . date("Y-m-d", mktime(1, 1, 1, $mois, $jour+1, $annee)) .
+	$avant = "'" . date("Y-m-d", mktime(0, 0, 0, $mois, $jour - 1, $annee)) . "'";
+	$apres = "'" . date("Y-m-d", mktime(1, 1, 1, $mois, $jour + 1, $annee)) .
 		" 23:59:59'";
 
 	return array($avant, $apres);
@@ -293,10 +293,10 @@ function quete_calendrier_interval_rv($avant, $apres) {
 
 		// Calcul pour les semaines a cheval sur deux mois
 		$j = 0;
-		$amj = date_anneemoisjour("$annee_avant-$mois_avant-" . sprintf("%02d", $j+($jour_avant)));
+		$amj = date_anneemoisjour("$annee_avant-$mois_avant-" . sprintf("%02d", $j + ($jour_avant)));
 
 		while ($amj <= $ical_apres) {
-			if (!($amj == date_anneemoisjour($date_fin) AND preg_match(",00:00:00,",
+			if (!($amj == date_anneemoisjour($date_fin) and preg_match(",00:00:00,",
 					$date_fin))
 			)  // Ne pas prendre la fin a minuit sur jour precedent
 			{
@@ -313,7 +313,7 @@ function quete_calendrier_interval_rv($avant, $apres) {
 			}
 
 			$j++;
-			$ladate = date("Y-m-d", mktime(1, 1, 1, $mois_avant, ($j+$jour_avant), $annee_avant));
+			$ladate = date("Y-m-d", mktime(1, 1, 1, $mois_avant, ($j + $jour_avant), $annee_avant));
 
 			$amj = date_anneemoisjour($ladate);
 
@@ -353,5 +353,3 @@ function quete_calendrier_agenda($annee, $mois) {
 
 	return $rv;
 }
-
-?>

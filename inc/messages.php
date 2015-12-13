@@ -71,7 +71,7 @@ function messagerie_verifier_destinataires($destinataires, $options = array('acc
 			}
 		} else {
 			if (!$options['accepter_email']
-				OR !email_valide($id)
+				or !email_valide($id)
 			) {
 				$erreurs[] = _T('organiseur:erreur_destinataire_invalide', array('dest' => $id));
 			}
@@ -96,7 +96,7 @@ function messagerie_destiner($dests) {
 	foreach ($dests as $id) {
 		if (is_numeric($id)) {
 			$auteurs_dest[] = $id;
-		} elseif (defined('_MESSAGERIE_EMAIL_GENERAL') AND $id != _MESSAGERIE_EMAIL_GENERAL) {
+		} elseif (defined('_MESSAGERIE_EMAIL_GENERAL') and $id != _MESSAGERIE_EMAIL_GENERAL) {
 			$email_dests[] = $id;
 		}
 	}
@@ -123,7 +123,7 @@ function messagerie_destiner($dests) {
 function messagerie_diffuser_message($id_message, $auteurs_dest = array()) {
 	$out = false;
 	if ($id_message = intval($id_message)
-		AND count($auteurs_dest)
+		and count($auteurs_dest)
 	) {
 		include_spip('action/editer_liens');
 		$out = objet_associer(array('auteur' => $auteurs_dest), array('message' => $id_message), array('vu' => 'non'));
@@ -141,7 +141,7 @@ function messagerie_diffuser_message($id_message, $auteurs_dest = array()) {
  */
 function messagerie_mailer_message($id_message, $emails_dest = array()) {
 	if ($id_message = intval($id_message)
-		AND count($emails_dest)
+		and count($emails_dest)
 	) {
 		if ($row = sql_fetsel('titre,texte,id_auteur', 'spip_messages', 'id_message=' . intval($id_message))) {
 			$from = sql_getfetsel('email', 'spip_auteurs', 'id_auteur=' . $row['id_auteur']);
@@ -218,5 +218,3 @@ function messagerie_marquer_non_lus($id_auteur, $liste_id_message) {
 function messagerie_effacer_message_recu($id_auteur, $liste_id_message) {
 	messagerie_marquer_message($id_auteur, $liste_id_message, 'poub');
 }
-
-?>

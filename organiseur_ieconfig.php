@@ -27,5 +27,3 @@ function organiseur_ieconfig_metas($table) {
 
 	return $table;
 }
-
-?>
