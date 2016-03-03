@@ -10,8 +10,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// O
-	'organiseur_description' => 'Samenwerking- en werkinstrument voor de redacteurs',
-	'organiseur_slogan' => 'Samenwerking- en werkinstrument voor de redacteurs'
+	'organiseur_description' => 'Tool voor samenwerking voor redacteurs',
+	'organiseur_slogan' => 'Tool voor samenwerking voor redacteurs'
 );
 
 ?>
