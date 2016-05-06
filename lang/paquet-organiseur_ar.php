@@ -13,4 +13,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'organiseur_description' => 'أدوات عمل تحريري جماعي', # أدوات عمل تحريري جماعي
 	'organiseur_slogan' => 'أدوات عمل تحريري جماعي'
 );
-

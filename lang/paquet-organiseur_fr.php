@@ -11,4 +11,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'organiseur_description' => 'Outils de travail éditorial en groupe',
 	'organiseur_slogan' => 'Outils de travail éditorial en groupe'
 );
-
