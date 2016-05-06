@@ -79,4 +79,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_boite_envoi' => 'صندوق نامه',
 	'titre_boite_reception' => 'صندوق دريافت'
 );
-

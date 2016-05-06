@@ -80,4 +80,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_boite_envoi' => 'Casilla de envío',
 	'titre_boite_reception' => 'Casilla de mensajes'
 );
-
