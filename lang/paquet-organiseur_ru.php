@@ -13,4 +13,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'organiseur_description' => 'Организация совместной работы',
 	'organiseur_slogan' => 'Организация совместной работы'
 );
-
