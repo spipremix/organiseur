@@ -14,4 +14,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'organiseur_slogan' => 'Werkzeuge für eine Online-Redaktion'
 );
 
-?>

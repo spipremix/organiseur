@@ -14,4 +14,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'organiseur_slogan' => 'Óutis de travai editourial éditorial en group'
 );
 
-?>
