@@ -26,7 +26,7 @@
 			<div class="editer editer_rv[ (#ENV**{erreurs}|table_valeur{rv}|oui)erreur]">
 				<div class="choix">
 					<input type='checkbox' name='rv' id='rv' value='oui' [(#ENV{rv}|=={oui}|oui)checked='checked']
-												onclick="if (this.checked==true) { $('li.editer_date_debut_fin').show('fast');} else {$('li.editer_date_debut_fin').hide('fast');}" />
+						onclick="if (this.checked==true) { $('.editer_date_debut_fin').show('fast');} else {$('.editer_date_debut_fin').hide('fast');}" />
 					<label for="rv"><:item_afficher_calendrier:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{rv})</span>
 				]
