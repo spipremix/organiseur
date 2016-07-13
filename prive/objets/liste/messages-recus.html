@@ -33,7 +33,7 @@
 			<td class="new">[(#GET{vu}|?{'',#CHEMIN_IMAGE{pictonew-16.png}|balise_img{<:organiseur:info_message_non_lu:>}|inserer_attribut{title,<:organiseur:info_message_non_lu:>}})]</td>
 			<td class="type">[(#CHEMIN_IMAGE{#TYPE|organiseur_icone_message{16}}|balise_img{#VAL{organiseur:info_type_message_}|concat{#TYPE}|_T})]</td>
 			<td class="isrv">[(#RV|=={oui}|oui)[(#CHEMIN_IMAGE{heure-16.png}|balise_img{<:organiseur:info_type_message_rv:>})]]</td>
-			<td class="from"><a href="[(#ID_AUTEUR|generer_url_entite{auteur})]">#NOM</a></td>
+			<td class="from"><a href="[(#ID_AUTEUR|generer_url_entite{auteur})]">#INFO_NOM{auteur,#ID_AUTEUR}</a></td>
 			<td class="titre principale"><a href="[(#ID_MESSAGE|generer_url_entite{message})]">#TITRE</a></td>
 			<td class="date secondaire">
 				[(#RV|=={oui}|?{
