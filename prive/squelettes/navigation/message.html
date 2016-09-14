@@ -2,7 +2,7 @@
 
 [(#SET{destinataires,#ARRAY})]
 <BOUCLE_destinataires(MESSAGES){id_message}>
-    [(#SET{destinataires, [(#GET{destinataires}|push{[(#ID_AUTEUR)]})]})]
+   #SET{destinataires,#DESTINATAIRES|explode{','}|array_diff{#LISTE{#SESSION{id_auteur}}}|push{#ID_AUTEUR}}
 </BOUCLE_destinataires>
     [(#URL_ECRIRE{message_edit,[id_message_origine=(#ENV{id_message})&]new=oui&to=[(#GET{destinataires}|implode{'%2C'})]}|parametre_url{redirect,#SELF}|icone_horizontale{<:lien_repondre_message:>,message-24.png,new})]
 </B_destinataires>
