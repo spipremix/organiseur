@@ -19,7 +19,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  *
  * @return void
  */
-function organiseur_autoriser() { }
+function organiseur_autoriser() {
+}
 
 function autoriser_calendrier_menu_dist($faire, $type = '', $id = 0, $qui = null, $opt = null) {
 	if ($GLOBALS['meta']['messagerie_agenda'] == 'oui') {
@@ -72,11 +73,13 @@ function autoriser_message_supprimer_dist($faire, $type = '', $id = 0, $qui = nu
 	// si tous ses dest l'on supprime aussi
 	if (
 		$qui['id_auteur']
-		and sql_countsel('spip_messages',
-			"statut='publie' AND id_auteur=" . intval($qui['id_auteur']) . " AND id_message=" . intval($id))
-		and !sql_countsel('spip_auteurs_liens',
-			"objet='message' AND id_objet=" . intval($id) . " AND vu!='poub' AND id_auteur!=" . intval($qui['id_auteur']))
-	) {
+		and sql_countsel(
+			'spip_messages',
+			"statut='publie' AND id_auteur=" . intval($qui['id_auteur']) . ' AND id_message=' . intval($id)
+		) and !sql_countsel(
+			'spip_auteurs_liens',
+			"objet='message' AND id_objet=" . intval($id) . " AND vu!='poub' AND id_auteur!=" . intval($qui['id_auteur'])
+		)) {
 		return true;
 	}
 
@@ -119,13 +122,17 @@ function autoriser_message_voir_dist($faire, $type = '', $id = 0, $qui = null, $
 		return false;
 	}
 	// message annonce ou message dont $qui est l'auteur : droit de le voir
-	if (sql_countsel('spip_messages',
-		'id_message=' . intval($id) . ' AND (type=\'affich\' OR id_auteur=' . intval($qui['id_auteur']) . ')')) {
+	if (sql_countsel(
+		'spip_messages',
+		'id_message=' . intval($id) . ' AND (type=\'affich\' OR id_auteur=' . intval($qui['id_auteur']) . ')'
+	)) {
 		return true;
 	}
 	// message dont $qui est destinataire
-	if (sql_countsel('spip_auteurs_liens',
-		'objet=\'message\' AND id_objet=' . intval($id) . " AND vu!='poub' AND id_auteur=" . intval($qui['id_auteur']))) {
+	if (sql_countsel(
+		'spip_auteurs_liens',
+		'objet=\'message\' AND id_objet=' . intval($id) . " AND vu!='poub' AND id_auteur=" . intval($qui['id_auteur'])
+	)) {
 		return true;
 	}
 

@@ -45,7 +45,7 @@ function calendrier_categories($table, $num, $objet) {
 		return generer_calendrier_class($table, $num, $objet);
 	} else {
 		// cf agenda.css
-		$num = sql_getfetsel((($objet != 'id_breve') ? 'id_secteur' : 'id_rubrique') . " AS id", $table, "$objet=$num");
+		$num = sql_getfetsel((($objet != 'id_breve') ? 'id_secteur' : 'id_rubrique') . ' AS id', $table, "$objet=$num");
 
 		return 'calendrier-couleur' . (($num % 14) + 1);
 	}
@@ -61,8 +61,8 @@ function calendrier_categories($table, $num, $objet) {
  *     Liste (date de la veille à 0h, date du lendemain à 23h59:59)
  **/
 function quete_calendrier_jour($annee, $mois, $jour) {
-	$avant = "'" . date("Y-m-d", mktime(0, 0, 0, $mois, $jour - 1, $annee)) . "'";
-	$apres = "'" . date("Y-m-d", mktime(1, 1, 1, $mois, $jour + 1, $annee)) .
+	$avant = "'" . date('Y-m-d', mktime(0, 0, 0, $mois, $jour - 1, $annee)) . "'";
+	$apres = "'" . date('Y-m-d', mktime(1, 1, 1, $mois, $jour + 1, $annee)) .
 		" 23:59:59'";
 
 	return array($avant, $apres);
@@ -117,8 +117,13 @@ function quete_calendrier_interval($limites) {
  **/
 function quete_calendrier_interval_forums($limites, &$evenements) {
 	list($avant, $apres) = $limites;
-	$result = sql_select("DISTINCT titre, date_heure, id_forum", "spip_forum",
-		"date_heure >= $avant AND date_heure < $apres", '', "date_heure");
+	$result = sql_select(
+		'DISTINCT titre, date_heure, id_forum',
+		'spip_forum',
+		"date_heure >= $avant AND date_heure < $apres",
+		'',
+		'date_heure'
+	);
 	while ($row = sql_fetch($result)) {
 		$amj = date_anneemoisjour($row['date_heure']);
 		$id = $row['id_forum'];
@@ -147,8 +152,13 @@ function quete_calendrier_interval_forums($limites, &$evenements) {
  **/
 function quete_calendrier_interval_articles($avant, $apres, &$evenements) {
 
-	$result = sql_select('id_article, titre, date, descriptif, chapo,  lang', 'spip_articles',
-		"statut='publie' AND date >= $avant AND date < $apres", '', "date");
+	$result = sql_select(
+		'id_article, titre, date, descriptif, chapo,  lang',
+		'spip_articles',
+		"statut='publie' AND date >= $avant AND date < $apres",
+		'',
+		'date'
+	);
 
 	// tables traduites
 	$objets = explode(',', $GLOBALS['meta']['multi_objets']);
@@ -187,10 +197,14 @@ function quete_calendrier_interval_articles($avant, $apres, &$evenements) {
  **/
 function quete_calendrier_interval_rubriques($avant, $apres, &$evenements) {
 
-	$result = sql_select('DISTINCT R.id_rubrique, titre, descriptif, date',
+	$result = sql_select(
+		'DISTINCT R.id_rubrique, titre, descriptif, date',
 		'spip_rubriques AS R, spip_documents_liens AS L',
-		"statut='publie' AND	date >= $avant AND	date < $apres AND	R.id_rubrique = L.id_objet AND L.objet='rubrique'", '',
-		"date");
+		"statut='publie' AND	date >= $avant AND	date < $apres
+			AND R.id_rubrique = L.id_objet AND L.objet='rubrique'",
+		'',
+		'date'
+	);
 	while ($row = sql_fetch($result)) {
 		$amj = date_anneemoisjour($row['date']);
 		$id = $row['id_rubrique'];
@@ -218,8 +232,13 @@ function quete_calendrier_interval_rubriques($avant, $apres, &$evenements) {
  *     Format : `$evenements[$amj][] = Tableau de description ICS`
  **/
 function quete_calendrier_interval_breves($avant, $apres, &$evenements) {
-	$result = sql_select("id_breve, titre, date_heure, id_rubrique", 'spip_breves',
-		"statut='publie' AND date_heure >= $avant AND date_heure < $apres", '', "date_heure");
+	$result = sql_select(
+		'id_breve, titre, date_heure, id_rubrique',
+		'spip_breves',
+		"statut='publie' AND date_heure >= $avant AND date_heure < $apres",
+		'',
+		'date_heure'
+	);
 	while ($row = sql_fetch($result)) {
 		$amj = date_anneemoisjour($row['date_heure']);
 		$id = $row['id_breve'];
@@ -254,31 +273,45 @@ function quete_calendrier_interval_rv($avant, $apres) {
 	if (!$connect_id_auteur) {
 		return $evenements;
 	}
-	$result = sql_select("M.id_message, M.titre, M.texte, M.date_heure, M.date_fin, M.type",
-		"spip_messages AS M LEFT JOIN spip_auteurs_liens AS L ON (L.id_objet=M.id_message)",
-		"((L.objet='message' AND (L.id_auteur=$connect_id_auteur OR M.type='affich')) OR (L.objet IS NULL AND M.id_auteur=$connect_id_auteur AND " . sql_in('M.type',
-			array('pb', 'affich')) . "))"
-		. " AND M.rv='oui' AND ((M.date_fin >= $avant OR M.date_heure >= $avant) AND M.date_heure <= $apres) AND M.statut='publie'",
-		"M.id_message", "M.date_heure");
+	$result = sql_select(
+		'M.id_message, M.titre, M.texte, M.date_heure, M.date_fin, M.type',
+		'spip_messages AS M LEFT JOIN spip_auteurs_liens AS L ON (L.id_objet=M.id_message)',
+		"((L.objet='message' AND (L.id_auteur=$connect_id_auteur OR M.type='affich'))
+			OR (L.objet IS NULL AND M.id_auteur=$connect_id_auteur AND " . sql_in(
+				'M.type',
+				array('pb', 'affich')
+			) . '))'
+			. " AND M.rv='oui'
+				AND ((M.date_fin >= $avant OR M.date_heure >= $avant)
+				AND M.date_heure <= $apres)
+				AND M.statut='publie'",
+		'M.id_message',
+		'M.date_heure'
+	);
 	while ($row = sql_fetch($result)) {
-		$date_heure = $row["date_heure"];
-		$date_fin = $row["date_fin"];
-		$type = $row["type"];
+		$date_heure = $row['date_heure'];
+		$date_fin = $row['date_fin'];
+		$type = $row['type'];
 		$id_message = $row['id_message'];
 
-		if ($type == "pb") {
+		if ($type == 'pb') {
 			$cat = 'calendrier-couleur2';
 		} else {
-			if ($type == "affich") {
+			if ($type == 'affich') {
 				$cat = 'calendrier-couleur4';
 			} else {
-				if ($type != "normal") {
+				if ($type != 'normal') {
 					$cat = 'calendrier-couleur12';
 				} else {
 					$cat = 'calendrier-couleur9';
-					$auteurs = array_map('array_shift',
-						sql_allfetsel("nom", "spip_auteurs AS A LEFT JOIN spip_auteurs_liens AS L ON L.id_auteur=A.id_auteur",
-							"(L.objet='message' AND L.id_objet=$id_message AND (A.id_auteur!=$connect_id_auteur))"));
+					$auteurs = array_map(
+						'array_shift',
+						sql_allfetsel(
+							'nom',
+							'spip_auteurs AS A LEFT JOIN spip_auteurs_liens AS L ON L.id_auteur=A.id_auteur',
+							"(L.objet='message' AND L.id_objet=$id_message AND (A.id_auteur!=$connect_id_auteur))"
+						)
+					);
 				}
 			}
 		}
@@ -289,38 +322,36 @@ function quete_calendrier_interval_rv($avant, $apres) {
 		$jour_apres = substr($apres, 9, 2);
 		$mois_apres = substr($apres, 6, 2);
 		$annee_apres = substr($apres, 1, 4);
-		$ical_apres = date_anneemoisjour("$annee_apres-$mois_apres-" . sprintf("%02d", $jour_apres));
+		$ical_apres = date_anneemoisjour("$annee_apres-$mois_apres-" . sprintf('%02d', $jour_apres));
 
 		// Calcul pour les semaines a cheval sur deux mois
 		$j = 0;
-		$amj = date_anneemoisjour("$annee_avant-$mois_avant-" . sprintf("%02d", $j + ($jour_avant)));
+		$amj = date_anneemoisjour("$annee_avant-$mois_avant-" . sprintf('%02d', $j + ($jour_avant)));
 
 		while ($amj <= $ical_apres) {
-			if (!($amj == date_anneemoisjour($date_fin) and preg_match(",00:00:00,",
-					$date_fin))
-			)  // Ne pas prendre la fin a minuit sur jour precedent
-			{
+			if (!($amj == date_anneemoisjour($date_fin) and preg_match(
+				',00:00:00,',
+				$date_fin
+			))) {
+				// Ne pas prendre la fin a minuit sur jour precedent
 				$evenements[$amj][$id_message] =
 					array(
-						'URL' => generer_url_ecrire("message", "id_message=$id_message"),
+						'URL' => generer_url_ecrire('message', "id_message=$id_message"),
 						'DTSTART' => date_ical($date_heure),
 						'DTEND' => date_ical($date_fin),
 						'DESCRIPTION' => $row['texte'],
 						'SUMMARY' => $row['titre'],
 						'CATEGORIES' => $cat,
-						'ATTENDEE' => (count($auteurs) == 0) ? '' : join($auteurs, ", ")
+						'ATTENDEE' => (count($auteurs) == 0) ? '' : join($auteurs, ', ')
 					);
 			}
 
 			$j++;
-			$ladate = date("Y-m-d", mktime(1, 1, 1, $mois_avant, ($j + $jour_avant), $annee_avant));
+			$ladate = date('Y-m-d', mktime(1, 1, 1, $mois_avant, ($j + $jour_avant), $annee_avant));
 
 			$amj = date_anneemoisjour($ladate);
-
 		}
-
 	}
-
 	return $evenements;
 }
 
@@ -339,14 +370,20 @@ function quete_calendrier_agenda($annee, $mois) {
 	if (!$connect_id_auteur) {
 		return $rv;
 	}
-	$date = date("Y-m-d", mktime(0, 0, 0, $mois, 1, $annee));
+	$date = date('Y-m-d', mktime(0, 0, 0, $mois, 1, $annee));
 	$mois = mois($date);
 	$annee = annee($date);
 
 	// rendez-vous personnels dans le mois
-	$result_messages = sql_select("M.titre AS summary, M.texte AS description, M.id_message AS uid, M.date_heure",
-		"spip_messages AS M, spip_auteurs_liens AS L",
-		"((L.id_auteur=$connect_id_auteur AND L.id_objet=M.id_message AND L.objet='message') OR M.type='affich') AND M.rv='oui' AND M.date_heure >='$annee-$mois-1' AND date_heure < DATE_ADD('$annee-$mois-1', INTERVAL 1 MONTH) AND M.statut='publie'");
+	$result_messages = sql_select(
+		'M.titre AS summary, M.texte AS description, M.id_message AS uid, M.date_heure',
+		'spip_messages AS M, spip_auteurs_liens AS L',
+		"((L.id_auteur=$connect_id_auteur AND L.id_objet=M.id_message AND L.objet='message') OR M.type='affich')
+			AND M.rv='oui'
+			AND M.date_heure >='$annee-$mois-1'
+			AND date_heure < DATE_ADD('$annee-$mois-1', INTERVAL 1 MONTH)
+			AND M.statut='publie'"
+	);
 	while ($row = sql_fetch($result_messages)) {
 		$rv[journum($row['date_heure'])] = $row;
 	}

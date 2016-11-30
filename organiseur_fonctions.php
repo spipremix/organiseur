@@ -105,8 +105,8 @@ function critere_MESSAGES_rv_a_venir_dist($idb, &$boucles, $crit) {
 	$id_table = $boucle->id_table;
 
 	$_dateref = organiseur_calculer_date_reference($idb, $boucles, $crit);
-	$_date = "$id_table." . (isset($boucle->show['date']) ? $boucle->show['date'] : "date_debut");
-	$op = $crit->not ? "<=" : ">";
+	$_date = "$id_table." . (isset($boucle->show['date']) ? $boucle->show['date'] : 'date_debut');
+	$op = $crit->not ? '<=' : '>';
 	$where = array("'$op'", "'$_date'", "sql_quote($_dateref)");
 
 	$boucle->where[] = $where;
@@ -126,7 +126,7 @@ function critere_MESSAGES_rv_passe_dist($idb, &$boucles, $crit) {
 
 	$_dateref = organiseur_calculer_date_reference($idb, $boucles, $crit);
 	$_date = "$id_table.date_fin";
-	$op = $crit->not ? ">=" : "<";
+	$op = $crit->not ? '>=' : '<';
 
 	$where = array("'$op'", "'$_date'", "sql_quote($_dateref)");
 	$boucle->where[] = $where;
@@ -145,7 +145,7 @@ function critere_MESSAGES_rv_en_cours_dist($idb, &$boucles, $crit) {
 	$id_table = $boucle->id_table;
 
 	$_dateref = organiseur_calculer_date_reference($idb, $boucles, $crit);
-	$_date_debut = "$id_table." . (isset($boucle->show['date']) ? $boucle->show['date'] : "date_debut");
+	$_date_debut = "$id_table." . (isset($boucle->show['date']) ? $boucle->show['date'] : 'date_debut');
 	$_date_fin = "$id_table.date_fin";
 
 	$where =

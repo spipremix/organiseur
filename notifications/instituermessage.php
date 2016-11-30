@@ -27,8 +27,7 @@ function notifications_instituermessage_dist($quoi, $id_message, $options = arra
 
 	// ne devrait jamais se produire
 	if ($options['statut'] == $options['statut_ancien']) {
-		spip_log("statut inchange", 'notifications');
-
+		spip_log('statut inchange', 'notifications');
 		return;
 	}
 
@@ -54,7 +53,7 @@ function notifications_instituermessage_dist($quoi, $id_message, $options = arra
 				$ids = array_map('reset', $ids);
 				$where[] = sql_in('id_auteur', $ids);
 			}
-			$emails = sql_allfetsel('email', "spip_auteurs", $where);
+			$emails = sql_allfetsel('email', 'spip_auteurs', $where);
 			$emails = array_map('reset', $emails);
 
 			include_spip('inc/notifications');

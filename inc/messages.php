@@ -186,7 +186,7 @@ function messagerie_marquer_message($id_auteur, $liste, $vu) {
 	// puis les marquer tous lus
 	objet_qualifier_liens(array('auteur' => $id_auteur), array('message' => $liste), array('vu' => $vu));
 	include_spip('inc/invalideur');
-	suivre_invalideur("message/" . implode(',', $liste));
+	suivre_invalideur('message/' . implode(',', $liste));
 }
 
 /**

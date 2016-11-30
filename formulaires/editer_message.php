@@ -39,31 +39,36 @@ function formulaires_editer_message_charger_dist(
 
 	// les destinataires sont stockes en chaine separe par une virgule dans la base
 	if (strlen($valeurs['destinataires'])) {
-		$valeurs['destinataires'] = explode(",", $valeurs['destinataires']);
+		$valeurs['destinataires'] = explode(',', $valeurs['destinataires']);
 	}
 
 	if (!intval($id_message)) {
 		$valeurs['type'] = $type;
-		$valeurs['destinataires'] = ($destinataires ? explode(",", $destinataires) : array());
+		$valeurs['destinataires'] = ($destinataires ? explode(',', $destinataires) : array());
 		$valeurs['titre'] = $titre;
 		$valeurs['texte'] = $texte;
 		$t = time();
-		$valeurs["date_heure"] = date('Y-m-d H:i:00', $t);
-		$valeurs["date_fin"] = date('Y-m-d H:i:00', $t + 3600);
-		$valeurs["rv"] = "";
+		$valeurs['date_heure'] = date('Y-m-d H:i:00', $t);
+		$valeurs['date_fin'] = date('Y-m-d H:i:00', $t + 3600);
+		$valeurs['rv'] = '';
 	}
 
-	$id_message_origine = intval(_request("id_message_origine"));
+	$id_message_origine = intval(_request('id_message_origine'));
 	if (autoriser('voir', 'message', $id_message_origine)) {
 		$v = formulaires_editer_objet_charger('message', $id_message_origine, 0, 0, $retour, '');
-		$valeurs['titre'] = _T("organiseur:re") . " : " . $v['titre'];
-		$valeurs['texte'] = "<quote>" . $v['texte'] . "</quote>";
+		$valeurs['titre'] = _T('organiseur:re') . ' : ' . $v['titre'];
+		$valeurs['texte'] = '<quote>' . $v['texte'] . '</quote>';
 	}
 
 	// dispatcher date et heure
-	list($valeurs["date_debut"], $valeurs["heure_debut"]) = explode(' ',
-		date('d/m/Y H:i', strtotime($valeurs["date_heure"])));
-	list($valeurs["date_fin"], $valeurs["heure_fin"]) = explode(' ', date('d/m/Y H:i', strtotime($valeurs["date_fin"])));
+	list($valeurs['date_debut'], $valeurs['heure_debut']) = explode(
+		' ',
+		date('d/m/Y H:i', strtotime($valeurs['date_heure']))
+	);
+	list($valeurs['date_fin'], $valeurs['heure_fin']) = explode(
+		' ',
+		date('d/m/Y H:i', strtotime($valeurs['date_fin']))
+	);
 
 	if (in_array($valeurs['type'], array('pb', 'affich'))) {
 		$valeurs['_destiner'] = '';
@@ -110,9 +115,10 @@ function formulaires_editer_message_verifier_dist(
 	if (
 		(!isset($erreurs['destinataires']) or !$erreurs['destinataires'])
 		and isset($oblis['destinataires'])
-		and $e = messagerie_verifier_destinataires(_request('destinataires'),
-			array('accepter_email' => ($accepter_email == 'oui')))
-	) {
+		and $e = messagerie_verifier_destinataires(
+			_request('destinataires'),
+			array('accepter_email' => ($accepter_email == 'oui'))
+		)) {
 		$erreurs['destinataires'] = implode(', ', $e);
 	}
 
@@ -191,7 +197,8 @@ function formulaires_editer_message_traiter_dist(
 		include_spip('action/editer_objet');
 		objet_modifier('message', $id_message, array('statut' => 'publie', 'date_heure' => _request('date_heure')));
 		// apres en message envoyes, retourner sur la boite d'envoi plutot que sur le message
-		if (isset($res['redirect']) and ($res['redirect'] == generer_url_ecrire('message', 'id_message=' . $id_message))) {
+		if (isset($res['redirect'])
+			and ($res['redirect'] == generer_url_ecrire('message', 'id_message=' . $id_message))) {
 			$res['redirect'] = generer_url_ecrire('messages', 'quoi=envoi');
 		}
 	}
