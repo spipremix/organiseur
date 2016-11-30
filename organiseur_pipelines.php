@@ -58,11 +58,13 @@ function organiseur_optimiser_base_disparus($flux) {
 	//
 
 	# supprimer les messages lies a un auteur disparu
-	$res = sql_select("M.id_message AS id",
-		"spip_messages AS M
-		        LEFT JOIN spip_auteurs AS A
-		          ON A.id_auteur=M.id_auteur",
-		"A.id_auteur IS NULL");
+	$res = sql_select(
+		'M.id_message AS id',
+		'spip_messages AS M
+			LEFT JOIN spip_auteurs AS A
+				ON A.id_auteur=M.id_auteur',
+		'A.id_auteur IS NULL'
+	);
 
 	$flux['data'] += optimiser_sansref('spip_messages', 'id_message', $res);
 
@@ -82,18 +84,24 @@ function organiseur_alertes_auteur($flux) {
 
 	$id_auteur = $flux['args']['id_auteur'];
 
-	$result_messages = sql_allfetsel("M.id_message",
+	$result_messages = sql_allfetsel(
+		'M.id_message',
 		"spip_messages AS M LEFT JOIN spip_auteurs_liens AS L ON (L.objet='message' AND L.id_objet=M.id_message)",
-		"L.id_auteur=" . intval($id_auteur) . " AND vu='non' AND statut='publie' AND type='normal'");
+		'L.id_auteur=' . intval($id_auteur) . " AND vu='non' AND statut='publie' AND type='normal'"
+	);
 	$total_messages = count($result_messages);
 	if ($total_messages == 1) {
 		$row = reset($result_messages);
 		$id_message = $row['id_message'];
-		$flux['data'][] = "<a href='" . generer_url_ecrire("message",
-				"id_message=$id_message") . "'>" . _T('organiseur:info_1_message_nonlu') . "</a>";
+		$flux['data'][] = "<a href='" . generer_url_ecrire(
+			'message',
+			"id_message=$id_message"
+		) . "'>" . _T('organiseur:info_1_message_nonlu') . '</a>';
 	} elseif ($total_messages > 1) {
-		$flux['data'][] = "<a href='" . generer_url_ecrire("messages") . "'>" . _T('organiseur:info_nb_messages_nonlus',
-				array('nb' => $total_messages)) . "</a>";
+		$flux['data'][] = "<a href='" . generer_url_ecrire('messages') . "'>" . _T(
+			'organiseur:info_nb_messages_nonlus',
+			array('nb' => $total_messages)
+		) . '</a>';
 	}
 
 	return $flux;
@@ -117,8 +125,10 @@ function organiseur_affiche_auteurs_interventions($flux) {
 			and $id_auteur != $GLOBALS['visiteur_session']['id_auteur']
 			and autoriser('repondre', 'message', '', $id_auteur)
 		) {
-			$flux['data'] .= recuperer_fond('prive/squelettes/inclure/organiseur-interventions',
-				array('id_auteur' => $id_auteur));
+			$flux['data'] .= recuperer_fond(
+				'prive/squelettes/inclure/organiseur-interventions',
+				array('id_auteur' => $id_auteur)
+			);
 		}
 	}
 

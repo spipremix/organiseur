@@ -66,7 +66,8 @@ function action_quete_calendrier_prive_dist() {
 
 
 	// permettre aux plugins d'afficher leurs evenements dans ce calendrier
-	$evt = pipeline('quete_calendrier_prive',
+	$evt = pipeline(
+		'quete_calendrier_prive',
 		array(
 			'args' => array('start' => $start, 'end' => $end, 'quoi' => $quoi),
 			'data' => $evt,
@@ -91,7 +92,7 @@ function convert_dateical($dateical) {
 	$s = substr($amj, 0, 4) . '-' . substr($amj, 4, 2) . '-' . substr($amj, 6, 2);
 	if (count($d) > 1) {
 		$his = end($d);
-		$s .= ' ' . substr($his, 0, 2) . ":" . substr($his, 2, 2) . ":" . substr($his, 4, 2);
+		$s .= ' ' . substr($his, 0, 2) . ':' . substr($his, 2, 2) . ':' . substr($his, 4, 2);
 	}
 
 	return $s;
@@ -125,7 +126,7 @@ function convert_fullcalendar_quete_calendrier_interval($messages, $evt = array(
 				'start' => $date,
 				'end' => $date,
 				'url' => str_replace('&amp;', '&', $e['URL']),
-				'className' => "calendrier-event " . $e['CATEGORIES'],
+				'className' => 'calendrier-event ' . $e['CATEGORIES'],
 				'description' => $e['DESCRIPTION'],
 			);
 		}
@@ -161,7 +162,7 @@ function convert_fullcalendar_quete_calendrier_interval_rv($messages, $evt = arr
 		$seen[$e['url']] = true;
 	}
 
-	foreach ($messages as $amj => $l) {
+	foreach ($messages as $l) {
 		foreach ($l as $id => $e) {
 			$url = str_replace('&amp;', '&', $e['URL']);
 			if (!isset($seen[$url])) {
@@ -172,7 +173,7 @@ function convert_fullcalendar_quete_calendrier_interval_rv($messages, $evt = arr
 					'start' => convert_dateical($e['DTSTART']), //Ymd\THis
 					'end' => convert_dateical($e['DTEND']), // Ymd\THis
 					'url' => $url,
-					'className' => "calendrier-event " . $e['CATEGORIES'],
+					'className' => 'calendrier-event ' . $e['CATEGORIES'],
 					'description' => $e['DESCRIPTION'],
 				);
 				$seen[$url] = true;

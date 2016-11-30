@@ -41,12 +41,12 @@ function organiseur_upgrade($nom_meta_base_version, $version_cible) {
 	);
 
 	$maj['1.1.0'] = array(
-		array('sql_updateq', "spip_messages", array('statut' => 'prepa'), "statut='redac'"),
+		array('sql_updateq', 'spip_messages', array('statut' => 'prepa'), "statut='redac'"),
 		array('maj_tables', array('spip_messages')), // champ destinataires
 	);
 
 	$maj['1.1.1'] = array(
-		array('sql_alter', "TABLE spip_messages CHANGE id_auteur id_auteur bigint(21) DEFAULT 0 NOT NULL"),
+		array('sql_alter', 'TABLE spip_messages CHANGE id_auteur id_auteur bigint(21) DEFAULT 0 NOT NULL'),
 	);
 
 	$maj['1.1.2'] = array(
@@ -64,9 +64,9 @@ function organiseur_upgrade($nom_meta_base_version, $version_cible) {
  * @param string $nom_meta_base_version
  */
 function organiseur_vider_tables($nom_meta_base_version) {
-	sql_drop_table("spip_messages");
-	sql_alter("TABLE spip_auteurs DROP imessage");
-	sql_alter("TABLE spip_auteurs DROP messagerie");
+	sql_drop_table('spip_messages');
+	sql_alter('TABLE spip_auteurs DROP imessage');
+	sql_alter('TABLE spip_auteurs DROP messagerie');
 
 	effacer_meta('messagerie_agenda');
 

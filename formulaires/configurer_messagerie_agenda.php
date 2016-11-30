@@ -15,21 +15,20 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 function formulaires_configurer_messagerie_agenda_charger_dist() {
+	$valeurs = array();
 	foreach (array(
-		         "messagerie_agenda",
-	         ) as $m) {
+		'messagerie_agenda',
+	) as $m) {
 		$valeurs[$m] = $GLOBALS['meta'][$m];
 	}
-
 	return $valeurs;
 }
-
 
 function formulaires_configurer_messagerie_agenda_traiter_dist() {
 	$res = array('editable' => true);
 	foreach (array(
-		         "messagerie_agenda",
-	         ) as $m) {
+		'messagerie_agenda',
+	) as $m) {
 		if (!is_null($v = _request($m))) {
 			ecrire_meta($m, $v == 'oui' ? 'oui' : 'non');
 		}

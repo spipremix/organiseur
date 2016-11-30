@@ -23,8 +23,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  */
 function organiseur_declarer_tables_objets_sql($tables) {
 
-	$tables['spip_auteurs']['field']["imessage"] = "VARCHAR(3)";
-	$tables['spip_auteurs']['field']["messagerie"] = "VARCHAR(3)";
+	$tables['spip_auteurs']['field']['imessage'] = 'VARCHAR(3)';
+	$tables['spip_auteurs']['field']['messagerie'] = 'VARCHAR(3)';
 
 	$tables['spip_messages'] = array(
 		'page' => false,
@@ -37,26 +37,28 @@ function organiseur_declarer_tables_objets_sql($tables) {
 		'info_nb_objets' => 'info_nb_messages',
 
 		'principale' => 'oui',
-		'champs_editables' => array('titre', 'texte', 'type', 'date_heure', 'date_fin', 'rv', 'id_auteur', 'destinataires'),
+		'champs_editables' => array(
+			'titre', 'texte', 'type', 'date_heure', 'date_fin', 'rv', 'id_auteur', 'destinataires'
+		),
 		'field' => array(
-			"id_message" => "bigint(21) NOT NULL",
-			"titre" => "text DEFAULT '' NOT NULL",
-			"texte" => "longtext DEFAULT '' NOT NULL",
+			'id_message' => 'bigint(21) NOT NULL',
+			'titre' => "text DEFAULT '' NOT NULL",
+			'texte' => "longtext DEFAULT '' NOT NULL",
 			// normal,
 			// pb (pense bete)
 			// affich (annonce publique)
-			"type" => "varchar(6) DEFAULT '' NOT NULL",
-			"date_heure" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
-			"date_fin" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
-			"rv" => "varchar(3) DEFAULT '' NOT NULL",
-			"statut" => "varchar(6)  DEFAULT '0' NOT NULL",
-			"id_auteur" => "bigint(21) DEFAULT 0 NOT NULL",
-			"destinataires" => "text DEFAULT '' NOT NULL",
-			"maj" => "TIMESTAMP"
+			'type' => "varchar(6) DEFAULT '' NOT NULL",
+			'date_heure' => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
+			'date_fin' => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
+			'rv' => "varchar(3) DEFAULT '' NOT NULL",
+			'statut' => "varchar(6) DEFAULT '0' NOT NULL",
+			'id_auteur' => 'bigint(21) DEFAULT 0 NOT NULL',
+			'destinataires' => "text DEFAULT '' NOT NULL",
+			'maj' => 'TIMESTAMP'
 		),
 		'key' => array(
-			"PRIMARY KEY" => "id_message",
-			"KEY id_auteur" => "id_auteur"
+			'PRIMARY KEY' => 'id_message',
+			'KEY id_auteur' => 'id_auteur'
 		),
 		'titre' => "titre, '' AS lang",
 		'date' => 'date_heure',
@@ -76,7 +78,6 @@ function organiseur_declarer_tables_objets_sql($tables) {
 	);
 
 	return $tables;
-
 }
 
 /**
