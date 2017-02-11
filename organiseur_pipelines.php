@@ -87,7 +87,7 @@ function organiseur_alertes_auteur($flux) {
 	$result_messages = sql_allfetsel(
 		'M.id_message',
 		"spip_messages AS M LEFT JOIN spip_auteurs_liens AS L ON (L.objet='message' AND L.id_objet=M.id_message)",
-		'L.id_auteur=' . intval($id_auteur) . " AND vu='non' AND statut='publie' AND type='normal'"
+		'L.id_auteur=' . intval($id_auteur) . " AND L.vu='non' AND M.statut='publie' AND M.type='normal'"
 	);
 	$total_messages = count($result_messages);
 	if ($total_messages == 1) {
