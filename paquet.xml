@@ -1,12 +1,12 @@
 <paquet
 	prefix="organiseur"
 	categorie="date"
-	version="1.0.3"
+	version="1.0.4"
 	etat="stable"
 	compatibilite="[3.1.0;3.1.*]"
 	logo="prive/themes/spip/images/calendrier-32.png"
 	schema="1.1.2"
->	
+>
 
 	<nom>Organiseur</nom>
 	<!-- Outils de travail éditorial en groupe -->
