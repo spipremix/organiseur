@@ -38,8 +38,8 @@ function action_quete_calendrier_prive_dist() {
 	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$securiser_action();
 
-	$start = _request('start');
-	$end = _request('end');
+	$start = strtotime(_request('start'));
+	$end = strtotime(_request('end'));
 	$quoi = _request('quoi');
 
 	include_spip('inc/quete_calendrier');
