@@ -268,6 +268,7 @@ function quete_calendrier_interval_breves($avant, $apres, &$evenements) {
 function quete_calendrier_interval_rv($avant, $apres) {
 	include_spip('inc/session');
 	$connect_id_auteur = session_get('id_auteur');
+	$auteurs = array();
 
 	$evenements = array();
 	if (!$connect_id_auteur) {
