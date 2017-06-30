@@ -28,7 +28,7 @@
 	]
 	[(#PIPELINE{affiche_enfants,[(#ARRAY{args,#ARRAY{exec,message,objet,message,id_objet,#ID_MESSAGE},data,#GET{enfants}})]})]
 
-	[(#EVAL{_AJAX}|oui)
+	[(#CONST{_AJAX}|oui)
 	<script type="text/javascript">/*<!\[CDATA\[*/reloadExecPage('[(#OBJET|objet_info{url_voir})]','#navigation,#chemin');/*\]\]>*/</script>
 	]
 	<?php
