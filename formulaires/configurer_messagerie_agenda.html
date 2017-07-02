@@ -7,7 +7,7 @@
 	<form method='post' action='#ENV{action}'><div>
 		[(#REM) declarer les hidden qui declencheront le service du formulaire
 		parametre : url d'action ]
-		#ACTION_FORMULAIRE{#ENV{action}}
+		#ACTION_FORMULAIRE
 		<div class="editer-groupe">
 			#SET{name,messagerie_agenda}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
 			<div class="editer editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
