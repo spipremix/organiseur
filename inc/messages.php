@@ -67,13 +67,13 @@ function messagerie_verifier_destinataires($destinataires, $options = array('acc
 	foreach ($destinataires as $id) {
 		if (is_numeric($id)) {
 			if (!$id) {
-				$erreurs[] = _T('organiseur:erreur_destinataire_invalide', array('dest' => $id));
+				$erreurs[] = _T('organiseur:erreur_destinataire_invalide', array('dest' => entites_html($id)));
 			}
 		} else {
 			if (!$options['accepter_email']
 				or !email_valide($id)
 			) {
-				$erreurs[] = _T('organiseur:erreur_destinataire_invalide', array('dest' => $id));
+				$erreurs[] = _T('organiseur:erreur_destinataire_invalide', array('dest' => entites_html($id)));
 			}
 		}
 	}
