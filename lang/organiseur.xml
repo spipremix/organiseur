@@ -10,6 +10,9 @@
 		<traducteur nom="George" lien="https://trad.spip.net/auteur/جورج-قندلفت" />
 		<traducteur nom="kent1" lien="https://trad.spip.net/auteur/kent1" />
 	</langue>
+	<langue code="eo" url="https://trad.spip.net/tradlang_module/organiseur?lang_cible=eo" total="55" traduits="55" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="gpl" lien="https://trad.spip.net/auteur/gpl" />
+	</langue>
 	<langue code="es" url="https://trad.spip.net/tradlang_module/organiseur?lang_cible=es" total="55" traduits="55" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="alf" lien="https://trad.spip.net/auteur/alf" />
 		<traducteur nom="dani" lien="https://trad.spip.net/auteur/dani" />
