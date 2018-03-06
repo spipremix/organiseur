@@ -8,6 +8,9 @@
 	<langue code="en" url="https://trad.spip.net/tradlang_module/paquet-organiseur?lang_cible=en" total="2" traduits="2" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="kent1" lien="https://trad.spip.net/auteur/kent1" />
 	</langue>
+	<langue code="eo" url="https://trad.spip.net/tradlang_module/paquet-organiseur?lang_cible=eo" total="2" traduits="2" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="gpl" lien="https://trad.spip.net/auteur/gpl" />
+	</langue>
 	<langue code="es" url="https://trad.spip.net/tradlang_module/paquet-organiseur?lang_cible=es" total="2" traduits="2" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="jotacese" lien="https://trad.spip.net/auteur/jotacese" />
 	</langue>
