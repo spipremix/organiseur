@@ -22,20 +22,46 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 function organiseur_autoriser() {
 }
 
-function autoriser_calendrier_menu_dist($faire, $type = '', $id = 0, $qui = null, $opt = null) {
+/**
+ * Autorisation de voir la page calendrier
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type Type d'objet sur lequel appliquer l'action
+ * @param  int $id Identifiant de l'objet
+ * @param  array $qui Description de l'auteur demandant l'autorisation
+ * @param  array $opt Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+ **/
+function autoriser_calendrier_voir_dist($faire, $type, $id, $qui, $opt) {
 	if ($GLOBALS['meta']['messagerie_agenda'] == 'oui') {
 		return true;
 	}
-
 	return false;
 }
 
-function autoriser_messagerie_menu_dist($faire, $type = '', $id = 0, $qui = null, $opt = null) {
+/**
+ * Autorisation de voir la page messages
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type Type d'objet sur lequel appliquer l'action
+ * @param  int $id Identifiant de l'objet
+ * @param  array $qui Description de l'auteur demandant l'autorisation
+ * @param  array $opt Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+ **/
+function autoriser_messages_voir_dist($faire, $type, $id, $qui, $opt) {
 	if ($GLOBALS['meta']['messagerie_agenda'] == 'oui') {
 		return true;
 	}
-
 	return false;
+}
+
+function autoriser_calendrier_menu_dist($faire, $type = '', $id = 0, $qui = null, $opt = null) {
+	return autoriser('voir', '_calendrier', $id, $qui, $opt);
+}
+
+function autoriser_messagerie_menu_dist($faire, $type = '', $id = 0, $qui = null, $opt = null) {
+	return autoriser('voir', '_messages', $id, $qui, $opt);
 }
 
 function autoriser_message_modifier_dist($faire, $type = '', $id = 0, $qui = null, $opt = null) {
