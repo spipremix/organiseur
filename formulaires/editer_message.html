@@ -63,9 +63,9 @@
 	  <!--extra-->
 	  <p class='boutons'><span class='image_loading'>&nbsp;</span>
 			[(#ENV{statut}|=={publie}|non)
-			<input type='submit' class='submit' name="draft" value='<:organiseur:bouton_enregistrer_brouillon:>' />
+			<input type='submit' class='btn submit' name="draft" value='<:organiseur:bouton_enregistrer_brouillon:>' />
 			]
-			<input type='submit' class='submit' name="send" value='<:organiseur:bouton_envoyer_message:>' />
+			<input type='submit' class='btn submit' name="send" value='<:organiseur:bouton_envoyer_message:>' />
 		</p>
 	</div></form>
 	#INCLURE{fond=formulaires/dateur/inc-dateur}
