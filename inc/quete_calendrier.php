@@ -305,13 +305,13 @@ function quete_calendrier_interval_rv($avant, $apres) {
 					$cat = 'calendrier-couleur12';
 				} else {
 					$cat = 'calendrier-couleur9';
-					$auteurs = array_map(
-						'array_shift',
+					$auteurs = array_column(
 						sql_allfetsel(
 							'nom',
 							'spip_auteurs AS A LEFT JOIN spip_auteurs_liens AS L ON L.id_auteur=A.id_auteur',
 							"(L.objet='message' AND L.id_objet=$id_message AND (A.id_auteur!=$connect_id_auteur))"
-						)
+						),
+						'nom'
 					);
 				}
 			}

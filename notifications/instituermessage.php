@@ -50,11 +50,11 @@ function notifications_instituermessage_dist($quoi, $id_message, $options = arra
 			// pour une annonce : tous ceux qui recoivent des messages
 			if ($type !== 'affich') {
 				$ids = sql_allfetsel('id_auteur', 'spip_auteurs_liens', "objet='message' AND id_objet=" . intval($id_message));
-				$ids = array_map('reset', $ids);
+				$ids = array_column($ids, 'id_auteur');
 				$where[] = sql_in('id_auteur', $ids);
 			}
 			$emails = sql_allfetsel('email', 'spip_auteurs', $where);
-			$emails = array_map('reset', $emails);
+			$emails = array_column($emails, 'email');
 
 			include_spip('inc/notifications');
 			notifications_envoyer_mails($emails, $texte);
